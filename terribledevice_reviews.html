@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terribledevice — Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --black:    #0d0c0f;
+        --surface:  #161418;
+        --surface2: #1e1b22;
+        --border:   #2a2630;
+        --tan:      #c8bfa8;
+        --tan-dim:  #7a7268;
+        --pink:     #ff5c8d;
+        --pink-dim: #73254e;
+        --steel:    #3a5a6e;
+        --steel-lt: #6a9ab0;
+        --head: 'Barlow Condensed', sans-serif;
+        --body: 'Barlow', sans-serif;
+        --mono: 'Share Tech Mono', monospace;
+        --r: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+
+    body {
+        background-color: var(--black);
+        background-image:
+            radial-gradient(ellipse 80% 50% at 15% 10%, rgba(115, 37, 83, 0.18) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 92, 141, 0.08) 0%, transparent 55%),
+            radial-gradient(ellipse 50% 60% at 50% 100%, rgba(30, 52, 66, 0.6) 0%, transparent 70%);
+        color: var(--tan);
+        font-family: var(--body);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .td-page {
+        padding: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* ── Nav ── */
+    .td-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4px 18px;
+    }
+
+    .td-logo {
+        font-family: var(--head);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .td-logo span { color: var(--pink); }
+    .td-nav-links { display: flex; gap: 24px; }
+
+    .td-nav-links a {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--tan-dim);
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .td-nav-links a.active { color: var(--pink); }
+
+    /* ── Page header ── */
+    .page-header {
+        margin-bottom: 28px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .page-eyebrow {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--pink);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .page-title {
+        font-family: var(--head);
+        font-size: 72px;
+        font-weight: 700;
+        line-height: 0.88;
+        letter-spacing: -0.01em;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .page-title em {
+        color: var(--pink);
+        font-style: normal;
+    }
+
+    .result-count {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        white-space: nowrap;
+        padding-bottom: 8px;
+    }
+
+    .result-count span { color: var(--pink); }
+
+    /* ── Filters ── */
+    .filters-bar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 0 var(--r) var(--r) var(--r);
+        padding: 1rem 1.4rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .filter-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .filter-pills {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .filter-pill {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        padding: 4px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        cursor: pointer;
+        background: transparent;
+        transition: border-color 0.2s, color 0.2s;
+        user-select: none;
+    }
+
+    .filter-pill:hover { border-color: var(--pink-dim); color: var(--tan); }
+    .filter-pill.active { border-color: var(--pink); color: var(--pink); }
+
+    .filter-divider {
+        width: 1px;
+        height: 20px;
+        background: var(--border);
+        flex-shrink: 0;
+    }
+
+    .filter-reset {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        margin-left: auto;
+        padding: 0;
+        transition: color 0.2s;
+    }
+
+    .filter-reset:hover { color: var(--pink); }
+
+    /* ── Grid ── */
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    /* ── Review card ── */
+    .review-card {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        padding: 1.3rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .review-card:hover {
+        border-color: var(--pink-dim);
+        transform: scale(1.02);
+    }
+
+    .review-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 92, 141, 0.03) 2px,
+            rgba(255, 92, 141, 0.03) 4px
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .review-card:hover::after {
+        opacity: 1;
+        animation: scanline-flicker 0.4s steps(1) forwards;
+    }
+
+    .review-card.hidden {
+        display: none;
+    }
+
+    .rc-tl  { border-radius: 0 var(--r) var(--r) var(--r); }
+    .rc-tr  { border-radius: var(--r) 0 var(--r) var(--r); }
+    .rc-br  { border-radius: var(--r) var(--r) 0 var(--r); }
+    .rc-bl  { border-radius: var(--r) var(--r) var(--r) 0; }
+    .rc-all { border-radius: var(--r); }
+
+    .panel-meta {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .panel-meta span { color: var(--pink); margin-right: 6px; }
+
+    .review-title {
+        font-family: var(--head);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+        line-height: 1.05;
+    }
+
+    .review-creator {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--tan-dim);
+        letter-spacing: 0.14em;
+        margin-bottom: 10px;
+    }
+
+    .review-blurb {
+        font-size: 12px;
+        line-height: 1.6;
+        color: var(--tan-dim);
+        margin-bottom: 14px;
+        flex: 1;
+    }
+
+    .review-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+    }
+
+    .review-score {
+        font-family: var(--head);
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--pink);
+        line-height: 1;
+    }
+
+    .review-type {
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        padding: 3px 10px;
+        border: 1px solid var(--steel);
+        border-radius: 999px;
+        color: var(--steel-lt);
+        text-transform: uppercase;
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+        grid-column: 1 / 4;
+        padding: 60px 20px;
+        text-align: center;
+        display: none;
+    }
+
+    .empty-state.visible { display: block; }
+
+    .empty-title {
+        font-family: var(--head);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--tan-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+    }
+
+    .empty-sub {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        color: var(--pink-dim);
+        text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    .footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 4px 0;
+        margin-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--tan-dim);
+    }
+
+    .footer-sig {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--pink-dim);
+    }
+
+    /* ── Scanline ── */
+    @keyframes scanline-flicker {
+        0%   { opacity: 0;   transform: translateY(0); }
+        10%  { opacity: 1;   transform: translateY(-2px); }
+        20%  { opacity: 0.4; transform: translateY(1px); }
+        30%  { opacity: 1;   transform: translateY(-1px); }
+        45%  { opacity: 0.6; transform: translateY(2px); }
+        60%  { opacity: 1;   transform: translateY(0); }
+        75%  { opacity: 0.8; transform: translateY(-1px); }
+        90%  { opacity: 1;   transform: translateY(0); }
+        100% { opacity: 1;   transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+<div class="td-page">
+
+    <nav class="td-nav">
+        <a href="#" class="td-logo">Terrible<span>Device</span></a>
+        <div class="td-nav-links">
+            <a href="#" class="active">Reviews</a>
+            <a href="#">Archive</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <div class="page-eyebrow">&#x25A0;&nbsp; All reviews</div>
+            <h1 class="page-title">The <em>Archive</em></h1>
+        </div>
+        <div class="result-count">Showing <span id="visibleCount">12</span> of <span id="totalCount">12</span></div>
+    </div>
+
+    <div class="filters-bar">
+        <div class="filter-group">
+            <span class="filter-label">Medium</span>
+            <div class="filter-pills" id="mediumFilters">
+                <button class="filter-pill active" data-filter="medium" data-value="all">All</button>
+                <button class="filter-pill" data-filter="medium" data-value="novel">Novel</button>
+                <button class="filter-pill" data-filter="medium" data-value="film">Film</button>
+                <button class="filter-pill" data-filter="medium" data-value="anime">Anime</button>
+                <button class="filter-pill" data-filter="medium" data-value="tv">TV</button>
+                <button class="filter-pill" data-filter="medium" data-value="comic">Comic</button>
+            </div>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <div class="filter-group">
+            <span class="filter-label">Era</span>
+            <div class="filter-pills" id="yearFilters">
+                <button class="filter-pill active" data-filter="era" data-value="all">All</button>
+                <button class="filter-pill" data-filter="era" data-value="80s">80s</button>
+                <button class="filter-pill" data-filter="era" data-value="90s">90s</button>
+            </div>
+        </div>
+
+        <button class="filter-reset" id="resetBtn">&#x25A0; Reset</button>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid">
+
+        <a href="#" class="review-card rc-tl" data-medium="novel" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> novel &mdash; 1984</p>
+            <h3 class="review-title">Neuromancer</h3>
+            <p class="review-creator">William Gibson</p>
+            <p class="review-blurb">The novel that named cyberspace. Case is a burned-out console cowboy hired for one last run through the matrix.</p>
+            <div class="review-footer">
+                <span class="review-score">9.4</span>
+                <span class="review-type">novel</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-all" data-medium="film" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> film &mdash; 1982</p>
+            <h3 class="review-title">Blade Runner</h3>
+            <p class="review-creator">Ridley Scott</p>
+            <p class="review-blurb">Replicants and rain. Scott's Los Angeles 2019 is the visual language every cyberpunk work since borrows from.</p>
+            <div class="review-footer">
+                <span class="review-score">9.6</span>
+                <span class="review-type">film</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-br" data-medium="anime" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> anime &mdash; 1988</p>
+            <h3 class="review-title">Akira</h3>
+            <p class="review-creator">Katsuhiro Otomo</p>
+            <p class="review-blurb">Neo-Tokyo tears itself apart in a ballet of telekinetic fury. Still the benchmark for animated urban collapse.</p>
+            <div class="review-footer">
+                <span class="review-score">9.1</span>
+                <span class="review-type">anime</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-bl" data-medium="film" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> film &mdash; 1995</p>
+            <h3 class="review-title">Ghost in the Shell</h3>
+            <p class="review-creator">Mamoru Oshii</p>
+            <p class="review-blurb">The Major questions her own humanity across a Tokyo that feels borrowed from a decade that hasn't happened yet.</p>
+            <div class="review-footer">
+                <span class="review-score">9.3</span>
+                <span class="review-type">film</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-all" data-medium="novel" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> novel &mdash; 1992</p>
+            <h3 class="review-title">Snow Crash</h3>
+            <p class="review-creator">Neal Stephenson</p>
+            <p class="review-blurb">Pizza delivery and sword fights in the Metaverse. Stephenson builds the densest fictional economy in the genre.</p>
+            <div class="review-footer">
+                <span class="review-score">8.8</span>
+                <span class="review-type">novel</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-tr" data-medium="tv" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> tv &mdash; 1987</p>
+            <h3 class="review-title">Max Headroom</h3>
+            <p class="review-creator">ABC / Chrysalis</p>
+            <p class="review-blurb">Twenty minutes into the future, a stuttering AI newscaster becomes the face of corporate media satire.</p>
+            <div class="review-footer">
+                <span class="review-score">7.9</span>
+                <span class="review-type">tv</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-tl" data-medium="anime" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> anime &mdash; 1998</p>
+            <h3 class="review-title">Serial Experiments Lain</h3>
+            <p class="review-creator">Yoshitoshi ABe</p>
+            <p class="review-blurb">A teenage girl dissolves into the Wired. Dense, quiet, and genuinely unsettling in ways that compound on rewatch.</p>
+            <div class="review-footer">
+                <span class="review-score">9.0</span>
+                <span class="review-type">anime</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-all" data-medium="novel" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> novel &mdash; 1986</p>
+            <h3 class="review-title">Count Zero</h3>
+            <p class="review-creator">William Gibson</p>
+            <p class="review-blurb">The Sprawl trilogy continues. Three storylines converge on the same AI mystery Gibson planted in Neuromancer.</p>
+            <div class="review-footer">
+                <span class="review-score">8.5</span>
+                <span class="review-type">novel</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-br" data-medium="film" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> film &mdash; 1995</p>
+            <h3 class="review-title">Strange Days</h3>
+            <p class="review-creator">Kathryn Bigelow</p>
+            <p class="review-blurb">Black market recordings of lived experience sold on street corners. New Year's Eve 1999. Underrated and urgent.</p>
+            <div class="review-footer">
+                <span class="review-score">8.2</span>
+                <span class="review-type">film</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-bl" data-medium="comic" data-era="80s">
+            <p class="panel-meta"><span>&#x25A0;</span> comic &mdash; 1982</p>
+            <h3 class="review-title">Akira (Manga)</h3>
+            <p class="review-creator">Katsuhiro Otomo</p>
+            <p class="review-blurb">2000 pages of meticulously rendered urban ruin. The source text that proves the film kept the spectacle but lost the scope.</p>
+            <div class="review-footer">
+                <span class="review-score">9.5</span>
+                <span class="review-type">comic</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-all" data-medium="anime" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> anime &mdash; 1995</p>
+            <h3 class="review-title">Bubblegum Crisis</h3>
+            <p class="review-creator">Hiroaki Gohda</p>
+            <p class="review-blurb">Four women in powered armor fight rogue androids across a neon-drenched MegaTokyo. Style-forward and genuinely fun.</p>
+            <div class="review-footer">
+                <span class="review-score">7.6</span>
+                <span class="review-type">anime</span>
+            </div>
+        </a>
+
+        <a href="#" class="review-card rc-tr" data-medium="novel" data-era="90s">
+            <p class="panel-meta"><span>&#x25A0;</span> novel &mdash; 1991</p>
+            <h3 class="review-title">Synners</h3>
+            <p class="review-creator">Pat Cadigan</p>
+            <p class="review-blurb">Direct neural interfaces and music industry collapse. Cadigan writes the body in crisis better than almost anyone in the genre.</p>
+            <div class="review-footer">
+                <span class="review-score">8.6</span>
+                <span class="review-type">novel</span>
+            </div>
+        </a>
+
+        <div class="empty-state" id="emptyState">
+            <div class="empty-title">No signal found</div>
+            <div class="empty-sub">&#x25A0; Try a different filter combination</div>
+        </div>
+
+    </div>
+
+    <div class="footer-bar">
+        <span class="footer-copy">terribledevice.com &mdash; cyberpunk in culture 1980&ndash;1999</span>
+        <span class="footer-sig">&#x25A0; signal found</span>
+    </div>
+
+</div>
+
+<script>
+    const cards = document.querySelectorAll('.review-card');
+    const emptyState = document.getElementById('emptyState');
+    const visibleCount = document.getElementById('visibleCount');
+    const totalCount = document.getElementById('totalCount');
+    const resetBtn = document.getElementById('resetBtn');
+
+    totalCount.textContent = cards.length;
+
+    let activeMedium = 'all';
+    let activeEra = 'all';
+
+    const cornerClasses = ['rc-tl','rc-tr','rc-br','rc-bl','rc-all'];
+    const cornerPattern = ['rc-tl','rc-all','rc-br','rc-bl','rc-all','rc-tr'];
+
+    function applyCorners(visibleCards) {
+        visibleCards.forEach((card, i) => {
+            cornerClasses.forEach(c => card.classList.remove(c));
+            card.classList.add(cornerPattern[i % cornerPattern.length]);
+        });
+    }
+
+    function filterCards() {
+        let count = 0;
+        const visible = [];
+
+        cards.forEach(card => {
+            const mediumMatch = activeMedium === 'all' || card.dataset.medium === activeMedium;
+            const eraMatch = activeEra === 'all' || card.dataset.era === activeEra;
+
+            if (mediumMatch && eraMatch) {
+                card.classList.remove('hidden');
+                visible.push(card);
+                count++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        applyCorners(visible);
+        visibleCount.textContent = count;
+        emptyState.classList.toggle('visible', count === 0);
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter="medium"]').forEach(pill => {
+        pill.addEventListener('click', () => {
+            document.querySelectorAll('.filter-pill[data-filter="medium"]').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeMedium = pill.dataset.value;
+            filterCards();
+        });
+    });
+
+    document.querySelectorAll('.filter-pill[data-filter="era"]').forEach(pill => {
+        pill.addEventListener('click', () => {
+            document.querySelectorAll('.filter-pill[data-filter="era"]').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeEra = pill.dataset.value;
+            filterCards();
+        });
+    });
+
+    resetBtn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        document.querySelector('[data-filter="medium"][data-value="all"]').classList.add('active');
+        document.querySelector('[data-filter="era"][data-value="all"]').classList.add('active');
+        activeMedium = 'all';
+        activeEra = 'all';
+        filterCards();
+    });
+</script>
+</body>
+</html>
