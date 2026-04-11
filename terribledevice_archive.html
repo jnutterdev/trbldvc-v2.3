@@ -10,6 +10,10 @@
             href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
         <style>
             :root {
                 --black: #0d0c0f;
@@ -417,7 +421,6 @@
                 justify-content: space-between;
                 padding: 24px 4px 0;
                 margin-top: 24px;
-                border-top: 1px solid var(--border);
             }
 
             .footer-copy {
@@ -432,6 +435,52 @@
                 font-size: 10px;
                 letter-spacing: 0.1em;
                 color: var(--pink-dim);
+            }
+            .footer-social {
+                display: flex;
+                gap: 14px;
+                align-items: center;
+            }
+            .social-link {
+                color: var(--pink-dim);
+                font-size: 15px;
+                text-decoration: none;
+                display: inline-block;
+                transition: color 0.2s ease;
+            }
+            .social-link:hover {
+                color: var(--pink);
+                animation: social-glitch 0.35s linear;
+            }
+            @keyframes social-glitch {
+                0%,
+                100% {
+                    transform: translate(0) skewX(0deg);
+                    filter: none;
+                }
+                15% {
+                    transform: translate(-3px, 0) skewX(-1deg);
+                    filter: brightness(1.5) hue-rotate(20deg);
+                }
+                30% {
+                    transform: translate(3px, 1px) skewX(1deg);
+                    filter: none;
+                }
+                45% {
+                    transform: translate(-2px, -1px);
+                    filter: brightness(0.8);
+                }
+                60% {
+                    transform: translate(2px, 0) skewX(-0.5deg);
+                    filter: hue-rotate(-20deg);
+                }
+                75% {
+                    transform: translate(-1px, 1px);
+                    filter: none;
+                }
+                90% {
+                    transform: translate(1px, 0);
+                }
             }
 
             /* ── tablet ── */
@@ -918,6 +967,26 @@
                     >&copy; 2014-2026 terribledevice.com &mdash; cyberpunk in
                     culture 1980&ndash;1999</span
                 >
+                <div class="footer-social">
+                    <a
+                        href="https://www.instagram.com/terribledevice_/"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a
+                        href="https://bsky.app/profile/terribledevice.com"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Bluesky"
+                    >
+                        <i class="fa-brands fa-bluesky"></i>
+                    </a>
+                </div>
                 <span class="footer-sig">&#x25A0; signal found</span>
             </div>
         </div>
