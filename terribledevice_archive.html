@@ -436,31 +436,56 @@
 
             /* ── tablet ── */
             @media (max-width: 900px) {
-                .page-title { font-size: 52px; }
-                .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-                .empty-state { grid-column: 1 / 3; }
+                .page-title {
+                    font-size: 52px;
+                }
+                .reviews-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                .empty-state {
+                    grid-column: 1 / 3;
+                }
             }
 
             /* ── mobile ── */
             @media (max-width: 640px) {
-                :root { --r: 14px; }
+                :root {
+                    --r: 14px;
+                }
 
-                .td-page { padding: 12px; }
-                .td-nav { padding-bottom: 14px; }
+                .td-page {
+                    padding: 12px;
+                }
+                .td-nav {
+                    padding-bottom: 14px;
+                }
 
                 .page-header {
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 8px;
                 }
-                .page-title { font-size: 44px; }
+                .page-title {
+                    font-size: 44px;
+                }
 
-                .filters-bar { gap: 12px; padding: 0.8rem 1rem; }
-                .filter-divider { display: none; }
+                .filters-bar {
+                    gap: 12px;
+                    padding: 0.8rem 1rem;
+                }
+                .filter-divider {
+                    display: none;
+                }
 
-                .reviews-grid { grid-template-columns: 1fr; }
-                .empty-state { grid-column: 1; }
-                .review-card { border-radius: var(--r) !important; }
+                .reviews-grid {
+                    grid-template-columns: 1fr;
+                }
+                .empty-state {
+                    grid-column: 1;
+                }
+                .review-card {
+                    border-radius: var(--r) !important;
+                }
 
                 .footer-bar {
                     flex-direction: column;
@@ -890,8 +915,8 @@
 
             <div class="footer-bar">
                 <span class="footer-copy"
-                    >terribledevice.com &mdash; cyberpunk in culture
-                    1980&ndash;1999</span
+                    >&copy; 2014-2026 terribledevice.com &mdash; cyberpunk in
+                    culture 1980&ndash;1999</span
                 >
                 <span class="footer-sig">&#x25A0; signal found</span>
             </div>
