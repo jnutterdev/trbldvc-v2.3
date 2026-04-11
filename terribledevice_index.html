@@ -78,7 +78,7 @@
     .td-grid {
         display: grid;
         grid-template-columns: 1.5fr 1fr;
-        grid-template-rows: 220px 1fr 1fr auto;
+        grid-template-rows: 1fr 1fr auto;
         gap: 10px;
         flex: 1;
     }
@@ -120,7 +120,7 @@
 
     .hero-panel {
         grid-column: 1;
-        grid-row: 2 / 4;
+        grid-row: 2;
     }
     .hero-title {
         font-family: var(--head);
@@ -190,7 +190,7 @@
 
     .stat-panel {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 1;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -238,7 +238,7 @@
 
     .excerpt-panel {
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 2;
     }
     .excerpt-text {
         font-size: 13px;
@@ -251,7 +251,7 @@
     }
 
     .hero-image-panel {
-        grid-column: 1 / 3;
+        grid-column: 1;
         grid-row: 1;
         position: relative;
         overflow: hidden;
@@ -287,7 +287,7 @@
 
     .reviews-row {
         grid-column: 1 / 3;
-        grid-row: 4;
+        grid-row: 3;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
@@ -300,16 +300,21 @@
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
     }
-    .review-card:hover {
+    .review-card:hover,
+    .hero-panel:hover {
         border-color: var(--pink);
-        box-shadow: 0 0 0 1px var(--pink-dim), inset 0 0 24px rgba(255, 92, 141, 0.05);
+        box-shadow:
+            0 0 0 1px var(--pink-dim),
+            inset 0 0 24px rgba(255, 92, 141, 0.05);
         animation: glitch 0.35s linear;
     }
     /* scanlines */
     .review-card::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: repeating-linear-gradient(
@@ -329,13 +334,33 @@
     }
     @keyframes glitch {
         0%,
-        100% { transform: translate(0) skewX(0deg);       filter: none; }
-        15%  { transform: translate(-4px, 0) skewX(-1deg); filter: brightness(1.3) hue-rotate(20deg); }
-        30%  { transform: translate(4px, 1px) skewX(1deg); filter: none; }
-        45%  { transform: translate(-2px, -1px);            filter: brightness(0.85); }
-        60%  { transform: translate(3px, 0) skewX(-0.5deg);filter: hue-rotate(-20deg); }
-        75%  { transform: translate(-1px, 1px);             filter: none; }
-        90%  { transform: translate(1px, 0); }
+        100% {
+            transform: translate(0) skewX(0deg);
+            filter: none;
+        }
+        15% {
+            transform: translate(-4px, 0) skewX(-1deg);
+            filter: brightness(1.3) hue-rotate(20deg);
+        }
+        30% {
+            transform: translate(4px, 1px) skewX(1deg);
+            filter: none;
+        }
+        45% {
+            transform: translate(-2px, -1px);
+            filter: brightness(0.85);
+        }
+        60% {
+            transform: translate(3px, 0) skewX(-0.5deg);
+            filter: hue-rotate(-20deg);
+        }
+        75% {
+            transform: translate(-1px, 1px);
+            filter: none;
+        }
+        90% {
+            transform: translate(1px, 0);
+        }
     }
     .review-title {
         font-family: var(--head);
@@ -400,6 +425,81 @@
         letter-spacing: 0.1em;
         color: var(--pink-dim);
     }
+
+    /* ── tablet ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+        .reviews-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .hero-title {
+            font-size: 52px;
+        }
+    }
+
+    /* ── mobile ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+        :root {
+            --r: 14px;
+        }
+
+        .td-page {
+            padding: 12px;
+        }
+
+        .td-nav {
+            padding-bottom: 14px;
+        }
+
+        .td-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            flex: none;
+        }
+
+        /* reorder panels top-to-bottom */
+        .hero-image-panel {
+            grid-column: 1;
+            grid-row: 1;
+            min-height: 200px;
+        }
+        .stat-panel {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .hero-panel {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .excerpt-panel {
+            grid-column: 1;
+            grid-row: 4;
+        }
+        .reviews-row {
+            grid-column: 1;
+            grid-row: 5;
+            grid-template-columns: 1fr;
+        }
+
+        /* uniform corners in single-column stack */
+        .panel,
+        .hero-image-panel,
+        .review-card {
+            border-radius: var(--r) !important;
+        }
+
+        .hero-title {
+            font-size: 44px;
+        }
+        .hero-sub {
+            max-width: 100%;
+        }
+
+        .footer-bar {
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+        }
+    }
 </style>
 
 <div class="td-page">
@@ -415,7 +515,7 @@
 
     <div class="td-grid">
         <div
-            class="panel hero-panel p-sharp-tl"
+            class="panel hero-panel p-sharp-bl"
             style="display: flex; flex-direction: column"
         >
             <p class="panel-meta">
@@ -502,7 +602,7 @@
             </p>
         </div>
 
-        <div class="hero-image-panel p-sharp-bl">
+        <div class="hero-image-panel p-sharp-tl">
             <div class="hero-image-placeholder"></div>
             <span class="hero-image-label">&#x25A0; hero image — 220px</span>
         </div>

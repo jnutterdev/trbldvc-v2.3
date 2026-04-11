@@ -1,604 +1,779 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terribledevice — About</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --black:    #0d0c0f;
-        --surface:  #161418;
-        --surface2: #1e1b22;
-        --border:   #2a2630;
-        --tan:      #c8bfa8;
-        --tan-dim:  #7a7268;
-        --pink:     #ff5c8d;
-        --pink-dim: #73254e;
-        --steel:    #3a5a6e;
-        --steel-lt: #6a9ab0;
-        --head: 'Barlow Condensed', sans-serif;
-        --body: 'Barlow', sans-serif;
-        --mono: 'Share Tech Mono', monospace;
-        --r: 28px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { font-size: 18px; }
-
-    body {
-        background-color: var(--black);
-        background-image:
-            radial-gradient(ellipse 80% 50% at 15% 10%, rgba(115, 37, 83, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 92, 141, 0.08) 0%, transparent 55%),
-            radial-gradient(ellipse 50% 60% at 50% 100%, rgba(30, 52, 66, 0.6) 0%, transparent 70%);
-        color: var(--tan);
-        font-family: var(--body);
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
-
-    .td-page {
-        padding: 20px;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    /* ── Nav ── */
-    .td-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 4px 18px;
-    }
-
-    .td-logo {
-        font-family: var(--head);
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: #fff;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-
-    .td-logo span { color: var(--pink); }
-
-    .td-nav-links { display: flex; gap: 24px; }
-
-    .td-nav-links a {
-        font-family: var(--mono);
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    .td-nav-links a.active { color: var(--pink); }
-
-    /* ── Scanline ── */
-    @keyframes scanline-flicker {
-        0%   { opacity: 0;   transform: translateY(0); }
-        10%  { opacity: 1;   transform: translateY(-2px); }
-        20%  { opacity: 0.4; transform: translateY(1px); }
-        30%  { opacity: 1;   transform: translateY(-1px); }
-        45%  { opacity: 0.6; transform: translateY(2px); }
-        60%  { opacity: 1;   transform: translateY(0); }
-        75%  { opacity: 0.8; transform: translateY(-1px); }
-        90%  { opacity: 1;   transform: translateY(0); }
-        100% { opacity: 1;   transform: translateY(0); }
-    }
-
-    .panel, .stat-card {
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .panel:hover, .stat-card:hover {
-        border-color: var(--pink-dim);
-        transform: scale(1.01);
-    }
-
-    .panel::after, .stat-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 92, 141, 0.03) 2px,
-            rgba(255, 92, 141, 0.03) 4px
-        );
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .panel:hover::after, .stat-card:hover::after {
-        opacity: 1;
-        animation: scanline-flicker 0.4s steps(1) forwards;
-    }
-
-    /* ── Page header ── */
-    .page-header {
-        margin-bottom: 40px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .page-eyebrow {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.2em;
-        color: var(--pink);
-        text-transform: uppercase;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .page-eyebrow::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: var(--pink-dim);
-        opacity: 0.4;
-    }
-
-    .page-title {
-        font-family: var(--head);
-        font-size: 96px;
-        font-weight: 700;
-        line-height: 0.85;
-        letter-spacing: -0.01em;
-        color: #fff;
-        text-transform: uppercase;
-    }
-
-    .page-title em {
-        color: var(--pink);
-        font-style: normal;
-        display: block;
-    }
-
-    /* ── Two col intro ── */
-    .intro-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .panel {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        padding: 1.6rem;
-    }
-
-    .p-sharp-tl { border-radius: 0 var(--r) var(--r) var(--r); }
-    .p-sharp-tr { border-radius: var(--r) 0 var(--r) var(--r); }
-    .p-sharp-br { border-radius: var(--r) var(--r) 0 var(--r); }
-    .p-sharp-bl { border-radius: var(--r) var(--r) var(--r) 0; }
-    .p-all      { border-radius: var(--r); }
-
-    .panel-meta {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-bottom: 14px;
-    }
-
-    .panel-meta span { color: var(--pink); margin-right: 6px; }
-
-    .panel-heading {
-        font-family: var(--head);
-        font-size: 28px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: #fff;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-        line-height: 1;
-    }
-
-    .panel-body {
-        font-size: 13px;
-        line-height: 1.8;
-        color: var(--tan-dim);
-    }
-
-    .panel-body p + p { margin-top: 1em; }
-
-    .panel-body strong { color: var(--tan); font-weight: 500; }
-
-    /* ── Stat cards row ── */
-    .stats-row {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .stat-card {
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        padding: 1.2rem 1.4rem;
-    }
-
-    .stat-card:nth-child(1) { border-radius: 0 var(--r) var(--r) var(--r); }
-    .stat-card:nth-child(2) { border-radius: var(--r); }
-    .stat-card:nth-child(3) { border-radius: var(--r); }
-    .stat-card:nth-child(4) { border-radius: var(--r) var(--r) 0 var(--r); }
-
-    .stat-num {
-        font-family: var(--head);
-        font-size: 48px;
-        font-weight: 700;
-        color: var(--pink);
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    .stat-desc {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        line-height: 1.4;
-    }
-
-    /* ── Scope + scoring grid ── */
-    .lower-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    /* ── Scope list ── */
-    .scope-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .scope-item {
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .scope-item:last-child { border-bottom: none; }
-
-    .scope-bullet {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--pink);
-        flex-shrink: 0;
-    }
-
-    .scope-label {
-        font-family: var(--head);
-        font-size: 16px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        color: #fff;
-        text-transform: uppercase;
-        flex-shrink: 0;
-        min-width: 80px;
-    }
-
-    .scope-note {
-        font-size: 12px;
-        color: var(--tan-dim);
-        line-height: 1.5;
-    }
-
-    /* ── Scoring breakdown ── */
-    .score-criteria {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .criteria-item {}
-
-    .criteria-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 6px;
-    }
-
-    .criteria-name {
-        font-family: var(--head);
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        color: var(--tan);
-        text-transform: uppercase;
-    }
-
-    .criteria-weight {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--tan-dim);
-    }
-
-    .criteria-desc {
-        font-size: 12px;
-        color: var(--tan-dim);
-        line-height: 1.5;
-        margin-bottom: 6px;
-    }
-
-    .bar-track {
-        height: 3px;
-        background: var(--border);
-        border-radius: 2px;
-    }
-
-    .bar-fill {
-        height: 3px;
-        background: var(--pink);
-        border-radius: 2px;
-    }
-
-    /* ── Contact panel ── */
-    .contact-panel {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-    }
-
-    .contact-text .panel-heading { margin-bottom: 8px; }
-
-    .contact-text p {
-        font-size: 13px;
-        color: var(--tan-dim);
-        line-height: 1.7;
-        max-width: 380px;
-    }
-
-    .contact-links {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        flex-shrink: 0;
-    }
-
-    .contact-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 16px;
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: var(--r);
-        text-decoration: none;
-        transition: border-color 0.2s;
-        min-width: 200px;
-    }
-
-    .contact-link:hover { border-color: var(--pink-dim); }
-
-    .contact-link-icon {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--pink);
-        width: 16px;
-        text-align: center;
-    }
-
-    .contact-link-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-    }
-
-    .contact-link-val {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--tan);
-        margin-left: auto;
-    }
-
-    /* ── Footer ── */
-    .footer-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 4px 0;
-        margin-top: 10px;
-        border-top: 1px solid var(--border);
-    }
-
-    .footer-copy {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--tan-dim);
-    }
-
-    .footer-sig {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--pink-dim);
-    }
-</style>
-</head>
-<body>
-<div class="td-page">
-
-    <nav class="td-nav">
-        <a href="#" class="td-logo">Terrible<span>Device</span></a>
-        <div class="td-nav-links">
-            <a href="#">Reviews</a>
-            <a href="#">Archive</a>
-            <a href="#" class="active">About</a>
-        </div>
-    </nav>
-
-    <header class="page-header">
-        <div class="page-eyebrow">&#x25A0;&nbsp; About this site</div>
-        <h1 class="page-title">Terrible<em>Device</em></h1>
-    </header>
-
-    <div class="intro-grid">
-        <div class="panel p-sharp-tl">
-            <p class="panel-meta"><span>&#x25A0;</span> Signal origin</p>
-            <h2 class="panel-heading">What this is</h2>
-            <div class="panel-body">
-                <p>Terribledevice is a review archive for <strong>cyberpunk culture from the 1980s and 1990s</strong> — the decade and a half when the genre was still a provocation rather than an aesthetic. Books, films, anime, television, and the occasional game that helped define what it meant to be afraid of the future in a specific, neon-lit way.</p>
-                <p>The name comes from a William Gibson short story. It felt right. The site is run by one person with too many opinions about <strong>Neuromancer, Akira, and Serial Experiments Lain</strong>, and not enough hours in the day to write about all of them.</p>
-                <p>Reviews are short-form and opinionated. Scores exist but they are not the point. The writing is.</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Terribledevice — About</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --black: #0d0c0f;
+                --surface: #161418;
+                --surface2: #1e1b22;
+                --border: #2a2630;
+                --tan: #c8bfa8;
+                --tan-dim: #7a7268;
+                --pink: #ff5c8d;
+                --pink-dim: #73254e;
+                --steel: #3a5a6e;
+                --steel-lt: #6a9ab0;
+                --head: "Barlow Condensed", sans-serif;
+                --body: "Barlow", sans-serif;
+                --mono: "Share Tech Mono", monospace;
+                --r: 28px;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                font-size: 18px;
+            }
+
+            body {
+                background-color: var(--black);
+                background-image:
+                    radial-gradient(
+                        ellipse 80% 50% at 15% 10%,
+                        rgba(115, 37, 83, 0.18) 0%,
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        ellipse 60% 40% at 90% 60%,
+                        rgba(255, 92, 141, 0.08) 0%,
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        ellipse 50% 60% at 50% 100%,
+                        rgba(30, 52, 66, 0.6) 0%,
+                        transparent 70%
+                    );
+                color: var(--tan);
+                font-family: var(--body);
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+
+            .td-page {
+                padding: 20px;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            /* ── Nav ── */
+            .td-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 4px 18px;
+            }
+
+            .td-logo {
+                font-family: var(--head);
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                color: #fff;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+
+            .td-logo a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .td-logo span {
+                color: var(--pink);
+            }
+
+            .td-nav-links {
+                display: flex;
+                gap: 24px;
+            }
+
+            .td-nav-links a {
+                font-family: var(--mono);
+                font-size: 11px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .td-nav-links a.active {
+                color: var(--pink);
+            }
+
+            /* ── Scanline ── */
+            @keyframes scanline-flicker {
+                0% {
+                    opacity: 0;
+                    transform: translateY(0);
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateY(-2px);
+                }
+                20% {
+                    opacity: 0.4;
+                    transform: translateY(1px);
+                }
+                30% {
+                    opacity: 1;
+                    transform: translateY(-1px);
+                }
+                45% {
+                    opacity: 0.6;
+                    transform: translateY(2px);
+                }
+                60% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                75% {
+                    opacity: 0.8;
+                    transform: translateY(-1px);
+                }
+                90% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .panel,
+            .stat-card {
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.3s ease,
+                    border-color 0.3s ease;
+            }
+
+            .panel:hover,
+            .stat-card:hover {
+                border-color: var(--pink-dim);
+                transform: scale(1.01);
+            }
+
+            .panel::after,
+            .stat-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 92, 141, 0.03) 2px,
+                    rgba(255, 92, 141, 0.03) 4px
+                );
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+
+            .panel:hover::after,
+            .stat-card:hover::after {
+                opacity: 1;
+                animation: scanline-flicker 0.4s steps(1) forwards;
+            }
+
+            /* ── Page header ── */
+            .page-header {
+                margin-bottom: 40px;
+                padding-bottom: 32px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .page-eyebrow {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                color: var(--pink);
+                text-transform: uppercase;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .page-eyebrow::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--pink-dim);
+                opacity: 0.4;
+            }
+
+            .page-title {
+                font-family: var(--head);
+                font-size: 96px;
+                font-weight: 700;
+                line-height: 0.85;
+                letter-spacing: -0.01em;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+            .page-title em {
+                color: var(--pink);
+                font-style: normal;
+                display: block;
+            }
+
+            /* ── Two col intro ── */
+            .intro-grid {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .panel {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                padding: 1.6rem;
+            }
+
+            .p-sharp-tl {
+                border-radius: 0 var(--r) var(--r) var(--r);
+            }
+            .p-sharp-tr {
+                border-radius: var(--r) 0 var(--r) var(--r);
+            }
+            .p-sharp-br {
+                border-radius: var(--r) var(--r) 0 var(--r);
+            }
+            .p-sharp-bl {
+                border-radius: var(--r) var(--r) var(--r) 0;
+            }
+            .p-all {
+                border-radius: var(--r);
+            }
+
+            .panel-meta {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-bottom: 14px;
+            }
+
+            .panel-meta span {
+                color: var(--pink);
+                margin-right: 6px;
+            }
+
+            .panel-heading {
+                font-family: var(--head);
+                font-size: 28px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                color: #fff;
+                text-transform: uppercase;
+                margin-bottom: 14px;
+                line-height: 1;
+            }
+
+            .panel-body {
+                font-size: 13px;
+                line-height: 1.8;
+                color: var(--tan-dim);
+            }
+
+            .panel-body p + p {
+                margin-top: 1em;
+            }
+
+            .panel-body strong {
+                color: var(--tan);
+                font-weight: 500;
+            }
+
+            /* ── Stat cards row ── */
+            .stats-row {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .stat-card {
+                background: var(--surface2);
+                border: 1px solid var(--border);
+                padding: 1.2rem 1.4rem;
+            }
+
+            .stat-card:nth-child(1) {
+                border-radius: 0 var(--r) var(--r) var(--r);
+            }
+            .stat-card:nth-child(2) {
+                border-radius: var(--r);
+            }
+            .stat-card:nth-child(3) {
+                border-radius: var(--r);
+            }
+            .stat-card:nth-child(4) {
+                border-radius: var(--r) var(--r) 0 var(--r);
+            }
+
+            .stat-num {
+                font-family: var(--head);
+                font-size: 48px;
+                font-weight: 700;
+                color: var(--pink);
+                line-height: 1;
+                margin-bottom: 4px;
+            }
+
+            .stat-desc {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                line-height: 1.4;
+            }
+
+            /* ── Scope + scoring grid ── */
+            .lower-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            /* ── Scope list ── */
+            .scope-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .scope-item {
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .scope-item:last-child {
+                border-bottom: none;
+            }
+
+            .scope-bullet {
+                font-family: var(--mono);
+                font-size: 10px;
+                color: var(--pink);
+                flex-shrink: 0;
+            }
+
+            .scope-label {
+                font-family: var(--head);
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                color: #fff;
+                text-transform: uppercase;
+                flex-shrink: 0;
+                min-width: 80px;
+            }
+
+            .scope-note {
+                font-size: 12px;
+                color: var(--tan-dim);
+                line-height: 1.5;
+            }
+
+            /* ── Scoring breakdown ── */
+            .score-criteria {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .criteria-item {
+            }
+
+            .criteria-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 6px;
+            }
+
+            .criteria-name {
+                font-family: var(--head);
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                color: var(--tan);
+                text-transform: uppercase;
+            }
+
+            .criteria-weight {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                color: var(--tan-dim);
+            }
+
+            .criteria-desc {
+                font-size: 12px;
+                color: var(--tan-dim);
+                line-height: 1.5;
+                margin-bottom: 6px;
+            }
+
+            .bar-track {
+                height: 3px;
+                background: var(--border);
+                border-radius: 2px;
+            }
+
+            .bar-fill {
+                height: 3px;
+                background: var(--pink);
+                border-radius: 2px;
+            }
+
+            /* ── Contact panel ── */
+            .contact-panel {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 24px;
+            }
+
+            .contact-text .panel-heading {
+                margin-bottom: 8px;
+            }
+
+            .contact-text p {
+                font-size: 13px;
+                color: var(--tan-dim);
+                line-height: 1.7;
+                max-width: 380px;
+            }
+
+            .contact-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                flex-shrink: 0;
+            }
+
+            .contact-link {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 16px;
+                background: var(--surface2);
+                border: 1px solid var(--border);
+                border-radius: var(--r);
+                text-decoration: none;
+                transition: border-color 0.2s;
+                min-width: 200px;
+            }
+
+            .contact-link:hover {
+                border-color: var(--pink-dim);
+            }
+
+            .contact-link-icon {
+                font-family: var(--mono);
+                font-size: 12px;
+                color: var(--pink);
+                width: 16px;
+                text-align: center;
+            }
+
+            .contact-link-label {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+            }
+
+            .contact-link-val {
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--tan);
+                margin-left: auto;
+            }
+
+            /* ── Footer ── */
+            .footer-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 24px 4px 0;
+                margin-top: 10px;
+                border-top: 1px solid var(--border);
+            }
+
+            .footer-copy {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                color: var(--tan-dim);
+            }
+
+            .footer-sig {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                color: var(--pink-dim);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="td-page">
+            <nav class="td-nav">
+                <div class="td-logo">
+                    <a href="terribledevice_index.html"
+                        >Terrible<span>Device</span></a
+                    >
+                </div>
+                <div class="td-nav-links">
+                    <a href="terribledevice_archive.html" ]>Archive</a>
+                    <a href="terribledevice_about.html" class="active">About</a>
+                </div>
+            </nav>
+
+            <header class="page-header">
+                <div class="page-eyebrow">&#x25A0;&nbsp; About this site</div>
+                <h1 class="page-title">Terrible<em>Device</em></h1>
+            </header>
+
+            <div class="intro-grid">
+                <div class="panel p-sharp-tl">
+                    <p class="panel-meta">
+                        <span>&#x25A0;</span> Signal origin
+                    </p>
+                    <h2 class="panel-heading">What this is</h2>
+                    <div class="panel-body">
+                        <p>
+                            Terribledevice is a review archive for
+                            <strong
+                                >cyberpunk culture from the 1980s and
+                                1990s</strong
+                            >
+                            — the decade and a half when the genre was still a
+                            provocation rather than an aesthetic. Books, films,
+                            anime, television, and the occasional game that
+                            helped define what it meant to be afraid of the
+                            future in a specific, neon-lit way.
+                        </p>
+                        <p>
+                            The name comes from a William Gibson short story. It
+                            felt right. The site is run by one person with too
+                            many opinions about
+                            <strong
+                                >Neuromancer, Akira, and Serial Experiments
+                                Lain</strong
+                            >, and not enough hours in the day to write about
+                            all of them.
+                        </p>
+                        <p>
+                            Reviews are short-form and opinionated. Scores exist
+                            but they are not the point. The writing is.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel p-sharp-tr">
+                    <p class="panel-meta">
+                        <span>&#x25A0;</span> Editorial scope
+                    </p>
+                    <h2 class="panel-heading">What gets reviewed</h2>
+                    <div class="scope-list">
+                        <div class="scope-item">
+                            <span class="scope-bullet">&#x25A0;</span>
+                            <span class="scope-label">Novels</span>
+                            <span class="scope-note"
+                                >Gibson, Sterling, Dick, Cadigan, Stephenson —
+                                the foundational texts and their
+                                satellites.</span
+                            >
+                        </div>
+                        <div class="scope-item">
+                            <span class="scope-bullet">&#x25A0;</span>
+                            <span class="scope-label">Film</span>
+                            <span class="scope-note"
+                                >From Blade Runner to Strange Days. The
+                                theatrical and the forgotten
+                                straight-to-VHS.</span
+                            >
+                        </div>
+                        <div class="scope-item">
+                            <span class="scope-bullet">&#x25A0;</span>
+                            <span class="scope-label">Anime</span>
+                            <span class="scope-note"
+                                >Akira, Ghost in the Shell, Bubblegum Crisis,
+                                Serial Experiments Lain, and deeper cuts.</span
+                            >
+                        </div>
+                        <div class="scope-item">
+                            <span class="scope-bullet">&#x25A0;</span>
+                            <span class="scope-label">TV</span>
+                            <span class="scope-note"
+                                >Max Headroom, Wild Palms, the shows that tried
+                                and the ones that almost made it.</span
+                            >
+                        </div>
+                        <div class="scope-item">
+                            <span class="scope-bullet">&#x25A0;</span>
+                            <span class="scope-label">Other</span>
+                            <span class="scope-note"
+                                >Comics, games, music — anything adjacent enough
+                                to warrant the signal.</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-num">80+</div>
+                    <div class="stat-desc">Reviews<br />published</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">15</div>
+                    <div class="stat-desc">Years of<br />culture covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">6</div>
+                    <div class="stat-desc">Media<br />categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">1</div>
+                    <div class="stat-desc">Person<br />writing all of it</div>
+                </div>
+            </div>
+
+            <div class="lower-grid">
+                <div class="panel p-sharp-bl">
+                    <p class="panel-meta">
+                        <span>&#x25A0;</span> Scoring system
+                    </p>
+                    <h2 class="panel-heading">How scores work</h2>
+                    <div class="score-criteria">
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Atmosphere</span>
+                                <span class="criteria-weight">30%</span>
+                            </div>
+                            <p class="criteria-desc">
+                                Does it feel like the future is already rotting?
+                                Tone, texture, and dread.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Worldbuilding</span>
+                                <span class="criteria-weight">25%</span>
+                            </div>
+                            <p class="criteria-desc">
+                                How fully realized is the setting? Density,
+                                internal logic, specificity.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Execution</span>
+                                <span class="criteria-weight">25%</span>
+                            </div>
+                            <p class="criteria-desc">
+                                Prose quality, direction, animation — the craft
+                                of the thing itself.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Relevance</span>
+                                <span class="criteria-weight">20%</span>
+                            </div>
+                            <p class="criteria-desc">
+                                How much did it matter? Influence, originality,
+                                staying power.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel p-sharp-br">
+                    <p class="panel-meta"><span>&#x25A0;</span> Reach out</p>
+                    <div class="contact-panel">
+                        <div class="contact-text">
+                            <h2 class="panel-heading">Contact</h2>
+                            <p>
+                                Corrections, recommendations, disagreements
+                                about whether
+                                <strong>Snow Crash counts as cyberpunk</strong>
+                                — all welcome. Response times vary. Signal
+                                quality not guaranteed.
+                            </p>
+                        </div>
+                        <div class="contact-links">
+                            <a href="#" class="contact-link">
+                                <span class="contact-link-icon">@</span>
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-val">signal ↗</span>
+                            </a>
+                            <a href="#" class="contact-link">
+                                <span class="contact-link-icon">#</span>
+                                <span class="contact-link-label">Mastodon</span>
+                                <span class="contact-link-val">@td ↗</span>
+                            </a>
+                            <a href="#" class="contact-link">
+                                <span class="contact-link-icon">/</span>
+                                <span class="contact-link-label">RSS feed</span>
+                                <span class="contact-link-val"
+                                    >subscribe ↗</span
+                                >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bar">
+                <span class="footer-copy"
+                    >terribledevice.com &mdash; cyberpunk in culture
+                    1980&ndash;1999</span
+                >
+                <span class="footer-sig">&#x25A0; signal found</span>
             </div>
         </div>
-
-        <div class="panel p-sharp-tr">
-            <p class="panel-meta"><span>&#x25A0;</span> Editorial scope</p>
-            <h2 class="panel-heading">What gets reviewed</h2>
-            <div class="scope-list">
-                <div class="scope-item">
-                    <span class="scope-bullet">&#x25A0;</span>
-                    <span class="scope-label">Novels</span>
-                    <span class="scope-note">Gibson, Sterling, Dick, Cadigan, Stephenson — the foundational texts and their satellites.</span>
-                </div>
-                <div class="scope-item">
-                    <span class="scope-bullet">&#x25A0;</span>
-                    <span class="scope-label">Film</span>
-                    <span class="scope-note">From Blade Runner to Strange Days. The theatrical and the forgotten straight-to-VHS.</span>
-                </div>
-                <div class="scope-item">
-                    <span class="scope-bullet">&#x25A0;</span>
-                    <span class="scope-label">Anime</span>
-                    <span class="scope-note">Akira, Ghost in the Shell, Bubblegum Crisis, Serial Experiments Lain, and deeper cuts.</span>
-                </div>
-                <div class="scope-item">
-                    <span class="scope-bullet">&#x25A0;</span>
-                    <span class="scope-label">TV</span>
-                    <span class="scope-note">Max Headroom, Wild Palms, the shows that tried and the ones that almost made it.</span>
-                </div>
-                <div class="scope-item">
-                    <span class="scope-bullet">&#x25A0;</span>
-                    <span class="scope-label">Other</span>
-                    <span class="scope-note">Comics, games, music — anything adjacent enough to warrant the signal.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="stats-row">
-        <div class="stat-card">
-            <div class="stat-num">80+</div>
-            <div class="stat-desc">Reviews<br>published</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num">15</div>
-            <div class="stat-desc">Years of<br>culture covered</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num">6</div>
-            <div class="stat-desc">Media<br>categories</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-num">1</div>
-            <div class="stat-desc">Person<br>writing all of it</div>
-        </div>
-    </div>
-
-    <div class="lower-grid">
-
-        <div class="panel p-sharp-bl">
-            <p class="panel-meta"><span>&#x25A0;</span> Scoring system</p>
-            <h2 class="panel-heading">How scores work</h2>
-            <div class="score-criteria">
-                <div class="criteria-item">
-                    <div class="criteria-header">
-                        <span class="criteria-name">Atmosphere</span>
-                        <span class="criteria-weight">30%</span>
-                    </div>
-                    <p class="criteria-desc">Does it feel like the future is already rotting? Tone, texture, and dread.</p>
-                    <div class="bar-track"><div class="bar-fill" style="width:30%"></div></div>
-                </div>
-                <div class="criteria-item">
-                    <div class="criteria-header">
-                        <span class="criteria-name">Worldbuilding</span>
-                        <span class="criteria-weight">25%</span>
-                    </div>
-                    <p class="criteria-desc">How fully realized is the setting? Density, internal logic, specificity.</p>
-                    <div class="bar-track"><div class="bar-fill" style="width:25%"></div></div>
-                </div>
-                <div class="criteria-item">
-                    <div class="criteria-header">
-                        <span class="criteria-name">Execution</span>
-                        <span class="criteria-weight">25%</span>
-                    </div>
-                    <p class="criteria-desc">Prose quality, direction, animation — the craft of the thing itself.</p>
-                    <div class="bar-track"><div class="bar-fill" style="width:25%"></div></div>
-                </div>
-                <div class="criteria-item">
-                    <div class="criteria-header">
-                        <span class="criteria-name">Relevance</span>
-                        <span class="criteria-weight">20%</span>
-                    </div>
-                    <p class="criteria-desc">How much did it matter? Influence, originality, staying power.</p>
-                    <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel p-sharp-br">
-            <p class="panel-meta"><span>&#x25A0;</span> Reach out</p>
-            <div class="contact-panel">
-                <div class="contact-text">
-                    <h2 class="panel-heading">Contact</h2>
-                    <p>Corrections, recommendations, disagreements about whether <strong>Snow Crash counts as cyberpunk</strong> — all welcome. Response times vary. Signal quality not guaranteed.</p>
-                </div>
-                <div class="contact-links">
-                    <a href="#" class="contact-link">
-                        <span class="contact-link-icon">@</span>
-                        <span class="contact-link-label">Email</span>
-                        <span class="contact-link-val">signal ↗</span>
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span class="contact-link-icon">#</span>
-                        <span class="contact-link-label">Mastodon</span>
-                        <span class="contact-link-val">@td ↗</span>
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span class="contact-link-icon">/</span>
-                        <span class="contact-link-label">RSS feed</span>
-                        <span class="contact-link-val">subscribe ↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer-bar">
-        <span class="footer-copy">terribledevice.com &mdash; cyberpunk in culture 1980&ndash;1999</span>
-        <span class="footer-sig">&#x25A0; signal found</span>
-    </div>
-
-</div>
-</body>
+    </body>
 </html>
