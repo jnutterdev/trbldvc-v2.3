@@ -34,10 +34,35 @@
     body {
         background-color: var(--black);
         background-image:
-            radial-gradient(ellipse 80% 50% at 15% 10%, rgba(115, 37, 83, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 92, 141, 0.08) 0%, transparent 55%),
-            radial-gradient(ellipse 50% 60% at 50% 100%, rgba(30, 52, 66, 0.6) 0%, transparent 70%);
+            radial-gradient(
+                ellipse 80% 50% at 15% 10%,
+                rgba(115, 37, 83, 0.18) 0%,
+                transparent 60%
+            ),
+            radial-gradient(
+                ellipse 60% 40% at 90% 60%,
+                rgba(255, 92, 141, 0.08) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                ellipse 50% 60% at 50% 100%,
+                rgba(30, 52, 66, 0.6) 0%,
+                transparent 70%
+            );
         overflow-x: hidden;
+    }
+
+    body::before {
+        background-image: url("tech-swirl.png");
+        background-size: cover;
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        content: "";
     }
 
     .td-page {
@@ -664,181 +689,187 @@
     }
 </style>
 
-<div class="td-page">
-    <nav class="td-nav">
-        <div class="td-logo">
-            <a href="terribledevice_index.html">Terrible<span>Device</span></a>
-        </div>
-        <div class="td-nav-links">
-            <a href="terribledevice_archive.html">Archive</a>
-            <a href="terribledevice_about.html">About</a>
-        </div>
-    </nav>
+<body>
+    <div class="td-page">
+        <nav class="td-nav">
+            <div class="td-logo">
+                <a href="terribledevice_index.html"
+                    >Terrible<span>Device</span></a
+                >
+            </div>
+            <div class="td-nav-links">
+                <a href="terribledevice_archive.html">Archive</a>
+                <a href="terribledevice_about.html">About</a>
+            </div>
+        </nav>
 
-    <div class="td-grid">
-        <div
-            class="panel hero-panel p-sharp-bl"
-            style="display: flex; flex-direction: column"
-        >
-            <p class="panel-meta">
-                <span>&#x25A0;</span> featured review — 04/2026
-            </p>
-            <h1 class="hero-title">Neuromancer<em>Gibson</em></h1>
-            <p class="hero-sub">
-                The novel that named cyberspace. Case is a burned-out console
-                cowboy hired for one last run through the matrix — a job that
-                rewires everything.
-            </p>
-            <div class="hero-tags">
-                <span class="tag active">novel</span>
-                <span class="tag active">1984</span>
-                <span class="tag">cyberpunk</span>
-                <span class="tag">AI</span>
-                <span class="tag">hacking</span>
-            </div>
-            <div class="hero-score-row">
-                <div class="score-num">9.4</div>
-                <div class="score-label">essential<br />reading</div>
-            </div>
-        </div>
-
-        <div class="panel stat-panel p-sharp-tr">
-            <p class="panel-meta"><span>&#x25A0;</span> details</p>
-            <div class="stat-row">
-                <span class="stat-key">Author</span
-                ><span class="stat-val">William Gibson</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-row">
-                <span class="stat-key">Year</span
-                ><span class="stat-val">1984</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-row">
-                <span class="stat-key">Medium</span
-                ><span class="stat-val">Novel</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-row">
-                <span class="stat-key">Score</span
-                ><span class="stat-val accent">9.4 / 10</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="rating-bar-wrap">
-                <div class="stat-row">
-                    <span class="stat-key">Atmosphere</span
-                    ><span class="stat-key">96%</span>
-                </div>
-                <div class="rating-bar-track">
-                    <div class="rating-bar-fill" style="width: 96%"></div>
-                </div>
-            </div>
-            <div class="rating-bar-wrap">
-                <div class="stat-row">
-                    <span class="stat-key">Worldbuilding</span
-                    ><span class="stat-key">91%</span>
-                </div>
-                <div class="rating-bar-track">
-                    <div class="rating-bar-fill" style="width: 91%"></div>
-                </div>
-            </div>
-            <div class="rating-bar-wrap">
-                <div class="stat-row">
-                    <span class="stat-key">Prose</span
-                    ><span class="stat-key">88%</span>
-                </div>
-                <div class="rating-bar-track">
-                    <div class="rating-bar-fill" style="width: 88%"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel excerpt-panel p-sharp-br">
-            <p class="panel-meta"><span>&#x25A0;</span> excerpt</p>
-            <p class="excerpt-text">
-                Gibson's prose hits like
-                <strong>neon through rain-slicked streets</strong> — dense,
-                hallucinatory, and absolutely intentional. The Sprawl is less a
-                setting than a nervous system you get jacked into. Every
-                sentence is earning its place.
-            </p>
-        </div>
-
-        <div class="hero-image-panel p-sharp-tl">
-            <div class="hero-image-placeholder"></div>
-            <span class="hero-image-label">&#x25A0; hero image — 220px</span>
-        </div>
-
-        <div class="reviews-row">
-            <div class="review-card p-sharp-tl">
-                <p class="panel-meta"><span>&#x25A0;</span> anime — 1988</p>
-                <h3 class="review-title">Akira</h3>
-                <p class="review-year">Katsuhiro Otomo</p>
-                <p class="review-blurb">
-                    Neo-Tokyo tears itself apart in a ballet of telekinetic
-                    fury. Still the benchmark for animated urban collapse.
+        <div class="td-grid">
+            <div
+                class="panel hero-panel p-sharp-bl"
+                style="display: flex; flex-direction: column"
+            >
+                <p class="panel-meta">
+                    <span>&#x25A0;</span> featured review — 04/2026
                 </p>
-                <div class="review-footer">
-                    <span class="review-score">9.1</span>
-                    <span class="review-type">anime</span>
+                <h1 class="hero-title">Neuromancer<em>Gibson</em></h1>
+                <p class="hero-sub">
+                    The novel that named cyberspace. Case is a burned-out
+                    console cowboy hired for one last run through the matrix — a
+                    job that rewires everything.
+                </p>
+                <div class="hero-tags">
+                    <span class="tag active">novel</span>
+                    <span class="tag active">1984</span>
+                    <span class="tag">cyberpunk</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">hacking</span>
+                </div>
+                <div class="hero-score-row">
+                    <div class="score-num">9.4</div>
+                    <div class="score-label">essential<br />reading</div>
                 </div>
             </div>
 
-            <div class="review-card p-all">
-                <p class="panel-meta"><span>&#x25A0;</span> film — 1982</p>
-                <h3 class="review-title">Blade Runner</h3>
-                <p class="review-year">Ridley Scott</p>
-                <p class="review-blurb">
-                    Replicants and rain. Scott's Los Angeles 2019 is the visual
-                    language every cyberpunk work since borrows from.
-                </p>
-                <div class="review-footer">
-                    <span class="review-score">9.6</span>
-                    <span class="review-type">film</span>
+            <div class="panel stat-panel p-sharp-tr">
+                <p class="panel-meta"><span>&#x25A0;</span> details</p>
+                <div class="stat-row">
+                    <span class="stat-key">Author</span
+                    ><span class="stat-val">William Gibson</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-row">
+                    <span class="stat-key">Year</span
+                    ><span class="stat-val">1984</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-row">
+                    <span class="stat-key">Medium</span
+                    ><span class="stat-val">Novel</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-row">
+                    <span class="stat-key">Score</span
+                    ><span class="stat-val accent">9.4 / 10</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="rating-bar-wrap">
+                    <div class="stat-row">
+                        <span class="stat-key">Atmosphere</span
+                        ><span class="stat-key">96%</span>
+                    </div>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 96%"></div>
+                    </div>
+                </div>
+                <div class="rating-bar-wrap">
+                    <div class="stat-row">
+                        <span class="stat-key">Worldbuilding</span
+                        ><span class="stat-key">91%</span>
+                    </div>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 91%"></div>
+                    </div>
+                </div>
+                <div class="rating-bar-wrap">
+                    <div class="stat-row">
+                        <span class="stat-key">Prose</span
+                        ><span class="stat-key">88%</span>
+                    </div>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 88%"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="review-card p-sharp-br">
-                <p class="panel-meta"><span>&#x25A0;</span> tv — 1995</p>
-                <h3 class="review-title">Ghost in the Shell</h3>
-                <p class="review-year">Mamoru Oshii</p>
-                <p class="review-blurb">
-                    The Major questions her own humanity across a Tokyo that
-                    feels borrowed from a decade that hasn't happened yet.
+            <div class="panel excerpt-panel p-sharp-br">
+                <p class="panel-meta"><span>&#x25A0;</span> excerpt</p>
+                <p class="excerpt-text">
+                    Gibson's prose hits like
+                    <strong>neon through rain-slicked streets</strong> — dense,
+                    hallucinatory, and absolutely intentional. The Sprawl is
+                    less a setting than a nervous system you get jacked into.
+                    Every sentence is earning its place.
                 </p>
-                <div class="review-footer">
-                    <span class="review-score">9.3</span>
-                    <span class="review-type">film</span>
+            </div>
+
+            <div class="hero-image-panel p-sharp-tl">
+                <div class="hero-image-placeholder"></div>
+                <span class="hero-image-label"
+                    >&#x25A0; hero image — 220px</span
+                >
+            </div>
+
+            <div class="reviews-row">
+                <div class="review-card p-sharp-tl">
+                    <p class="panel-meta"><span>&#x25A0;</span> anime — 1988</p>
+                    <h3 class="review-title">Akira</h3>
+                    <p class="review-year">Katsuhiro Otomo</p>
+                    <p class="review-blurb">
+                        Neo-Tokyo tears itself apart in a ballet of telekinetic
+                        fury. Still the benchmark for animated urban collapse.
+                    </p>
+                    <div class="review-footer">
+                        <span class="review-score">9.1</span>
+                        <span class="review-type">anime</span>
+                    </div>
+                </div>
+
+                <div class="review-card p-all">
+                    <p class="panel-meta"><span>&#x25A0;</span> film — 1982</p>
+                    <h3 class="review-title">Blade Runner</h3>
+                    <p class="review-year">Ridley Scott</p>
+                    <p class="review-blurb">
+                        Replicants and rain. Scott's Los Angeles 2019 is the
+                        visual language every cyberpunk work since borrows from.
+                    </p>
+                    <div class="review-footer">
+                        <span class="review-score">9.6</span>
+                        <span class="review-type">film</span>
+                    </div>
+                </div>
+
+                <div class="review-card p-sharp-br">
+                    <p class="panel-meta"><span>&#x25A0;</span> tv — 1995</p>
+                    <h3 class="review-title">Ghost in the Shell</h3>
+                    <p class="review-year">Mamoru Oshii</p>
+                    <p class="review-blurb">
+                        The Major questions her own humanity across a Tokyo that
+                        feels borrowed from a decade that hasn't happened yet.
+                    </p>
+                    <div class="review-footer">
+                        <span class="review-score">9.3</span>
+                        <span class="review-type">film</span>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="footer-copy"
+                >&copy; 2014-2026 terribledevice.com &mdash; cyberpunk in
+                culture 1980&ndash;1999</span
+            >
+            <div class="footer-social">
+                <a
+                    href="https://www.instagram.com/terribledevice_/"
+                    class="social-link"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Instagram"
+                >
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a
+                    href="https://bsky.app/profile/terribledevice.com"
+                    class="social-link"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Bluesky"
+                >
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+            </div>
+            <span class="footer-sig">&#x25A0; signal found</span>
         </div>
     </div>
-
-    <div class="footer-bar">
-        <span class="footer-copy"
-            >&copy; 2014-2026 terribledevice.com &mdash; cyberpunk in culture
-            1980&ndash;1999</span
-        >
-        <div class="footer-social">
-            <a
-                href="https://www.instagram.com/terribledevice_/"
-                class="social-link"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-            >
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a
-                href="https://bsky.app/profile/terribledevice.com"
-                class="social-link"
-                target="_blank"
-                rel="noopener"
-                aria-label="Bluesky"
-            >
-                <i class="fa-brands fa-bluesky"></i>
-            </a>
-        </div>
-        <span class="footer-sig">&#x25A0; signal found</span>
-    </div>
-</div>
+</body>
