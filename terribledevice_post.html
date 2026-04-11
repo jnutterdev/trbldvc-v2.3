@@ -1,679 +1,871 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terribledevice — Neuromancer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --black:    #0d0c0f;
-        --surface:  #161418;
-        --surface2: #1e1b22;
-        --border:   #2a2630;
-        --tan:      #c8bfa8;
-        --tan-dim:  #7a7268;
-        --pink:     #ff5c8d;
-        --pink-dim: #73254e;
-        --steel:    #3a5a6e;
-        --steel-lt: #6a9ab0;
-        --head: 'Barlow Condensed', sans-serif;
-        --body: 'Barlow', sans-serif;
-        --mono: 'Share Tech Mono', monospace;
-        --r: 28px;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html { font-size: 18px; }
-
-    body {
-        background-color: var(--black);
-        background-image:
-            radial-gradient(ellipse 80% 50% at 15% 10%, rgba(115, 37, 83, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 92, 141, 0.08) 0%, transparent 55%),
-            radial-gradient(ellipse 50% 60% at 50% 100%, rgba(30, 52, 66, 0.6) 0%, transparent 70%);
-        color: var(--tan);
-        font-family: var(--body);
-        min-height: 100vh;
-        overflow-x: hidden;
-    }
-
-    .td-page {
-        padding: 20px;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    /* ── Nav ── */
-    .td-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 4px 18px;
-    }
-
-    .td-logo {
-        font-family: var(--head);
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: #fff;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-
-    .td-logo span { color: var(--pink); }
-
-    .td-nav-links { display: flex; gap: 24px; }
-
-    .td-nav-links a {
-        font-family: var(--mono);
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    .td-nav-links a.active { color: var(--pink); }
-
-    /* ── Breadcrumb ── */
-    .breadcrumb {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-bottom: 32px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .breadcrumb a {
-        color: var(--tan-dim);
-        text-decoration: none;
-    }
-
-    .breadcrumb a:hover { color: var(--pink); }
-    .breadcrumb span { color: var(--pink-dim); }
-
-    /* ── Post layout ── */
-    .post-wrap {
-        max-width: 680px;
-        margin: 0 auto;
-    }
-
-    /* ── Post header ── */
-    .post-header {
-        margin-bottom: 40px;
-    }
-
-    .post-eyebrow {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.2em;
-        color: var(--pink);
-        text-transform: uppercase;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .post-eyebrow::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: var(--pink-dim);
-        opacity: 0.4;
-    }
-
-    .post-title {
-        font-family: var(--head);
-        font-size: 80px;
-        font-weight: 700;
-        line-height: 0.88;
-        letter-spacing: -0.01em;
-        color: #fff;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-    }
-
-    .post-title em {
-        color: var(--pink);
-        font-style: normal;
-        display: block;
-    }
-
-    .post-byline {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-top: 16px;
-        display: flex;
-        gap: 20px;
-    }
-
-    /* ── Score block ── */
-    .score-block {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 0 var(--r) var(--r) var(--r);
-        padding: 1.4rem;
-        margin-bottom: 40px;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .score-block:hover {
-        border-color: var(--pink-dim);
-        transform: scale(1.01);
-    }
-
-    .score-block::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 92, 141, 0.03) 2px,
-            rgba(255, 92, 141, 0.03) 4px
-        );
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .score-block:hover::after {
-        opacity: 1;
-        animation: scanline-flicker 0.4s steps(1) forwards;
-    }
-
-    .score-big {
-        font-family: var(--head);
-        font-size: 96px;
-        font-weight: 700;
-        color: var(--pink);
-        line-height: 1;
-        flex-shrink: 0;
-    }
-
-    .score-meta {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .score-verdict {
-        font-family: var(--head);
-        font-size: 22px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        color: #fff;
-        text-transform: uppercase;
-    }
-
-    .score-summary {
-        font-size: 13px;
-        color: var(--tan-dim);
-        line-height: 1.6;
-    }
-
-    .score-bars {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        min-width: 180px;
-    }
-
-    .bar-row {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .bar-label-row {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .bar-key {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-    }
-
-    .bar-track {
-        height: 3px;
-        background: var(--border);
-        border-radius: 2px;
-    }
-
-    .bar-fill {
-        height: 3px;
-        background: var(--pink);
-        border-radius: 2px;
-    }
-
-    /* ── Review body ── */
-    .post-body {
-        margin-bottom: 40px;
-    }
-
-    .post-body p {
-        font-size: 15px;
-        line-height: 1.8;
-        color: var(--tan-dim);
-        margin-bottom: 1.2em;
-    }
-
-    .post-body p:first-child::first-letter {
-        font-family: var(--head);
-        font-size: 64px;
-        font-weight: 700;
-        color: var(--pink);
-        float: left;
-        line-height: 0.75;
-        margin-right: 8px;
-        margin-top: 8px;
-    }
-
-    .post-body p strong {
-        color: var(--tan);
-        font-weight: 500;
-    }
-
-    .post-body .pull-quote {
-        border-left: 2px solid var(--pink-dim);
-        padding: 4px 0 4px 20px;
-        margin: 1.6em 0;
-    }
-
-    .post-body .pull-quote p {
-        font-family: var(--head);
-        font-size: 22px;
-        font-weight: 600;
-        color: var(--tan);
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-        margin: 0;
-    }
-
-    .post-body .pull-quote p::first-letter { all: unset; }
-
-    /* ── Tags ── */
-    .tags-section {
-        padding-top: 24px;
-        border-top: 1px solid var(--border);
-        margin-bottom: 64px;
-    }
-
-    .tags-label {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-bottom: 12px;
-    }
-
-    .tags-label span { color: var(--pink); margin-right: 6px; }
-
-    .tags-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .tag {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.12em;
-        padding: 5px 14px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: border-color 0.2s, color 0.2s;
-    }
-
-    .tag:hover,
-    .tag.active {
-        border-color: var(--pink-dim);
-        color: var(--pink);
-    }
-
-    /* ── Related reviews ── */
-    .related-section {
-        max-width: 1060px;
-        margin: 0 auto;
-    }
-
-    .section-header {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.2em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .section-header span { color: var(--pink); }
-
-    .section-header::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-    }
-
-    .related-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .review-card {
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        padding: 1.2rem;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, border-color 0.3s ease;
-        text-decoration: none;
-        display: block;
-    }
-
-    .review-card:hover {
-        border-color: var(--pink-dim);
-        transform: scale(1.02);
-    }
-
-    .review-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 92, 141, 0.03) 2px,
-            rgba(255, 92, 141, 0.03) 4px
-        );
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-    }
-
-    .review-card:hover::after {
-        opacity: 1;
-        animation: scanline-flicker 0.4s steps(1) forwards;
-    }
-
-    .rc-tl { border-radius: 0 var(--r) var(--r) var(--r); }
-    .rc-all { border-radius: var(--r); }
-    .rc-br  { border-radius: var(--r) var(--r) 0 var(--r); }
-
-    .panel-meta {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        color: var(--tan-dim);
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
-
-    .panel-meta span { color: var(--pink); margin-right: 6px; }
-
-    .review-title {
-        font-family: var(--head);
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: #fff;
-        text-transform: uppercase;
-        margin-bottom: 2px;
-        line-height: 1.1;
-    }
-
-    .review-author {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--tan-dim);
-        letter-spacing: 0.14em;
-        margin-bottom: 10px;
-    }
-
-    .review-blurb {
-        font-size: 12px;
-        line-height: 1.6;
-        color: var(--tan-dim);
-        margin-bottom: 14px;
-    }
-
-    .review-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .review-score {
-        font-family: var(--head);
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--pink);
-    }
-
-    .review-type {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        padding: 3px 10px;
-        border: 1px solid var(--steel);
-        border-radius: 999px;
-        color: var(--steel-lt);
-        text-transform: uppercase;
-    }
-
-    /* ── Footer ── */
-    .footer-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 32px 4px 0;
-        margin-top: 48px;
-        border-top: 1px solid var(--border);
-    }
-
-    .footer-copy {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--tan-dim);
-    }
-
-    .footer-sig {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--pink-dim);
-    }
-
-    /* ── Scanline animation ── */
-    @keyframes scanline-flicker {
-        0%   { opacity: 0;   transform: translateY(0); }
-        10%  { opacity: 1;   transform: translateY(-2px); }
-        20%  { opacity: 0.4; transform: translateY(1px); }
-        30%  { opacity: 1;   transform: translateY(-1px); }
-        45%  { opacity: 0.6; transform: translateY(2px); }
-        60%  { opacity: 1;   transform: translateY(0); }
-        75%  { opacity: 0.8; transform: translateY(-1px); }
-        90%  { opacity: 1;   transform: translateY(0); }
-        100% { opacity: 1;   transform: translateY(0); }
-    }
-</style>
-</head>
-<body>
-<div class="td-page">
-
-    <nav class="td-nav">
-        <a href="#" class="td-logo">Terrible<span>Device</span></a>
-        <div class="td-nav-links">
-            <a href="#" class="active">Reviews</a>
-            <a href="#">Archive</a>
-            <a href="#">About</a>
-        </div>
-    </nav>
-
-    <div class="breadcrumb">
-        <a href="#">Reviews</a>
-        <span>/</span>
-        <a href="#">Novel</a>
-        <span>/</span>
-        Neuromancer
-    </div>
-
-    <div class="post-wrap">
-
-        <header class="post-header">
-            <div class="post-eyebrow">&#x25A0;&nbsp; Novel &mdash; 1984</div>
-            <h1 class="post-title">Neuromancer<em>Gibson</em></h1>
-            <div class="post-byline">
-                <span>By William Gibson</span>
-                <span>Published 04 / 2026</span>
-                <span>2,100 words</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Terribledevice — Neuromancer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --black: #0d0c0f;
+                --surface: #161418;
+                --surface2: #1e1b22;
+                --border: #2a2630;
+                --tan: #c8bfa8;
+                --tan-dim: #7a7268;
+                --pink: #ff5c8d;
+                --pink-dim: #73254e;
+                --steel: #3a5a6e;
+                --steel-lt: #6a9ab0;
+                --head: "Barlow Condensed", sans-serif;
+                --body: "Barlow", sans-serif;
+                --mono: "Share Tech Mono", monospace;
+                --r: 28px;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                font-size: 18px;
+            }
+
+            body {
+                background-color: var(--black);
+                background-image:
+                    radial-gradient(
+                        ellipse 80% 50% at 15% 10%,
+                        rgba(115, 37, 83, 0.18) 0%,
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        ellipse 60% 40% at 90% 60%,
+                        rgba(255, 92, 141, 0.08) 0%,
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        ellipse 50% 60% at 50% 100%,
+                        rgba(30, 52, 66, 0.6) 0%,
+                        transparent 70%
+                    );
+                color: var(--tan);
+                font-family: var(--body);
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+
+            .td-page {
+                padding: 20px;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            /* ── Nav ── */
+            .td-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 4px 18px;
+            }
+
+            .td-logo {
+                font-family: var(--head);
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                color: #fff;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+
+            .td-logo a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .td-logo span {
+                color: var(--pink);
+            }
+
+            .td-nav-links {
+                display: flex;
+                gap: 24px;
+            }
+
+            .td-nav-links a {
+                font-family: var(--mono);
+                font-size: 11px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .td-nav-links a.active {
+                color: var(--pink);
+            }
+
+            /* ── Breadcrumb ── */
+            .breadcrumb {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-bottom: 32px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .breadcrumb a {
+                color: var(--tan-dim);
+                text-decoration: none;
+            }
+
+            .breadcrumb a:hover {
+                color: var(--pink);
+            }
+            .breadcrumb span {
+                color: var(--pink-dim);
+            }
+
+            /* ── Post layout ── */
+            .post-wrap {
+                max-width: 680px;
+                margin: 0 auto;
+            }
+
+            /* ── Post header ── */
+            .post-header {
+                margin-bottom: 40px;
+            }
+
+            .post-eyebrow {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                color: var(--pink);
+                text-transform: uppercase;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .post-eyebrow::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--pink-dim);
+                opacity: 0.4;
+            }
+
+            .post-title {
+                font-family: var(--head);
+                font-size: 80px;
+                font-weight: 700;
+                line-height: 0.88;
+                letter-spacing: -0.01em;
+                color: #fff;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+            }
+
+            .post-title em {
+                color: var(--pink);
+                font-style: normal;
+                display: block;
+            }
+
+            .post-byline {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-top: 16px;
+                display: flex;
+                gap: 20px;
+            }
+
+            /* ── Score block ── */
+            .score-block {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 0 var(--r) var(--r) var(--r);
+                padding: 1.4rem;
+                margin-bottom: 40px;
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.3s ease,
+                    border-color 0.3s ease;
+            }
+
+            .score-block:hover {
+                border-color: var(--pink-dim);
+                transform: scale(1.01);
+            }
+
+            .score-block::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 92, 141, 0.03) 2px,
+                    rgba(255, 92, 141, 0.03) 4px
+                );
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+
+            .score-block:hover::after {
+                opacity: 1;
+                animation: scanline-flicker 0.4s steps(1) forwards;
+            }
+
+            .score-big {
+                font-family: var(--head);
+                font-size: 96px;
+                font-weight: 700;
+                color: var(--pink);
+                line-height: 1;
+                flex-shrink: 0;
+            }
+
+            .score-meta {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .score-verdict {
+                font-family: var(--head);
+                font-size: 22px;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                color: #fff;
+                text-transform: uppercase;
+            }
+
+            .score-summary {
+                font-size: 13px;
+                color: var(--tan-dim);
+                line-height: 1.6;
+            }
+
+            .score-bars {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                min-width: 180px;
+            }
+
+            .bar-row {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .bar-label-row {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .bar-key {
+                font-family: var(--mono);
+                font-size: 9px;
+                letter-spacing: 0.14em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+            }
+
+            .bar-track {
+                height: 3px;
+                background: var(--border);
+                border-radius: 2px;
+            }
+
+            .bar-fill {
+                height: 3px;
+                background: var(--pink);
+                border-radius: 2px;
+            }
+
+            /* ── Review body ── */
+            .post-body {
+                margin-bottom: 40px;
+            }
+
+            .post-body p {
+                font-size: 15px;
+                line-height: 1.8;
+                color: var(--tan-dim);
+                margin-bottom: 1.2em;
+            }
+
+            .post-body p:first-child::first-letter {
+                font-family: var(--head);
+                font-size: 64px;
+                font-weight: 700;
+                color: var(--pink);
+                float: left;
+                line-height: 0.75;
+                margin-right: 8px;
+                margin-top: 8px;
+            }
+
+            .post-body p strong {
+                color: var(--tan);
+                font-weight: 500;
+            }
+
+            .post-body .pull-quote {
+                border-left: 2px solid var(--pink-dim);
+                padding: 4px 0 4px 20px;
+                margin: 1.6em 0;
+            }
+
+            .post-body .pull-quote p {
+                font-family: var(--head);
+                font-size: 22px;
+                font-weight: 600;
+                color: var(--tan);
+                line-height: 1.3;
+                letter-spacing: 0.02em;
+                margin: 0;
+            }
+
+            .post-body .pull-quote p::first-letter {
+                all: unset;
+            }
+
+            /* ── Tags ── */
+            .tags-section {
+                padding-top: 24px;
+                border-top: 1px solid var(--border);
+                margin-bottom: 64px;
+            }
+
+            .tags-label {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-bottom: 12px;
+            }
+
+            .tags-label span {
+                color: var(--pink);
+                margin-right: 6px;
+            }
+
+            .tags-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tag {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                padding: 5px 14px;
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                text-decoration: none;
+                transition:
+                    border-color 0.2s,
+                    color 0.2s;
+            }
+
+            .tag:hover,
+            .tag.active {
+                border-color: var(--pink-dim);
+                color: var(--pink);
+            }
+
+            /* ── Related reviews ── */
+            .related-section {
+                max-width: 1060px;
+                margin: 0 auto;
+            }
+
+            .section-header {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .section-header span {
+                color: var(--pink);
+            }
+
+            .section-header::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+
+            .related-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .review-card {
+                background: var(--surface2);
+                border: 1px solid var(--border);
+                padding: 1.2rem;
+                position: relative;
+                overflow: hidden;
+                transition:
+                    transform 0.3s ease,
+                    border-color 0.3s ease;
+                text-decoration: none;
+                display: block;
+            }
+
+            .review-card:hover {
+                border-color: var(--pink-dim);
+                transform: scale(1.02);
+            }
+
+            .review-card::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 92, 141, 0.03) 2px,
+                    rgba(255, 92, 141, 0.03) 4px
+                );
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+
+            .review-card:hover::after {
+                opacity: 1;
+                animation: scanline-flicker 0.4s steps(1) forwards;
+            }
+
+            .rc-tl {
+                border-radius: 0 var(--r) var(--r) var(--r);
+            }
+            .rc-all {
+                border-radius: var(--r);
+            }
+            .rc-br {
+                border-radius: var(--r) var(--r) 0 var(--r);
+            }
+
+            .panel-meta {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                color: var(--tan-dim);
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            .panel-meta span {
+                color: var(--pink);
+                margin-right: 6px;
+            }
+
+            .review-title {
+                font-family: var(--head);
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                color: #fff;
+                text-transform: uppercase;
+                margin-bottom: 2px;
+                line-height: 1.1;
+            }
+
+            .review-author {
+                font-family: var(--mono);
+                font-size: 10px;
+                color: var(--tan-dim);
+                letter-spacing: 0.14em;
+                margin-bottom: 10px;
+            }
+
+            .review-blurb {
+                font-size: 12px;
+                line-height: 1.6;
+                color: var(--tan-dim);
+                margin-bottom: 14px;
+            }
+
+            .review-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .review-score {
+                font-family: var(--head);
+                font-size: 24px;
+                font-weight: 700;
+                color: var(--pink);
+            }
+
+            .review-type {
+                font-family: var(--mono);
+                font-size: 9px;
+                letter-spacing: 0.14em;
+                padding: 3px 10px;
+                border: 1px solid var(--steel);
+                border-radius: 999px;
+                color: var(--steel-lt);
+                text-transform: uppercase;
+            }
+
+            /* ── Footer ── */
+            .footer-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 32px 4px 0;
+                margin-top: 48px;
+                border-top: 1px solid var(--border);
+            }
+
+            .footer-copy {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                color: var(--tan-dim);
+            }
+
+            .footer-sig {
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                color: var(--pink-dim);
+            }
+
+            /* ── Scanline animation ── */
+            @keyframes scanline-flicker {
+                0% {
+                    opacity: 0;
+                    transform: translateY(0);
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateY(-2px);
+                }
+                20% {
+                    opacity: 0.4;
+                    transform: translateY(1px);
+                }
+                30% {
+                    opacity: 1;
+                    transform: translateY(-1px);
+                }
+                45% {
+                    opacity: 0.6;
+                    transform: translateY(2px);
+                }
+                60% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                75% {
+                    opacity: 0.8;
+                    transform: translateY(-1px);
+                }
+                90% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="td-page">
+            <nav class="td-nav">
+                <div class="td-logo">
+                    <a href="terribledevice_index.html"
+                        >Terrible<span>Device</span></a
+                    >
+                </div>
+                <div class="td-nav-links">
+                    <a href="terribledevice_archive.html" class="active"
+                        >Archive</a
+                    >
+                    <a href="terribledevice_about.html">About</a>
+                </div>
+            </nav>
+
+            <div class="breadcrumb">
+                <a href="#">Reviews</a>
+                <span>/</span>
+                <a href="#">Novel</a>
+                <span>/</span>
+                Neuromancer
             </div>
-        </header>
 
-        <div class="score-block">
-            <div class="score-big">9.4</div>
-            <div class="score-meta">
-                <div class="score-verdict">Essential Reading</div>
-                <p class="score-summary">The novel that coined cyberspace and defined an entire genre. Required reading for anyone serious about cyberpunk.</p>
+            <div class="post-wrap">
+                <header class="post-header">
+                    <div class="post-eyebrow">
+                        &#x25A0;&nbsp; Novel &mdash; 1984
+                    </div>
+                    <h1 class="post-title">Neuromancer<em>Gibson</em></h1>
+                    <div class="post-byline">
+                        <span>By William Gibson</span>
+                        <span>Published 04 / 2026</span>
+                        <span>2,100 words</span>
+                    </div>
+                </header>
+
+                <div class="score-block">
+                    <div class="score-big">9.4</div>
+                    <div class="score-meta">
+                        <div class="score-verdict">Essential Reading</div>
+                        <p class="score-summary">
+                            The novel that coined cyberspace and defined an
+                            entire genre. Required reading for anyone serious
+                            about cyberpunk.
+                        </p>
+                    </div>
+                    <div class="score-bars">
+                        <div class="bar-row">
+                            <div class="bar-label-row">
+                                <span class="bar-key">Atmosphere</span
+                                ><span class="bar-key">96%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label-row">
+                                <span class="bar-key">Worldbuilding</span
+                                ><span class="bar-key">91%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 91%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label-row">
+                                <span class="bar-key">Prose</span
+                                ><span class="bar-key">88%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label-row">
+                                <span class="bar-key">Pacing</span
+                                ><span class="bar-key">82%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-body">
+                    <p>
+                        Gibson's debut novel arrived in 1984 like a signal from
+                        a frequency nobody had tuned to yet.
+                        <strong>Case is a burned-out data thief</strong> — a
+                        console cowboy barred from the matrix after his nervous
+                        system was deliberately damaged by a former employer. He
+                        exists in the Sprawl, a vast urban agglomeration running
+                        from Boston to Atlanta, waiting to die in the slow way
+                        that people like him die.
+                    </p>
+
+                    <p>
+                        Then a mysterious employer offers him a deal: a new run
+                        through cyberspace, his nervous system restored, in
+                        exchange for completing one last job. The target is an
+                        artificial intelligence called Wintermute, locked behind
+                        corporate ice in the orbital station of Freeside. What
+                        follows is a genre-defining heist narrative that somehow
+                        manages to be about
+                        <strong
+                            >identity, memory, and the nature of
+                            consciousness</strong
+                        >
+                        while also being genuinely propulsive.
+                    </p>
+
+                    <div class="pull-quote">
+                        <p>
+                            The sky above the port was the color of television,
+                            tuned to a dead channel.
+                        </p>
+                    </div>
+
+                    <p>
+                        That opening line is perhaps the most quoted in science
+                        fiction for good reason — it does everything at once. It
+                        establishes tone, setting, technology saturation, and a
+                        particular kind of urban alienation in eleven words.
+                        Gibson writes the entire novel at that compression
+                        ratio.
+                        <strong>Every sentence is load-bearing.</strong> The
+                        prose demands active reading; you are not carried
+                        through the Sprawl so much as jacked into it.
+                    </p>
+
+                    <p>
+                        The Sprawl itself is the great achievement here. Gibson
+                        doesn't explain his world, he assumes it. Brand names,
+                        slang, and cultural detritus accumulate into a texture
+                        so specific it feels documented rather than invented.
+                        The matrix — cyberspace — is rendered as pure geometry
+                        and light, a consensual hallucination that millions of
+                        operators navigate daily. The gap between that
+                        abstraction and the meat of the body left behind in a
+                        cheap hotel room is where the novel lives.
+                    </p>
+
+                    <p>
+                        If Neuromancer has a weakness it's in its characters.
+                        Case and Molly are compelling archetypes but remain
+                        somewhat opaque — their interiority is deliberately
+                        rationed. This is arguably intentional; in Gibson's
+                        world, interiority is a liability. You survive by
+                        staying on the surface, staying fast. But readers
+                        expecting warmth will find the novel cold in ways that
+                        feel less like style and more like absence.
+                    </p>
+
+                    <p>
+                        None of that diminishes what it built. The vocabulary,
+                        the aesthetics, the anxieties —
+                        <strong
+                            >almost every significant cyberpunk work since
+                            borrows from this book</strong
+                        >, often without knowing it. To read Neuromancer in 2026
+                        is to read the source code.
+                    </p>
+                </div>
+
+                <div class="tags-section">
+                    <p class="tags-label"><span>&#x25A0;</span> tagged</p>
+                    <div class="tags-list">
+                        <a href="#" class="tag active">novel</a>
+                        <a href="#" class="tag active">1984</a>
+                        <a href="#" class="tag">cyberpunk</a>
+                        <a href="#" class="tag">AI</a>
+                        <a href="#" class="tag">hacking</a>
+                        <a href="#" class="tag">matrix</a>
+                        <a href="#" class="tag">sprawl</a>
+                        <a href="#" class="tag">william gibson</a>
+                        <a href="#" class="tag">essential</a>
+                    </div>
+                </div>
             </div>
-            <div class="score-bars">
-                <div class="bar-row">
-                    <div class="bar-label-row"><span class="bar-key">Atmosphere</span><span class="bar-key">96%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:96%"></div></div>
+
+            <div class="related-section">
+                <div class="section-header">
+                    <span>&#x25A0;</span> Related reviews
                 </div>
-                <div class="bar-row">
-                    <div class="bar-label-row"><span class="bar-key">Worldbuilding</span><span class="bar-key">91%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:91%"></div></div>
+                <div class="related-grid">
+                    <a href="#" class="review-card rc-tl">
+                        <p class="panel-meta">
+                            <span>&#x25A0;</span> anime — 1988
+                        </p>
+                        <h3 class="review-title">Akira</h3>
+                        <p class="review-author">Katsuhiro Otomo</p>
+                        <p class="review-blurb">
+                            Neo-Tokyo tears itself apart in a ballet of
+                            telekinetic fury. Still the benchmark for animated
+                            urban collapse.
+                        </p>
+                        <div class="review-footer">
+                            <span class="review-score">9.1</span>
+                            <span class="review-type">anime</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="review-card rc-all">
+                        <p class="panel-meta">
+                            <span>&#x25A0;</span> film — 1982
+                        </p>
+                        <h3 class="review-title">Blade Runner</h3>
+                        <p class="review-author">Ridley Scott</p>
+                        <p class="review-blurb">
+                            Replicants and rain. Scott's Los Angeles 2019 is the
+                            visual language every cyberpunk work since borrows
+                            from.
+                        </p>
+                        <div class="review-footer">
+                            <span class="review-score">9.6</span>
+                            <span class="review-type">film</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="review-card rc-br">
+                        <p class="panel-meta">
+                            <span>&#x25A0;</span> film — 1995
+                        </p>
+                        <h3 class="review-title">Ghost in the Shell</h3>
+                        <p class="review-author">Mamoru Oshii</p>
+                        <p class="review-blurb">
+                            The Major questions her own humanity across a Tokyo
+                            that feels borrowed from a decade that hasn't
+                            happened yet.
+                        </p>
+                        <div class="review-footer">
+                            <span class="review-score">9.3</span>
+                            <span class="review-type">film</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="bar-row">
-                    <div class="bar-label-row"><span class="bar-key">Prose</span><span class="bar-key">88%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:88%"></div></div>
-                </div>
-                <div class="bar-row">
-                    <div class="bar-label-row"><span class="bar-key">Pacing</span><span class="bar-key">82%</span></div>
-                    <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
-                </div>
+            </div>
+
+            <div class="footer-bar">
+                <span class="footer-copy"
+                    >terribledevice.com &mdash; cyberpunk in culture
+                    1980&ndash;1999</span
+                >
+                <span class="footer-sig">&#x25A0; signal found</span>
             </div>
         </div>
-
-        <div class="post-body">
-            <p>Gibson's debut novel arrived in 1984 like a signal from a frequency nobody had tuned to yet. <strong>Case is a burned-out data thief</strong> — a console cowboy barred from the matrix after his nervous system was deliberately damaged by a former employer. He exists in the Sprawl, a vast urban agglomeration running from Boston to Atlanta, waiting to die in the slow way that people like him die.</p>
-
-            <p>Then a mysterious employer offers him a deal: a new run through cyberspace, his nervous system restored, in exchange for completing one last job. The target is an artificial intelligence called Wintermute, locked behind corporate ice in the orbital station of Freeside. What follows is a genre-defining heist narrative that somehow manages to be about <strong>identity, memory, and the nature of consciousness</strong> while also being genuinely propulsive.</p>
-
-            <div class="pull-quote">
-                <p>The sky above the port was the color of television, tuned to a dead channel.</p>
-            </div>
-
-            <p>That opening line is perhaps the most quoted in science fiction for good reason — it does everything at once. It establishes tone, setting, technology saturation, and a particular kind of urban alienation in eleven words. Gibson writes the entire novel at that compression ratio. <strong>Every sentence is load-bearing.</strong> The prose demands active reading; you are not carried through the Sprawl so much as jacked into it.</p>
-
-            <p>The Sprawl itself is the great achievement here. Gibson doesn't explain his world, he assumes it. Brand names, slang, and cultural detritus accumulate into a texture so specific it feels documented rather than invented. The matrix — cyberspace — is rendered as pure geometry and light, a consensual hallucination that millions of operators navigate daily. The gap between that abstraction and the meat of the body left behind in a cheap hotel room is where the novel lives.</p>
-
-            <p>If Neuromancer has a weakness it's in its characters. Case and Molly are compelling archetypes but remain somewhat opaque — their interiority is deliberately rationed. This is arguably intentional; in Gibson's world, interiority is a liability. You survive by staying on the surface, staying fast. But readers expecting warmth will find the novel cold in ways that feel less like style and more like absence.</p>
-
-            <p>None of that diminishes what it built. The vocabulary, the aesthetics, the anxieties — <strong>almost every significant cyberpunk work since borrows from this book</strong>, often without knowing it. To read Neuromancer in 2026 is to read the source code.</p>
-        </div>
-
-        <div class="tags-section">
-            <p class="tags-label"><span>&#x25A0;</span> tagged</p>
-            <div class="tags-list">
-                <a href="#" class="tag active">novel</a>
-                <a href="#" class="tag active">1984</a>
-                <a href="#" class="tag">cyberpunk</a>
-                <a href="#" class="tag">AI</a>
-                <a href="#" class="tag">hacking</a>
-                <a href="#" class="tag">matrix</a>
-                <a href="#" class="tag">sprawl</a>
-                <a href="#" class="tag">william gibson</a>
-                <a href="#" class="tag">essential</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="related-section">
-        <div class="section-header"><span>&#x25A0;</span> Related reviews</div>
-        <div class="related-grid">
-
-            <a href="#" class="review-card rc-tl">
-                <p class="panel-meta"><span>&#x25A0;</span> anime — 1988</p>
-                <h3 class="review-title">Akira</h3>
-                <p class="review-author">Katsuhiro Otomo</p>
-                <p class="review-blurb">Neo-Tokyo tears itself apart in a ballet of telekinetic fury. Still the benchmark for animated urban collapse.</p>
-                <div class="review-footer">
-                    <span class="review-score">9.1</span>
-                    <span class="review-type">anime</span>
-                </div>
-            </a>
-
-            <a href="#" class="review-card rc-all">
-                <p class="panel-meta"><span>&#x25A0;</span> film — 1982</p>
-                <h3 class="review-title">Blade Runner</h3>
-                <p class="review-author">Ridley Scott</p>
-                <p class="review-blurb">Replicants and rain. Scott's Los Angeles 2019 is the visual language every cyberpunk work since borrows from.</p>
-                <div class="review-footer">
-                    <span class="review-score">9.6</span>
-                    <span class="review-type">film</span>
-                </div>
-            </a>
-
-            <a href="#" class="review-card rc-br">
-                <p class="panel-meta"><span>&#x25A0;</span> film — 1995</p>
-                <h3 class="review-title">Ghost in the Shell</h3>
-                <p class="review-author">Mamoru Oshii</p>
-                <p class="review-blurb">The Major questions her own humanity across a Tokyo that feels borrowed from a decade that hasn't happened yet.</p>
-                <div class="review-footer">
-                    <span class="review-score">9.3</span>
-                    <span class="review-type">film</span>
-                </div>
-            </a>
-
-        </div>
-    </div>
-
-    <div class="footer-bar">
-        <span class="footer-copy">terribledevice.com &mdash; cyberpunk in culture 1980&ndash;1999</span>
-        <span class="footer-sig">&#x25A0; signal found</span>
-    </div>
-
-</div>
-</body>
+    </body>
 </html>
