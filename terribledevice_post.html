@@ -10,7 +10,10 @@
             href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
         <style>
             :root {
                 --black: #0d0c0f;
@@ -41,6 +44,7 @@
 
             body {
                 background-color: var(--black);
+                background-size: 100% 100%;
                 background-image:
                     radial-gradient(
                         ellipse 80% 50% at 15% 10%,
@@ -594,13 +598,34 @@
                 animation: social-glitch 0.35s linear;
             }
             @keyframes social-glitch {
-                0%,  100% { transform: translate(0) skewX(0deg);        filter: none; }
-                15%        { transform: translate(-3px, 0) skewX(-1deg); filter: brightness(1.5) hue-rotate(20deg); }
-                30%        { transform: translate(3px, 1px) skewX(1deg); filter: none; }
-                45%        { transform: translate(-2px, -1px);           filter: brightness(0.8); }
-                60%        { transform: translate(2px, 0) skewX(-0.5deg);filter: hue-rotate(-20deg); }
-                75%        { transform: translate(-1px, 1px);            filter: none; }
-                90%        { transform: translate(1px, 0); }
+                0%,
+                100% {
+                    transform: translate(0) skewX(0deg);
+                    filter: none;
+                }
+                15% {
+                    transform: translate(-3px, 0) skewX(-1deg);
+                    filter: brightness(1.5) hue-rotate(20deg);
+                }
+                30% {
+                    transform: translate(3px, 1px) skewX(1deg);
+                    filter: none;
+                }
+                45% {
+                    transform: translate(-2px, -1px);
+                    filter: brightness(0.8);
+                }
+                60% {
+                    transform: translate(2px, 0) skewX(-0.5deg);
+                    filter: hue-rotate(-20deg);
+                }
+                75% {
+                    transform: translate(-1px, 1px);
+                    filter: none;
+                }
+                90% {
+                    transform: translate(1px, 0);
+                }
             }
 
             /* ── tablet ── */
@@ -956,10 +981,22 @@
                     culture 1980&ndash;1999</span
                 >
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/terribledevice_/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+                    <a
+                        href="https://www.instagram.com/terribledevice_/"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Instagram"
+                    >
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://bsky.app/profile/terribledevice.com" class="social-link" target="_blank" rel="noopener" aria-label="Bluesky">
+                    <a
+                        href="https://bsky.app/profile/terribledevice.com"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Bluesky"
+                    >
                         <i class="fa-brands fa-bluesky"></i>
                     </a>
                 </div>
