@@ -4,10 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Terribledevice — About</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.bunny.net" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Share+Tech+Mono&family=Barlow:wght@400;500&display=swap"
+            href="https://fonts.bunny.net/css?family=barlow-condensed:400,600,700|share-tech-mono:400|barlow:400,500&display=swap"
             rel="stylesheet"
         />
         <link
@@ -162,41 +161,6 @@
             .stat-card {
                 position: relative;
                 overflow: hidden;
-                transition:
-                    border-color 0.2s ease,
-                    box-shadow 0.2s ease;
-            }
-
-            .panel:hover,
-            .stat-card:hover {
-                border-color: var(--pink);
-                box-shadow:
-                    0 0 0 1px var(--pink-dim),
-                    inset 0 0 24px rgba(255, 92, 141, 0.05);
-                animation: glitch 0.35s linear;
-            }
-
-            .panel::before,
-            .stat-card::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: repeating-linear-gradient(
-                    to bottom,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(0, 0, 0, 0.18) 3px,
-                    rgba(0, 0, 0, 0.18) 4px
-                );
-                pointer-events: none;
-                z-index: 2;
-                opacity: 0;
-                transition: opacity 0.25s ease;
-            }
-
-            .panel:hover::before,
-            .stat-card:hover::before {
-                opacity: 1;
             }
 
             @keyframes glitch {
@@ -525,12 +489,41 @@
                 border: 1px solid var(--border);
                 border-radius: var(--r);
                 text-decoration: none;
-                transition: border-color 0.2s;
+                position: relative;
+                overflow: hidden;
+                transition:
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
                 min-width: 200px;
             }
 
             .contact-link:hover {
-                border-color: var(--pink-dim);
+                border-color: var(--pink);
+                box-shadow:
+                    0 0 0 1px var(--pink-dim),
+                    inset 0 0 24px rgba(255, 92, 141, 0.05);
+                animation: glitch 0.35s linear;
+            }
+
+            .contact-link::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    to bottom,
+                    transparent 0px,
+                    transparent 3px,
+                    rgba(0, 0, 0, 0.18) 3px,
+                    rgba(0, 0, 0, 0.18) 4px
+                );
+                pointer-events: none;
+                z-index: 2;
+                opacity: 0;
+                transition: opacity 0.25s ease;
+            }
+
+            .contact-link:hover::before {
+                opacity: 1;
             }
 
             .contact-link-icon {
