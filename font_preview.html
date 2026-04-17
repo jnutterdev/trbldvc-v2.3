@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    @import url("https://fonts.bunny.net/css?family=metal-mania:400|faster-one:400|pirata-one:400|monoton:400|barlow-condensed:700|share-tech-mono:400&display=swap");
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        background: #0d0c0f;
+        font-family: "Barlow Condensed", sans-serif;
+        color: #c8bfa8;
+        padding: 2rem;
+    }
+
+    h2 {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: #7a7268;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .card {
+        position: relative;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        border: 1px solid #2a2630;
+    }
+
+    .card-img {
+        position: absolute;
+        inset: 0;
+        background-image: url("cyberpunk_girl.jpg");
+        background-size: cover;
+        background-position: center top;
+        filter: brightness(0.75) contrast(1.15) saturate(0.8) hue-rotate(-20deg);
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            160deg,
+            rgba(115, 37, 78, 0.45) 0%,
+            rgba(58, 90, 110, 0.25) 60%,
+            rgba(13, 12, 15, 0.6) 100%
+        );
+        mix-blend-mode: color;
+    }
+
+    .card-logo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2.5rem 1.2rem 1.2rem;
+        background: linear-gradient(to top, rgba(13,12,15,0.9) 0%, transparent 100%);
+        z-index: 2;
+    }
+
+    .card-logo-name {
+        font-size: 2.2rem;
+        line-height: 0.95;
+        color: #c8bfa8;
+    }
+
+    .card-logo-name span {
+        color: #ff5c8d;
+        display: block;
+    }
+
+    .card-rule {
+        width: 100%;
+        height: 1px;
+        background: #2a2630;
+        margin: 0.5rem 0 0.4rem;
+    }
+
+    .card-tag {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        color: #7a7268;
+        text-transform: uppercase;
+    }
+
+    .card-label {
+        position: absolute;
+        top: 0.8rem;
+        left: 0.8rem;
+        font-family: "Share Tech Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        color: #7a7268;
+        text-transform: uppercase;
+        background: rgba(13,12,15,0.7);
+        padding: 4px 8px;
+        z-index: 3;
+    }
+
+    .f-metal       { font-family: "Metal Mania", cursive; }
+    .f-faster      { font-family: "Faster One", cursive; }
+    .f-pirata      { font-family: "Pirata One", cursive; }
+    .f-monoton     { font-family: "Monoton", cursive; }
+</style>
+</head>
+<body>
+    <h2>// font preview — terrible device logo</h2>
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-overlay"></div>
+            <div class="card-label">01 — metal mania</div>
+            <div class="card-logo">
+                <div class="card-logo-name f-metal">Terrible<span>Device</span></div>
+                <div class="card-rule"></div>
+                <div class="card-tag">// reviews &amp; criticism</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-overlay"></div>
+            <div class="card-label">02 — faster one</div>
+            <div class="card-logo">
+                <div class="card-logo-name f-faster">Terrible<span>Device</span></div>
+                <div class="card-rule"></div>
+                <div class="card-tag">// reviews &amp; criticism</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-overlay"></div>
+            <div class="card-label">03 — pirata one</div>
+            <div class="card-logo">
+                <div class="card-logo-name f-pirata">Terrible<span>Device</span></div>
+                <div class="card-rule"></div>
+                <div class="card-tag">// reviews &amp; criticism</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-overlay"></div>
+            <div class="card-label">04 — monoton</div>
+            <div class="card-logo">
+                <div class="card-logo-name f-monoton">Terrible<span>Device</span></div>
+                <div class="card-rule"></div>
+                <div class="card-tag">// reviews &amp; criticism</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

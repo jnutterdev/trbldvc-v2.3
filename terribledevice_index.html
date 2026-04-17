@@ -304,25 +304,62 @@
     .hero-image-placeholder {
         position: absolute;
         inset: 0;
-        background: repeating-linear-gradient(
-            135deg,
-            var(--surface) 0px,
-            var(--surface) 18px,
-            var(--surface2) 18px,
-            var(--surface2) 20px
-        );
-        opacity: 0.6;
+        background-image: url("cyberpunk_girl.jpg");
+        background-size: cover;
+        background-position: center top;
+        filter: brightness(0.75) contrast(1.15) saturate(0.8) hue-rotate(-20deg);
     }
-    .hero-image-label {
-        position: relative;
+    .hero-image-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            160deg,
+            rgba(115, 37, 78, 0.45) 0%,
+            rgba(58, 90, 110, 0.25) 60%,
+            rgba(13, 12, 15, 0.6) 100%
+        );
+        mix-blend-mode: color;
+        pointer-events: none;
+    }
+    .hero-image-logo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem 1.4rem 1.4rem;
+        background: linear-gradient(
+            to top,
+            rgba(13, 12, 15, 0.85) 0%,
+            transparent 100%
+        );
+        z-index: 2;
+    }
+    .hero-image-logo-name {
+        font-family: var(--head);
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: fff;
+    }
+    .hero-image-logo-name span {
+        color: var(--pink);
+        display: block;
+    }
+    .hero-image-logo-rule {
+        width: 100%;
+        height: 1px;
+        background: var(--border);
+        margin: 0.6rem 0 0.5rem;
+    }
+    .hero-image-logo-tag {
         font-family: var(--mono);
         font-size: 10px;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.2em;
         color: var(--tan-dim);
         text-transform: uppercase;
-        border: 1px dashed var(--border);
-        padding: 6px 14px;
-        border-radius: 4px;
     }
 
     .reviews-row {
@@ -796,9 +833,15 @@
 
             <div class="hero-image-panel p-sharp-tl">
                 <div class="hero-image-placeholder"></div>
-                <span class="hero-image-label"
-                    >&#x25A0; hero image — 220px</span
-                >
+                <div class="hero-image-logo">
+                    <div class="hero-image-logo-name">
+                        Terrible<span>Device</span>
+                    </div>
+                    <div class="hero-image-logo-rule"></div>
+                    <div class="hero-image-logo-tag">
+                        // reviews &amp; criticism
+                    </div>
+                </div>
             </div>
 
             <div class="reviews-row">
