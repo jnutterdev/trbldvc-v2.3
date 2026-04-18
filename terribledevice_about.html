@@ -36,7 +36,6 @@
                 margin: 0;
                 padding: 0;
             }
-
             html {
                 font-size: 18px;
             }
@@ -72,14 +71,12 @@
                 margin: 0 auto;
             }
 
-            /* ── Nav ── */
             .td-nav {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding: 0 4px 18px;
             }
-
             .td-logo {
                 font-family: var(--head);
                 font-size: 20px;
@@ -89,21 +86,17 @@
                 text-transform: uppercase;
                 text-decoration: none;
             }
-
             .td-logo a {
                 color: inherit;
                 text-decoration: none;
             }
-
             .td-logo span {
                 color: var(--pink);
             }
-
             .td-nav-links {
                 display: flex;
                 gap: 24px;
             }
-
             .td-nav-links a {
                 font-family: var(--mono);
                 font-size: 11px;
@@ -112,55 +105,8 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .td-nav-links a.active {
                 color: var(--pink);
-            }
-
-            /* ── Scanline ── */
-            @keyframes scanline-flicker {
-                0% {
-                    opacity: 0;
-                    transform: translateY(0);
-                }
-                10% {
-                    opacity: 1;
-                    transform: translateY(-2px);
-                }
-                20% {
-                    opacity: 0.4;
-                    transform: translateY(1px);
-                }
-                30% {
-                    opacity: 1;
-                    transform: translateY(-1px);
-                }
-                45% {
-                    opacity: 0.6;
-                    transform: translateY(2px);
-                }
-                60% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                75% {
-                    opacity: 0.8;
-                    transform: translateY(-1px);
-                }
-                90% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .panel,
-            .stat-card {
-                position: relative;
-                overflow: hidden;
             }
 
             @keyframes glitch {
@@ -194,12 +140,10 @@
                 }
             }
 
-            /* ── Page header ── */
             .page-header {
                 margin-bottom: 40px;
                 padding-bottom: 32px;
             }
-
             .page-eyebrow {
                 font-family: var(--mono);
                 font-size: 10px;
@@ -211,7 +155,6 @@
                 align-items: center;
                 gap: 10px;
             }
-
             .page-eyebrow::after {
                 content: "";
                 flex: 1;
@@ -219,7 +162,6 @@
                 background: var(--pink-dim);
                 opacity: 0.4;
             }
-
             .page-title {
                 font-family: var(--head);
                 font-size: 96px;
@@ -229,14 +171,12 @@
                 color: #fff;
                 text-transform: uppercase;
             }
-
             .page-title em {
                 color: var(--pink);
                 font-style: normal;
                 display: block;
             }
 
-            /* ── Two col intro ── */
             .intro-grid {
                 display: grid;
                 grid-template-columns: 1.2fr 1fr;
@@ -248,8 +188,9 @@
                 background: var(--surface);
                 border: 1px solid var(--border);
                 padding: 1.6rem;
+                position: relative;
+                overflow: hidden;
             }
-
             .p-sharp-tl {
                 border-radius: 0 var(--r) var(--r) var(--r);
             }
@@ -274,12 +215,10 @@
                 text-transform: uppercase;
                 margin-bottom: 14px;
             }
-
             .panel-meta span {
                 color: var(--pink);
                 margin-right: 6px;
             }
-
             .panel-heading {
                 font-family: var(--head);
                 font-size: 28px;
@@ -290,36 +229,32 @@
                 margin-bottom: 14px;
                 line-height: 1;
             }
-
             .panel-body {
                 font-size: 13px;
                 line-height: 1.8;
                 color: var(--tan-dim);
             }
-
             .panel-body p + p {
                 margin-top: 1em;
             }
-
             .panel-body strong {
                 color: var(--tan);
                 font-weight: 500;
             }
 
-            /* ── Stat cards row ── */
             .stats-row {
                 display: grid;
                 grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 10px;
                 margin-bottom: 10px;
             }
-
             .stat-card {
                 background: var(--surface2);
                 border: 1px solid var(--border);
                 padding: 1.2rem 1.4rem;
+                position: relative;
+                overflow: hidden;
             }
-
             .stat-card:nth-child(1) {
                 border-radius: 0 var(--r) var(--r) var(--r);
             }
@@ -332,7 +267,6 @@
             .stat-card:nth-child(4) {
                 border-radius: var(--r) var(--r) 0 var(--r);
             }
-
             .stat-num {
                 font-family: var(--head);
                 font-size: 48px;
@@ -341,7 +275,6 @@
                 line-height: 1;
                 margin-bottom: 4px;
             }
-
             .stat-desc {
                 font-family: var(--mono);
                 font-size: 10px;
@@ -351,7 +284,6 @@
                 line-height: 1.4;
             }
 
-            /* ── Scope + scoring grid ── */
             .lower-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -359,13 +291,11 @@
                 margin-bottom: 10px;
             }
 
-            /* ── Scope list ── */
             .scope-list {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
             }
-
             .scope-item {
                 display: flex;
                 align-items: baseline;
@@ -373,18 +303,15 @@
                 padding: 10px 0;
                 border-bottom: 1px solid var(--border);
             }
-
             .scope-item:last-child {
                 border-bottom: none;
             }
-
             .scope-bullet {
                 font-family: var(--mono);
                 font-size: 10px;
                 color: var(--pink);
                 flex-shrink: 0;
             }
-
             .scope-label {
                 font-family: var(--head);
                 font-size: 16px;
@@ -395,30 +322,23 @@
                 flex-shrink: 0;
                 min-width: 80px;
             }
-
             .scope-note {
                 font-size: 12px;
                 color: var(--tan-dim);
                 line-height: 1.5;
             }
 
-            /* ── Scoring breakdown ── */
             .score-criteria {
                 display: flex;
                 flex-direction: column;
                 gap: 14px;
             }
-
-            .criteria-item {
-            }
-
             .criteria-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: baseline;
                 margin-bottom: 6px;
             }
-
             .criteria-name {
                 font-family: var(--head);
                 font-size: 15px;
@@ -427,59 +347,51 @@
                 color: var(--tan);
                 text-transform: uppercase;
             }
-
-            .criteria-weight {
+            .criteria-sub {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 0.1em;
                 color: var(--tan-dim);
+                text-transform: uppercase;
             }
-
             .criteria-desc {
                 font-size: 12px;
                 color: var(--tan-dim);
                 line-height: 1.5;
                 margin-bottom: 6px;
             }
-
             .bar-track {
                 height: 3px;
                 background: var(--border);
                 border-radius: 2px;
             }
-
             .bar-fill {
                 height: 3px;
                 background: var(--pink);
                 border-radius: 2px;
             }
 
-            /* ── Contact panel ── */
             .contact-panel {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 gap: 24px;
             }
-
             .contact-text .panel-heading {
                 margin-bottom: 8px;
             }
-
             .contact-text p {
                 font-size: 13px;
                 color: var(--tan-dim);
                 line-height: 1.7;
                 max-width: 380px;
             }
-
             .contact-links {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
                 flex-shrink: 0;
             }
-
             .contact-link {
                 display: flex;
                 align-items: center;
@@ -496,7 +408,6 @@
                     box-shadow 0.2s ease;
                 min-width: 200px;
             }
-
             .contact-link:hover {
                 border-color: var(--pink);
                 box-shadow:
@@ -504,7 +415,6 @@
                     inset 0 0 24px rgba(255, 92, 141, 0.05);
                 animation: glitch 0.35s linear;
             }
-
             .contact-link::before {
                 content: "";
                 position: absolute;
@@ -521,11 +431,9 @@
                 opacity: 0;
                 transition: opacity 0.25s ease;
             }
-
             .contact-link:hover::before {
                 opacity: 1;
             }
-
             .contact-link-icon {
                 font-family: var(--mono);
                 font-size: 12px;
@@ -533,7 +441,6 @@
                 width: 16px;
                 text-align: center;
             }
-
             .contact-link-label {
                 font-family: var(--mono);
                 font-size: 10px;
@@ -541,7 +448,6 @@
                 color: var(--tan-dim);
                 text-transform: uppercase;
             }
-
             .contact-link-val {
                 font-family: var(--mono);
                 font-size: 11px;
@@ -549,7 +455,6 @@
                 margin-left: auto;
             }
 
-            /* ── Footer ── */
             .footer-bar {
                 display: flex;
                 align-items: center;
@@ -557,14 +462,12 @@
                 padding: 24px 4px 0;
                 margin-top: 60px;
             }
-
             .footer-copy {
                 font-family: var(--mono);
                 font-size: 10px;
                 letter-spacing: 0.1em;
                 color: var(--tan-dim);
             }
-
             .footer-sig {
                 font-family: var(--mono);
                 font-size: 10px;
@@ -585,40 +488,8 @@
             }
             .social-link:hover {
                 color: var(--pink);
-                animation: social-glitch 0.35s linear;
-            }
-            @keyframes social-glitch {
-                0%,
-                100% {
-                    transform: translate(0) skewX(0deg);
-                    filter: none;
-                }
-                15% {
-                    transform: translate(-3px, 0) skewX(-1deg);
-                    filter: brightness(1.5) hue-rotate(20deg);
-                }
-                30% {
-                    transform: translate(3px, 1px) skewX(1deg);
-                    filter: none;
-                }
-                45% {
-                    transform: translate(-2px, -1px);
-                    filter: brightness(0.8);
-                }
-                60% {
-                    transform: translate(2px, 0) skewX(-0.5deg);
-                    filter: hue-rotate(-20deg);
-                }
-                75% {
-                    transform: translate(-1px, 1px);
-                    filter: none;
-                }
-                90% {
-                    transform: translate(1px, 0);
-                }
             }
 
-            /* ── tablet ── */
             @media (max-width: 900px) {
                 .page-title {
                     font-size: 72px;
@@ -634,12 +505,10 @@
                 }
             }
 
-            /* ── mobile ── */
             @media (max-width: 640px) {
                 :root {
                     --r: 14px;
                 }
-
                 .td-page {
                     padding: 12px;
                 }
@@ -649,7 +518,6 @@
                 .page-title {
                     font-size: 48px;
                 }
-
                 .intro-grid {
                     grid-template-columns: 1fr;
                 }
@@ -659,7 +527,6 @@
                 .lower-grid {
                     grid-template-columns: 1fr;
                 }
-
                 .contact-panel {
                     flex-direction: column;
                     align-items: flex-start;
@@ -674,12 +541,10 @@
                 .contact-link {
                     min-width: unset;
                 }
-
                 .panel,
                 .stat-card {
                     border-radius: var(--r) !important;
                 }
-
                 .footer-bar {
                     flex-direction: column;
                     gap: 6px;
@@ -697,7 +562,7 @@
                     >
                 </div>
                 <div class="td-nav-links">
-                    <a href="terribledevice_archive.html" ]>Archive</a>
+                    <a href="terribledevice_archive.html">Archive</a>
                     <a href="terribledevice_about.html" class="active">About</a>
                 </div>
             </nav>
@@ -715,24 +580,19 @@
                     <h2 class="panel-heading">What this is</h2>
                     <div class="panel-body">
                         <p>
-                            Terribledevice is a review archive for
-                            <strong
-                                >cyberpunk culture from the 1980s and
-                                1990s</strong
-                            >
-                            — the decade and a half when the genre was still a
-                            provocation rather than an aesthetic. Books, films,
-                            anime, television, and the occasional game that
-                            helped define what it meant to be afraid of the
-                            future in a specific, neon-lit way.
+                            Terribledevice is one person's obsession with
+                            <strong>cyberpunk in pop culture</strong> — the
+                            films, books, anime, music, and everything adjacent
+                            that shaped what it meant to be afraid of the future
+                            in a specific, neon-lit way.
                         </p>
                         <p>
                             The name comes from a William Gibson short story. It
                             felt right. The site is run by one person with too
                             many opinions about
                             <strong
-                                >Neuromancer, Akira, and Serial Experiments
-                                Lain</strong
+                                >Neuromancer, Akira, and Tactical Neural
+                                Implant</strong
                             >, and not enough hours in the day to write about
                             all of them.
                         </p>
@@ -777,18 +637,18 @@
                         </div>
                         <div class="scope-item">
                             <span class="scope-bullet">&#x25A0;</span>
-                            <span class="scope-label">TV</span>
+                            <span class="scope-label">Music</span>
                             <span class="scope-note"
-                                >Max Headroom, Wild Palms, the shows that tried
-                                and the ones that almost made it.</span
+                                >Industrial, EBM, power noise, synthwave — the
+                                records that soundtrack the genre.</span
                             >
                         </div>
                         <div class="scope-item">
                             <span class="scope-bullet">&#x25A0;</span>
                             <span class="scope-label">Other</span>
                             <span class="scope-note"
-                                >Comics, games, music — anything adjacent enough
-                                to warrant the signal.</span
+                                >TV, comics, games — anything adjacent enough to
+                                warrant the signal.</span
                             >
                         </div>
                     </div>
@@ -797,12 +657,12 @@
 
             <div class="stats-row">
                 <div class="stat-card">
-                    <div class="stat-num">80+</div>
-                    <div class="stat-desc">Reviews<br />published</div>
+                    <div class="stat-num">10+</div>
+                    <div class="stat-desc">Years<br />reviewing</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">15</div>
-                    <div class="stat-desc">Years of<br />culture covered</div>
+                    <div class="stat-num">80+</div>
+                    <div class="stat-desc">Reviews<br />published</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-num">6</div>
@@ -823,54 +683,83 @@
                     <div class="score-criteria">
                         <div class="criteria-item">
                             <div class="criteria-header">
+                                <span class="criteria-name">Signal</span>
+                                <span class="criteria-sub"
+                                    >Production &amp; craft</span
+                                >
+                            </div>
+                            <p class="criteria-desc">
+                                Does the execution serve the work? Sound design,
+                                prose, direction — whatever the medium demands,
+                                done with intent.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Architecture</span>
+                                <span class="criteria-sub"
+                                    >Composition &amp; structure</span
+                                >
+                            </div>
+                            <p class="criteria-desc">
+                                How is it built? Does it move with purpose —
+                                escalating, breathing, collapsing where it
+                                should?
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
+                                <span class="criteria-name">Current</span>
+                                <span class="criteria-sub"
+                                    >Energy &amp; drive</span
+                                >
+                            </div>
+                            <p class="criteria-desc">
+                                Does it move you — physically, psychically?
+                                Momentum, tension, the thing that makes you
+                                stay.
+                            </p>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="criteria-item">
+                            <div class="criteria-header">
                                 <span class="criteria-name">Atmosphere</span>
-                                <span class="criteria-weight">30%</span>
+                                <span class="criteria-sub"
+                                    >World &amp; mood</span
+                                >
                             </div>
                             <p class="criteria-desc">
-                                Does it feel like the future is already rotting?
-                                Tone, texture, and dread.
+                                Does it build a place? The best work in this
+                                space makes you feel like you're somewhere
+                                specific.
                             </p>
                             <div class="bar-track">
-                                <div class="bar-fill" style="width: 30%"></div>
+                                <div class="bar-fill" style="width: 100%"></div>
                             </div>
                         </div>
                         <div class="criteria-item">
                             <div class="criteria-header">
-                                <span class="criteria-name">Worldbuilding</span>
-                                <span class="criteria-weight">25%</span>
+                                <span class="criteria-name"
+                                    >Signal-to-Noise</span
+                                >
+                                <span class="criteria-sub"
+                                    >Originality &amp; distinction</span
+                                >
                             </div>
                             <p class="criteria-desc">
-                                How fully realized is the setting? Density,
-                                internal logic, specificity.
+                                Does it have a voice? A reason to exist beyond
+                                competent genre execution?
                             </p>
                             <div class="bar-track">
-                                <div class="bar-fill" style="width: 25%"></div>
-                            </div>
-                        </div>
-                        <div class="criteria-item">
-                            <div class="criteria-header">
-                                <span class="criteria-name">Execution</span>
-                                <span class="criteria-weight">25%</span>
-                            </div>
-                            <p class="criteria-desc">
-                                Prose quality, direction, animation — the craft
-                                of the thing itself.
-                            </p>
-                            <div class="bar-track">
-                                <div class="bar-fill" style="width: 25%"></div>
-                            </div>
-                        </div>
-                        <div class="criteria-item">
-                            <div class="criteria-header">
-                                <span class="criteria-name">Relevance</span>
-                                <span class="criteria-weight">20%</span>
-                            </div>
-                            <p class="criteria-desc">
-                                How much did it matter? Influence, originality,
-                                staying power.
-                            </p>
-                            <div class="bar-track">
-                                <div class="bar-fill" style="width: 20%"></div>
+                                <div class="bar-fill" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -897,7 +786,7 @@
                             </a>
                             <a href="#" class="contact-link">
                                 <span class="contact-link-icon">#</span>
-                                <span class="contact-link-label">Mastodon</span>
+                                <span class="contact-link-label">Bluesky</span>
                                 <span class="contact-link-val">@td ↗</span>
                             </a>
                             <a href="#" class="contact-link">
