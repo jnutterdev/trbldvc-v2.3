@@ -206,7 +206,7 @@
     }
     .hero-score-row {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         gap: 8px;
         margin-top: auto;
         padding-top: 1.2rem;
@@ -226,6 +226,7 @@
         color: var(--tan-dim);
         text-transform: uppercase;
         line-height: 1.4;
+        max-width: 80px;
     }
 
     .stat-panel {
@@ -366,7 +367,7 @@
         grid-column: 1 / 3;
         grid-row: 3;
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 10px;
     }
 
@@ -389,7 +390,6 @@
             inset 0 0 24px rgba(255, 92, 141, 0.05);
         animation: glitch 0.35s linear;
     }
-    /* scanlines */
     .review-card::before {
         content: "";
         position: absolute;
@@ -520,7 +520,6 @@
         animation: glitch 0.35s linear;
     }
 
-    /* ── tablet ─────────────────────────────────────────── */
     @media (max-width: 900px) {
         .reviews-row {
             grid-template-columns: repeat(2, 1fr);
@@ -530,27 +529,21 @@
         }
     }
 
-    /* ── mobile ─────────────────────────────────────────── */
     @media (max-width: 640px) {
         :root {
             --r: 14px;
         }
-
         .td-page {
             padding: 12px;
         }
-
         .td-nav {
             padding-bottom: 14px;
         }
-
         .td-grid {
             grid-template-columns: 1fr;
             grid-template-rows: auto;
             flex: none;
         }
-
-        /* reorder panels top-to-bottom */
         .hero-image-panel {
             grid-column: 1;
             grid-row: 1;
@@ -573,157 +566,23 @@
             grid-row: 5;
             grid-template-columns: 1fr;
         }
-
-        /* uniform corners in single-column stack */
         .panel,
         .hero-image-panel,
         .review-card {
             border-radius: var(--r) !important;
         }
-
         .hero-title {
             font-size: 44px;
         }
         .hero-sub {
             max-width: 100%;
         }
-
-        /* ── Footer ── */
         .footer-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 24px 4px 0;
             margin-top: 10px;
-        }
-
-        .footer-copy {
-            font-family: var(--mono);
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            color: var(--tan-dim);
-        }
-
-        .footer-sig {
-            font-family: var(--mono);
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            color: var(--pink-dim);
-        }
-        .footer-social {
-            display: flex;
-            gap: 14px;
-            align-items: center;
-        }
-        .social-link {
-            color: var(--pink-dim);
-            font-size: 15px;
-            text-decoration: none;
-            display: inline-block;
-            transition: color 0.2s ease;
-        }
-        .social-link:hover {
-            color: var(--pink);
-            animation: social-glitch 0.35s linear;
-        }
-        @keyframes social-glitch {
-            0%,
-            100% {
-                transform: translate(0) skewX(0deg);
-                filter: none;
-            }
-            15% {
-                transform: translate(-3px, 0) skewX(-1deg);
-                filter: brightness(1.5) hue-rotate(20deg);
-            }
-            30% {
-                transform: translate(3px, 1px) skewX(1deg);
-                filter: none;
-            }
-            45% {
-                transform: translate(-2px, -1px);
-                filter: brightness(0.8);
-            }
-            60% {
-                transform: translate(2px, 0) skewX(-0.5deg);
-                filter: hue-rotate(-20deg);
-            }
-            75% {
-                transform: translate(-1px, 1px);
-                filter: none;
-            }
-            90% {
-                transform: translate(1px, 0);
-            }
-        }
-
-        /* ── tablet ── */
-        @media (max-width: 900px) {
-            .page-title {
-                font-size: 72px;
-            }
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stat-card:nth-child(3) {
-                border-radius: 0 var(--r) var(--r) var(--r);
-            }
-            .stat-card:nth-child(4) {
-                border-radius: var(--r);
-            }
-        }
-
-        /* ── mobile ── */
-        @media (max-width: 640px) {
-            :root {
-                --r: 14px;
-            }
-
-            .td-page {
-                padding: 12px;
-            }
-            .td-nav {
-                padding-bottom: 14px;
-            }
-            .page-title {
-                font-size: 48px;
-            }
-
-            .intro-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .lower-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-panel {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
-            }
-            .contact-text p {
-                max-width: 100%;
-            }
-            .contact-links {
-                width: 100%;
-            }
-            .contact-link {
-                min-width: unset;
-            }
-
-            .panel,
-            .stat-card {
-                border-radius: var(--r) !important;
-            }
-
-            .footer-bar {
-                flex-direction: column;
-                gap: 6px;
-                align-items: flex-start;
-            }
         }
     }
 </style>
@@ -743,6 +602,7 @@
         </nav>
 
         <div class="td-grid">
+            <!-- ── Hero panel: music featured review ── -->
             <div
                 class="panel hero-panel p-sharp-bl"
                 style="display: flex; flex-direction: column"
@@ -750,87 +610,111 @@
                 <p class="panel-meta">
                     <span>&#x25A0;</span> featured review — 04/2026
                 </p>
-                <h1 class="hero-title">Neuromancer<em>Gibson</em></h1>
+                <h1 class="hero-title">Substanz T:6<em>Manufactura</em></h1>
                 <p class="hero-sub">
-                    The novel that named cyberspace. Case is a burned-out
-                    console cowboy hired for one last run through the matrix — a
-                    job that rewires everything.
+                    Power noise as load-bearing architecture. Manufactura's 2003
+                    record doesn't perform brutality — it enacts it, track by
+                    track, with the patience of a machine that doesn't know how
+                    to stop.
                 </p>
                 <div class="hero-tags">
-                    <span class="tag active">novel</span>
-                    <span class="tag active">1984</span>
-                    <span class="tag">cyberpunk</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">hacking</span>
+                    <span class="tag active">music</span>
+                    <span class="tag active">2003</span>
+                    <span class="tag">power noise</span>
+                    <span class="tag">harsh EBM</span>
+                    <span class="tag">industrial</span>
                 </div>
                 <div class="hero-score-row">
-                    <div class="score-num">9.4</div>
-                    <div class="score-label">essential<br />reading</div>
+                    <div class="score-num">8.5</div>
+                    <div class="score-label">recommended<br />listen</div>
                 </div>
             </div>
 
+            <!-- ── Stat panel: music breakdown ── -->
             <div class="panel stat-panel p-sharp-tr">
                 <p class="panel-meta"><span>&#x25A0;</span> details</p>
                 <div class="stat-row">
-                    <span class="stat-key">Author</span
-                    ><span class="stat-val">William Gibson</span>
+                    <span class="stat-key">Artist</span>
+                    <span class="stat-val">Manufactura</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-row">
-                    <span class="stat-key">Year</span
-                    ><span class="stat-val">1984</span>
+                    <span class="stat-key">Label</span>
+                    <span class="stat-val">Hands Productions</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-row">
-                    <span class="stat-key">Medium</span
-                    ><span class="stat-val">Novel</span>
+                    <span class="stat-key">Year</span>
+                    <span class="stat-val">2003</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-row">
-                    <span class="stat-key">Score</span
-                    ><span class="stat-val accent">9.4 / 10</span>
+                    <span class="stat-key">Score</span>
+                    <span class="stat-val accent">8.5 / 10</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="rating-bar-wrap">
                     <div class="stat-row">
-                        <span class="stat-key">Atmosphere</span
-                        ><span class="stat-key">96%</span>
+                        <span class="stat-key">Signal</span>
+                        <span class="stat-key">90%</span>
                     </div>
                     <div class="rating-bar-track">
-                        <div class="rating-bar-fill" style="width: 96%"></div>
+                        <div class="rating-bar-fill" style="width: 90%"></div>
                     </div>
                 </div>
                 <div class="rating-bar-wrap">
                     <div class="stat-row">
-                        <span class="stat-key">Worldbuilding</span
-                        ><span class="stat-key">91%</span>
+                        <span class="stat-key">Architecture</span>
+                        <span class="stat-key">75%</span>
                     </div>
                     <div class="rating-bar-track">
-                        <div class="rating-bar-fill" style="width: 91%"></div>
+                        <div class="rating-bar-fill" style="width: 75%"></div>
                     </div>
                 </div>
                 <div class="rating-bar-wrap">
                     <div class="stat-row">
-                        <span class="stat-key">Prose</span
-                        ><span class="stat-key">88%</span>
+                        <span class="stat-key">Current</span>
+                        <span class="stat-key">85%</span>
                     </div>
                     <div class="rating-bar-track">
-                        <div class="rating-bar-fill" style="width: 88%"></div>
+                        <div class="rating-bar-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="rating-bar-wrap">
+                    <div class="stat-row">
+                        <span class="stat-key">Atmosphere</span>
+                        <span class="stat-key">90%</span>
+                    </div>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="rating-bar-wrap">
+                    <div class="stat-row">
+                        <span class="stat-key">Signal-to-Noise</span>
+                        <span class="stat-key">70%</span>
+                    </div>
+                    <div class="rating-bar-track">
+                        <div class="rating-bar-fill" style="width: 70%"></div>
                     </div>
                 </div>
             </div>
 
+            <!-- ── Excerpt panel ── -->
             <div class="panel excerpt-panel p-sharp-br">
                 <p class="panel-meta"><span>&#x25A0;</span> excerpt</p>
                 <p class="excerpt-text">
-                    Gibson's prose hits like
-                    <strong>neon through rain-slicked streets</strong> — dense,
-                    hallucinatory, and absolutely intentional. The Sprawl is
-                    less a setting than a nervous system you get jacked into.
-                    Every sentence is earning its place.
+                    Every element feels
+                    <strong>placed rather than generated</strong> — the
+                    distortion has mass, direction, and a kind of internal
+                    grammar. Tracks build not through conventional arrangement
+                    logic but through pressure: layers accumulate until
+                    something gives, then the cycle restarts with a different
+                    configuration.
                 </p>
             </div>
 
+            <!-- ── Hero image panel (unchanged) ── -->
             <div class="hero-image-panel p-sharp-tl">
                 <div class="hero-image-placeholder"></div>
                 <div class="hero-image-logo">
@@ -844,6 +728,7 @@
                 </div>
             </div>
 
+            <!-- ── Reviews row: 3 existing + 1 music card ── -->
             <div class="reviews-row">
                 <div class="review-card p-sharp-tl">
                     <p class="panel-meta"><span>&#x25A0;</span> anime — 1988</p>
@@ -873,8 +758,8 @@
                     </div>
                 </div>
 
-                <div class="review-card p-sharp-br">
-                    <p class="panel-meta"><span>&#x25A0;</span> tv — 1995</p>
+                <div class="review-card p-all">
+                    <p class="panel-meta"><span>&#x25A0;</span> film — 1995</p>
                     <h3 class="review-title">Ghost in the Shell</h3>
                     <p class="review-year">Mamoru Oshii</p>
                     <p class="review-blurb">
@@ -884,6 +769,24 @@
                     <div class="review-footer">
                         <span class="review-score">9.3</span>
                         <span class="review-type">film</span>
+                    </div>
+                </div>
+
+                <!-- ── Music index card ── -->
+                <div class="review-card p-sharp-br">
+                    <p class="panel-meta"><span>&#x25A0;</span> music — 2003</p>
+                    <h3 class="review-title">Substanz T:6</h3>
+                    <p class="review-year">
+                        Manufactura &mdash; Hands Productions
+                    </p>
+                    <p class="review-blurb">
+                        Power noise as load-bearing architecture. Merciless,
+                        precise, and executed with a conviction that makes
+                        originality beside the point.
+                    </p>
+                    <div class="review-footer">
+                        <span class="review-score">8.5</span>
+                        <span class="review-type">music</span>
                     </div>
                 </div>
             </div>
