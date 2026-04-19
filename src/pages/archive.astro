@@ -43,6 +43,12 @@ const reviews = [...allReviews].sort((a, b) => {
     <button class="filter-reset" id="resetBtn">&#x25A0; Reset</button>
   </div>
 
+  <div class="tag-filter-bar" id="tagFilterBar" style="display: none">
+    <span class="tag-filter-label">&#x25A0; tag:</span>
+    <span class="tag-filter-value" id="tagFilterValue"></span>
+    <button class="tag-filter-clear" id="tagFilterClear" aria-label="Clear tag filter">&#x2715;</button>
+  </div>
+
   <div class="reviews-grid" id="reviewsGrid">
     {reviews.map(r => {
       const displayCreator = r.data.medium === 'music'
@@ -55,6 +61,7 @@ const reviews = [...allReviews].sort((a, b) => {
           class="review-card rc-all"
           data-medium={r.data.medium}
           data-era={r.data.era}
+          data-tags={r.data.tags?.join(',') ?? ''}
         >
           <p class="panel-meta"><span>&#x25A0;</span> {r.data.medium} &mdash; {r.data.year}</p>
           <h3 class="review-title">{r.data.title}</h3>
@@ -79,9 +86,13 @@ const reviews = [...allReviews].sort((a, b) => {
   const cards = document.querySelectorAll('.review-card');
   const emptyState = document.getElementById('emptyState');
   const resetBtn = document.getElementById('resetBtn');
+  const tagFilterBar = document.getElementById('tagFilterBar');
+  const tagFilterValue = document.getElementById('tagFilterValue');
+  const tagFilterClear = document.getElementById('tagFilterClear');
 
   let activeMedium = 'all';
   let activeEra = 'all';
+  let activeTag = '';
 
   const cornerClasses = ['rc-tl', 'rc-tr', 'rc-br', 'rc-bl', 'rc-all'];
   const cornerPattern = ['rc-tl', 'rc-all', 'rc-br', 'rc-bl', 'rc-all', 'rc-tr'];
@@ -93,12 +104,21 @@ const reviews = [...allReviews].sort((a, b) => {
     });
   }
 
+  function syncUrl() {
+    const url = new URL(window.location);
+    activeMedium === 'all' ? url.searchParams.delete('medium') : url.searchParams.set('medium', activeMedium);
+    activeEra === 'all' ? url.searchParams.delete('era') : url.searchParams.set('era', activeEra);
+    activeTag ? url.searchParams.set('tag', activeTag) : url.searchParams.delete('tag');
+    window.history.replaceState({}, '', url);
+  }
+
   function filterCards() {
     const visible = [];
     cards.forEach(card => {
       const mediumMatch = activeMedium === 'all' || card.dataset.medium === activeMedium;
       const eraMatch = activeEra === 'all' || card.dataset.era === activeEra;
-      if (mediumMatch && eraMatch) {
+      const tagMatch = !activeTag || (card.dataset.tags || '').split(',').includes(activeTag);
+      if (mediumMatch && eraMatch && tagMatch) {
         card.classList.remove('hidden');
         visible.push(card);
       } else {
@@ -109,12 +129,24 @@ const reviews = [...allReviews].sort((a, b) => {
     emptyState.classList.toggle('visible', visible.length === 0);
   }
 
+  function setTagFilter(tag) {
+    activeTag = tag;
+    if (tag) {
+      tagFilterValue.textContent = tag;
+      tagFilterBar.style.display = 'flex';
+    } else {
+      tagFilterBar.style.display = 'none';
+      tagFilterValue.textContent = '';
+    }
+  }
+
   document.querySelectorAll('.filter-pill[data-filter="medium"]').forEach(pill => {
     pill.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill[data-filter="medium"]').forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       activeMedium = pill.dataset.value;
       filterCards();
+      syncUrl();
     });
   });
 
@@ -124,6 +156,7 @@ const reviews = [...allReviews].sort((a, b) => {
       pill.classList.add('active');
       activeEra = pill.dataset.value;
       filterCards();
+      syncUrl();
     });
   });
 
@@ -133,14 +166,93 @@ const reviews = [...allReviews].sort((a, b) => {
     document.querySelector('[data-filter="era"][data-value="all"]').classList.add('active');
     activeMedium = 'all';
     activeEra = 'all';
+    setTagFilter('');
     filterCards();
+    syncUrl();
   });
 
-  // Apply initial corners
-  applyCorners([...cards]);
+  tagFilterClear.addEventListener('click', () => {
+    setTagFilter('');
+    filterCards();
+    syncUrl();
+  });
+
+  // Read all filters from URL on load
+  const params = new URLSearchParams(window.location.search);
+  const mediumParam = params.get('medium');
+  const eraParam = params.get('era');
+  const tagParam = params.get('tag');
+
+  if (mediumParam) {
+    const pill = document.querySelector(`[data-filter="medium"][data-value="${mediumParam}"]`);
+    if (pill) {
+      document.querySelectorAll('.filter-pill[data-filter="medium"]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeMedium = mediumParam;
+    }
+  }
+
+  if (eraParam) {
+    const pill = document.querySelector(`[data-filter="era"][data-value="${eraParam}"]`);
+    if (pill) {
+      document.querySelectorAll('.filter-pill[data-filter="era"]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeEra = eraParam;
+    }
+  }
+
+  if (tagParam) setTagFilter(tagParam);
+
+  filterCards();
 </script>
 
 <style>
+  .tag-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    margin-bottom: 20px;
+    border: 1px solid var(--pink-dim);
+    border-radius: var(--r);
+    background: rgba(115, 37, 78, 0.08);
+  }
+
+  .tag-filter-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--tan-dim);
+    text-transform: uppercase;
+  }
+
+  .tag-filter-value {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--pink);
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border: 1px solid var(--pink-dim);
+    border-radius: 999px;
+  }
+
+  .tag-filter-clear {
+    background: transparent;
+    border: none;
+    color: var(--tan-dim);
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .tag-filter-clear:hover {
+    color: var(--pink);
+  }
+
   .filters-bar {
     background: var(--surface);
     border: 1px solid var(--border);

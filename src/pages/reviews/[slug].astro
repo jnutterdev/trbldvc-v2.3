@@ -120,7 +120,7 @@ const listenIcons: Record<string, string> = {
         <p class="tags-label"><span>&#x25A0;</span> tagged</p>
         <div class="tags-list">
           {data.tags.map(tag => (
-            <span class="tag">{tag}</span>
+            <a href={`/archive?tag=${encodeURIComponent(tag)}`} class="tag">{tag}</a>
           ))}
         </div>
       </div>
