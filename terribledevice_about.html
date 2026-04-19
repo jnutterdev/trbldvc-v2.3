@@ -500,6 +500,16 @@
             }
             .social-link:hover {
                 color: var(--pink);
+                animation: social-glitch 0.35s linear;
+            }
+            @keyframes social-glitch {
+                0%, 100% { transform: translate(0) skewX(0deg); filter: none; }
+                15% { transform: translate(-3px, 0) skewX(-1deg); filter: brightness(1.5) hue-rotate(20deg); }
+                30% { transform: translate(3px, 1px) skewX(1deg); filter: none; }
+                45% { transform: translate(-2px, -1px); filter: brightness(0.8); }
+                60% { transform: translate(2px, 0) skewX(-0.5deg); filter: hue-rotate(-20deg); }
+                75% { transform: translate(-1px, 1px); filter: none; }
+                90% { transform: translate(1px, 0); }
             }
 
             @media (max-width: 900px) {
