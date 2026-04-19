@@ -116,6 +116,28 @@
         color: var(--pink);
     }
 
+    .page-header {
+        margin-bottom: 28px;
+    }
+    .page-eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: var(--pink);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .page-eyebrow::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--pink-dim);
+        opacity: 0.4;
+    }
+
     .td-grid {
         display: grid;
         grid-template-columns: 1.5fr 1fr;
@@ -391,6 +413,8 @@
         transition:
             border-color 0.2s ease,
             box-shadow 0.2s ease;
+        text-decoration: none;
+        display: block;
     }
     .review-card:hover,
     .hero-panel:hover {
@@ -510,6 +534,7 @@
     .footer-sig {
         font-family: var(--mono);
         font-size: 11px;
+        text-transform: uppercase;
         letter-spacing: 0.1em;
         color: var(--pink-dim);
     }
@@ -607,11 +632,21 @@
             </div>
         </nav>
 
+        <header class="page-header">
+            <div class="page-eyebrow">&#x25A0;&nbsp; Begin transmission</div>
+        </header>
+
         <div class="td-grid">
             <!-- ── Hero panel: music featured review ── -->
-            <div
+            <a
+                href="terribledevice_post.html"
                 class="panel hero-panel p-sharp-bl"
-                style="display: flex; flex-direction: column"
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    text-decoration: none;
+                    color: inherit;
+                "
             >
                 <p class="panel-meta">
                     <span>&#x25A0;</span> featured review — 04/2026
@@ -634,7 +669,7 @@
                     <div class="score-num">8.5</div>
                     <div class="score-label">recommended<br />listen</div>
                 </div>
-            </div>
+            </a>
 
             <!-- ── Right column ── -->
             <div class="right-col">
@@ -996,7 +1031,10 @@
 
             <!-- ── Reviews row: 3 existing + 1 music card ── -->
             <div class="reviews-row">
-                <div class="review-card p-sharp-tl">
+                <a
+                    href="terribledevice_post.html"
+                    class="review-card p-sharp-tl"
+                >
                     <p class="panel-meta"><span>&#x25A0;</span> anime — 1988</p>
                     <h3 class="review-title">Akira</h3>
                     <p class="review-year">Katsuhiro Otomo</p>
@@ -1008,9 +1046,9 @@
                         <span class="review-score">9.1</span>
                         <span class="review-type">anime</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="review-card p-all">
+                <a href="terribledevice_post.html" class="review-card p-all">
                     <p class="panel-meta"><span>&#x25A0;</span> film — 1982</p>
                     <h3 class="review-title">Blade Runner</h3>
                     <p class="review-year">Ridley Scott</p>
@@ -1022,9 +1060,9 @@
                         <span class="review-score">9.6</span>
                         <span class="review-type">film</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="review-card p-all">
+                <a href="terribledevice_post.html" class="review-card p-all">
                     <p class="panel-meta"><span>&#x25A0;</span> film — 1995</p>
                     <h3 class="review-title">Ghost in the Shell</h3>
                     <p class="review-year">Mamoru Oshii</p>
@@ -1036,10 +1074,13 @@
                         <span class="review-score">9.3</span>
                         <span class="review-type">film</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- ── Music index card ── -->
-                <div class="review-card p-sharp-br">
+                <a
+                    href="terribledevice_post.html"
+                    class="review-card p-sharp-br"
+                >
                     <p class="panel-meta"><span>&#x25A0;</span> music — 2003</p>
                     <h3 class="review-title">Substanz T:6</h3>
                     <p class="review-year">
@@ -1054,7 +1095,7 @@
                         <span class="review-score">8.5</span>
                         <span class="review-type">music</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -1083,7 +1124,7 @@
                     <i class="fa-brands fa-bluesky"></i>
                 </a>
             </div>
-            <span class="footer-sig">&#x25A0; signal found</span>
+            <span class="footer-sig">&#x25A0; end transmission</span>
         </div>
     </div>
 </body>

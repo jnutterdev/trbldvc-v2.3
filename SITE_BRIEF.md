@@ -236,7 +236,7 @@ Three-part layout (collapses to column on mobile):
 ```
 © 2014-2026 terribledevice.com — cyberpunk in pop culture
                 [Instagram] [Bluesky]
-                                        ■ signal found
+                                        ■ end transmission
 ```
 
 Social links: Instagram (`@terribledevice_`), Bluesky (`@terribledevice.com`)
@@ -258,3 +258,107 @@ Social links: Instagram (`@terribledevice_`), Bluesky (`@terribledevice.com`)
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `≤900px` (tablet) | Archive/post: 2-col card grid; About: 2-col stat cards; index reviews row: 2-col; page titles reduced                                                                        |
 | `≤640px` (mobile) | Single column throughout; `--r: 14px`; footer stacks vertically; index panels stack as: hero image → right column (about/numbers/currently) → featured review → review cards |
+
+---
+
+## Tina CMS Content Model
+
+Four collections and two globals cover everything on the site that needs to be editable without touching code.
+
+---
+
+### Collection: `reviews`
+
+One document per review. Two templates within the collection handle the different score-bar and byline fields for music vs everything else.
+
+**Template: `review` (non-music)**
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `title` | string | |
+| `creator` | string | Author, director, etc. |
+| `medium` | enum | `novel \| film \| anime \| tv \| comic` |
+| `year` | number | Publication / release year |
+| `era` | enum | `80s \| 90s \| 00s \| 10s` — used for archive filtering |
+| `score` | number | 0–10, half-point increments |
+| `verdict` | string | e.g. "Essential Reading" |
+| `summary` | string | One- or two-sentence score block blurb |
+| `blurb` | string | Card-level description (1–2 sentences, shown in archive and related grids) |
+| `body` | rich-text | Long-form review prose |
+| `pull_quote` | string | Blockquote pulled into the body |
+| `score_bars` | list of objects | `{ label: string, value: number (0–100) }` — typically 4 bars, labels shift per medium (e.g. Atmosphere, Worldbuilding, Prose, Pacing for novels) |
+| `tags` | list of strings | Tag chips on the post page |
+| `published_date` | datetime | |
+| `featured` | boolean | If true, this review populates the homepage hero panel |
+| `related` | list of references | Up to 3 related reviews |
+| `cover_image` | image | Used in the hero image panel when this review is featured |
+
+**Template: `review_music`**
+
+All fields from `review` except `creator`, plus:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `artist` | string | |
+| `label` | string | Record label |
+| `genre_tags` | list of strings | Genre tags shown in the post byline |
+| `listen_platform` | enum | `bandcamp \| ampwall \| soundcloud \| youtube` |
+| `listen_url` | string | Link to best available version |
+| `score_bars` | list of objects | Same structure; labels are the five scoring criteria (Signal, Architecture, Current, Atmosphere, Signal-to-Noise) |
+
+---
+
+### Collection: `quotes`
+
+Drives the hero image panel on the homepage. At build time, Astro selects a quote whose tags overlap with the featured review's tags or medium.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `text` | string | The quote itself |
+| `attribution` | string | e.g. "Bruce Sterling" |
+| `tags` | list of strings | Thematic tags for matching — use the same vocabulary as review tags (e.g. `novel`, `film`, `music`, `cyberpunk`) |
+
+---
+
+### Global: `siteSettings`
+
+Singleton for values that appear across all pages.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `tagline` | string | "cyberpunk in pop culture" |
+| `about_blurb` | string | Short identity blurb used in the homepage About panel |
+| `copyright_start_year` | number | 2014 |
+| `social.instagram` | string | Handle or full URL |
+| `social.bluesky` | string | Handle or full URL |
+| `social.rss` | string | Feed path |
+| `social.email` | string | Contact email |
+
+---
+
+### Global: `currently`
+
+Singleton for the manually-updated "Currently" panel on the homepage.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `watching.title` | string | |
+| `watching.creator` | string | Director / studio |
+| `watching.year` | number | |
+| `reading.title` | string | |
+| `reading.creator` | string | Author |
+| `reading.year` | number | |
+| `listening.title` | string | |
+| `listening.creator` | string | Artist |
+| `listening.year` | number | |
+
+---
+
+### Build-time derived values (not in Tina)
+
+The following are computed at build time from the `reviews` collection and don't need a CMS field:
+
+- **By the Numbers panel** — total review count and highest-rated per medium are derived by querying all review documents and sorting by score.
+- **Archive grid** — all reviews rendered from the collection; `data-medium` and `data-era` attributes come from the document fields.
+- **Related reviews grid** — resolved from the `related` reference list on each review document.
+- **Word count** — counted from the `body` rich-text at build time.
