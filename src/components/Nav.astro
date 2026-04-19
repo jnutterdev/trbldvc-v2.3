@@ -1,0 +1,15 @@
+---
+interface Props {
+  activeNav?: 'archive' | 'about' | '';
+}
+const { activeNav = '' } = Astro.props;
+---
+<nav class="td-nav">
+  <div class="td-logo">
+    <a href="/">Terrible<span>Device</span></a>
+  </div>
+  <div class="td-nav-links">
+    <a href="/archive" class={activeNav === 'archive' ? 'active' : ''}>Archive</a>
+    <a href="/about" class={activeNav === 'about' ? 'active' : ''}>About</a>
+  </div>
+</nav>

@@ -1,0 +1,29 @@
+---
+import siteSettings from '../content/siteSettings/index.json';
+---
+<div class="footer-bar">
+  <span class="footer-copy">
+    &copy; {siteSettings.copyright_start_year}–{new Date().getFullYear()} terribledevice.com &mdash; {siteSettings.tagline}
+  </span>
+  <div class="footer-social">
+    <a
+      href={siteSettings.social.instagram}
+      class="social-link"
+      target="_blank"
+      rel="noopener"
+      aria-label="Instagram"
+    >
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a
+      href={siteSettings.social.bluesky}
+      class="social-link"
+      target="_blank"
+      rel="noopener"
+      aria-label="Bluesky"
+    >
+      <i class="fa-brands fa-bluesky"></i>
+    </a>
+  </div>
+  <span class="footer-sig">&#x25A0; end transmission</span>
+</div>

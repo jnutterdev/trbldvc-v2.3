@@ -1,0 +1,134 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  creator?: string;
+  artist?: string;
+  label?: string;
+  medium: string;
+  year: number;
+  blurb?: string;
+  score: number;
+  cornerClass?: string;
+}
+
+const {
+  slug,
+  title,
+  creator,
+  artist,
+  label,
+  medium,
+  year,
+  blurb,
+  score,
+  cornerClass = 'rc-all',
+} = Astro.props;
+
+const displayCreator = medium === 'music'
+  ? [artist, label].filter(Boolean).join(' \u2014 ')
+  : creator;
+---
+<a href={`/reviews/${slug}`} class={`review-card ${cornerClass}`}>
+  <p class="panel-meta"><span>&#x25A0;</span> {medium} &mdash; {year}</p>
+  <h3 class="review-title">{title}</h3>
+  {displayCreator && <p class="review-creator">{displayCreator}</p>}
+  {blurb && <p class="review-blurb">{blurb}</p>}
+  <div class="review-footer">
+    <span class="review-score">{score}</span>
+    <span class="review-type">{medium}</span>
+  </div>
+</a>
+
+<style>
+  .review-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 1.3rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .review-card:hover {
+    border-color: var(--pink);
+    box-shadow:
+      0 0 0 1px var(--pink-dim),
+      inset 0 0 24px rgba(255, 92, 141, 0.05);
+    animation: glitch 0.35s linear;
+  }
+
+  .review-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .review-card:hover::before {
+    opacity: 1;
+  }
+
+  .review-title {
+    font-family: var(--head);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    line-height: 1.05;
+  }
+
+  .review-creator {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--tan-dim);
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+
+  .review-blurb {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--tan-dim);
+    margin-bottom: 14px;
+    flex: 1;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  .review-score {
+    font-family: var(--head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--pink);
+    line-height: 1;
+  }
+
+  @media (max-width: 640px) {
+    .review-card {
+      border-radius: var(--r) !important;
+    }
+  }
+</style>

@@ -1,0 +1,508 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import currently from '../content/currently/index.json';
+import siteSettings from '../content/siteSettings/index.json';
+
+const allReviews = await getCollection('reviews');
+const allQuotes = await getCollection('quotes');
+
+// Featured review
+const featured = allReviews.find(r => r.data.featured);
+
+// Hero quote: match by tags/medium
+const heroQuote = featured
+  ? (allQuotes.find(q =>
+      q.data.tags?.some(t => featured.data.tags?.includes(t) || t === featured.data.medium)
+    ) ?? allQuotes[0])
+  : allQuotes[0];
+
+// Recent reviews: 4 most recent (excluding featured if desired)
+const recent = [...allReviews]
+  .sort((a, b) => {
+    const da = a.data.published_date ? new Date(a.data.published_date).getTime() : 0;
+    const db = b.data.published_date ? new Date(b.data.published_date).getTime() : 0;
+    return db - da;
+  })
+  .slice(0, 4);
+
+// By the numbers: highest rated per medium
+const mediums = ['film', 'comic', 'novel', 'anime', 'music'] as const;
+const topByMedium = mediums.map(m => {
+  const inMedium = allReviews.filter(r => r.data.medium === m);
+  return inMedium.sort((a, b) => b.data.score - a.data.score)[0];
+}).filter(Boolean);
+
+// Corner pattern for recent cards
+const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
+---
+<BaseLayout title="TERRIBLEDevice — cyberpunk in pop culture">
+  <header class="page-header">
+    <div class="page-eyebrow">&#x25A0;&nbsp; Begin transmission</div>
+  </header>
+
+  <div class="td-grid">
+    <!-- ── Hero panel: featured review ── -->
+    {featured && (
+      <a
+        href={`/reviews/${featured.slug}`}
+        class="panel hero-panel p-sharp-bl"
+      >
+        <p class="panel-meta"><span>&#x25A0;</span> featured review &mdash; {
+          featured.data.published_date
+            ? new Date(featured.data.published_date).toLocaleDateString('en-US', { month: '2-digit', year: 'numeric' })
+            : ''
+        }</p>
+        <h1 class="hero-title">
+          {featured.data.title}
+          <em>{featured.data.medium === 'music' ? featured.data.artist : featured.data.creator}</em>
+        </h1>
+        <p class="hero-sub">{featured.data.summary}</p>
+        <div class="hero-tags">
+          {featured.data.tags?.slice(0, 5).map((tag, i) => (
+            <span class={`tag${i < 2 ? ' active' : ''}`}>{tag}</span>
+          ))}
+        </div>
+        <div class="hero-score-row">
+          <div class="score-num">{featured.data.score}</div>
+          <div class="score-label">{featured.data.verdict}</div>
+        </div>
+      </a>
+    )}
+
+    <!-- ── Right column ── -->
+    <div class="right-col">
+      <!-- About panel -->
+      <div class="panel stat-panel p-sharp-tr" style="justify-content: center">
+        <p class="panel-meta"><span>&#x25A0;</span> about</p>
+        <p class="about-title">Terrible<span>Device</span></p>
+        <p class="about-body">{siteSettings.about_blurb}</p>
+      </div>
+
+      <!-- By the numbers panel -->
+      <div class="panel excerpt-panel p-all" style="display: flex; flex-direction: column; gap: 14px">
+        <p class="panel-meta"><span>&#x25A0;</span> by the numbers</p>
+        <div class="stat-row">
+          <span class="stat-key">Reviews</span>
+          <span class="stat-val">{allReviews.length}</span>
+        </div>
+        <div class="stat-divider"></div>
+        <p class="stat-key" style="margin-bottom: 2px">Highest rated</p>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          {topByMedium.map(r => (
+            <div class="top-row">
+              <span class="top-score">{r.data.score}</span>
+              <span class="top-title">{r.data.title}</span>
+              <span class="review-type">{r.data.medium}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Currently panel -->
+      <div class="panel currently-panel p-sharp-br" style="display: flex; flex-direction: column; gap: 16px">
+        <p class="panel-meta"><span>&#x25A0;</span> currently</p>
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          {[
+            { label: 'Watching', item: currently.watching },
+            { label: 'Reading', item: currently.reading },
+            { label: 'Listening', item: currently.listening },
+          ].map(({ label, item }, i) => (
+            <>
+              {i > 0 && <div class="stat-divider"></div>}
+              <div>
+                <p class="stat-key" style="margin-bottom: 6px">{label}</p>
+                <p class="currently-title">{item.title}</p>
+                <p class="currently-meta">{item.creator} &mdash; {item.year}</p>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Hero image panel ── -->
+    <div class="hero-image-panel p-sharp-tl">
+      {featured?.data.cover_image && (
+        <div
+          class="hero-image-placeholder"
+          style={`background-image: url('${featured.data.cover_image}')`}
+        ></div>
+      )}
+      <div class="hero-image-logo">
+        {heroQuote && (
+          <div class="hero-quote-text">
+            {heroQuote.data.text.split('\n').map((line, i, arr) => (
+              i === arr.length - 1
+                ? <span style="color: var(--pink); display: block">{line}</span>
+                : <>{line}<br /></>
+            ))}
+          </div>
+        )}
+        <div class="hero-image-logo-rule"></div>
+        <div class="hero-image-logo-tag">{heroQuote?.data.attribution}</div>
+      </div>
+    </div>
+
+    <!-- ── Recent reviews row ── -->
+    <div class="reviews-row">
+      {recent.map((r, i) => (
+        <ReviewCard
+          slug={r.slug}
+          title={r.data.title}
+          creator={r.data.creator}
+          artist={r.data.artist}
+          label={r.data.label}
+          medium={r.data.medium}
+          year={r.data.year}
+          blurb={r.data.blurb}
+          score={r.data.score}
+          cornerClass={recentCorners[i] ?? 'p-all'}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .td-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .right-col {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ── Hero panel ── */
+  .hero-panel {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel:hover {
+    border-color: var(--pink);
+    box-shadow:
+      0 0 0 1px var(--pink-dim),
+      inset 0 0 24px rgba(255, 92, 141, 0.05);
+    animation: glitch 0.35s linear;
+  }
+
+  .hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0, 0, 0, 0.18) 3px, rgba(0, 0, 0, 0.18) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .hero-panel:hover::before {
+    opacity: 1;
+  }
+
+  .hero-title {
+    font-family: var(--head);
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title em {
+    color: var(--pink);
+    font-style: normal;
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: var(--tan-dim);
+    line-height: 1.6;
+    max-width: 320px;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-score-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .score-num {
+    font-family: var(--head);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--pink);
+    line-height: 1;
+  }
+
+  .score-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--tan-dim);
+    text-transform: uppercase;
+    line-height: 1.4;
+    max-width: 80px;
+  }
+
+  /* ── Right column panels ── */
+  .stat-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .about-title {
+    font-family: var(--head);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .about-title span {
+    color: var(--pink);
+  }
+
+  .about-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--tan-dim);
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .stat-key {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--tan-dim);
+    text-transform: uppercase;
+  }
+
+  .stat-val {
+    font-family: var(--head);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--tan);
+    letter-spacing: 0.04em;
+  }
+
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .top-score {
+    font-family: var(--head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pink);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .top-title {
+    font-family: var(--head);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .currently-panel {
+    flex: 1;
+  }
+
+  .currently-title {
+    font-family: var(--head);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  .currently-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--tan-dim);
+    letter-spacing: 0.12em;
+  }
+
+  /* ── Hero image panel ── */
+  .hero-image-panel {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.4rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    min-height: 280px;
+  }
+
+  .hero-image-placeholder {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.75) contrast(1.15) saturate(0.8) hue-rotate(-20deg);
+  }
+
+  .hero-image-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(115, 37, 78, 0.45) 0%, rgba(58, 90, 110, 0.25) 60%, rgba(13, 12, 15, 0.6) 100%);
+    mix-blend-mode: color;
+    pointer-events: none;
+  }
+
+  .hero-image-logo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.4rem 1.4rem;
+    background: linear-gradient(to top, rgba(13, 12, 15, 0.85) 0%, transparent 100%);
+    z-index: 2;
+  }
+
+  .hero-quote-text {
+    font-family: var(--head);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .hero-image-logo-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0.6rem 0 0.5rem;
+  }
+
+  .hero-image-logo-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--tan-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── Reviews row ── */
+  .reviews-row {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 900px) {
+    .reviews-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+      font-size: 52px;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .td-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      flex: none;
+    }
+
+    .hero-image-panel {
+      grid-column: 1;
+      grid-row: 1;
+      min-height: 200px;
+    }
+
+    .right-col {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .hero-panel {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .reviews-row {
+      grid-column: 1;
+      grid-row: 4;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+      font-size: 44px;
+    }
+
+    .hero-sub {
+      max-width: 100%;
+    }
+  }
+</style>
