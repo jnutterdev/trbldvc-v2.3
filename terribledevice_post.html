@@ -133,7 +133,7 @@
             /* ── Breadcrumb ── */
             .breadcrumb {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -168,7 +168,7 @@
 
             .post-eyebrow {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.2em;
                 color: var(--pink);
                 text-transform: uppercase;
@@ -205,7 +205,7 @@
 
             .post-byline {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -286,7 +286,7 @@
             }
 
             .score-summary {
-                font-size: 13px;
+                font-size: 14px;
                 color: var(--tan-dim);
                 line-height: 1.6;
             }
@@ -311,7 +311,7 @@
 
             .bar-key {
                 font-family: var(--mono);
-                font-size: 9px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -335,7 +335,7 @@
             }
 
             .post-body p {
-                font-size: 15px;
+                font-size: 16px;
                 line-height: 1.8;
                 color: var(--tan-dim);
                 margin-bottom: 1.2em;
@@ -380,17 +380,27 @@
             /* ── Tags ── */
             .tags-section {
                 padding-top: 24px;
-                border-top: 1px solid var(--border);
                 margin-bottom: 64px;
             }
 
             .tags-label {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.18em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
                 margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .tags-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--tan-dim);
+                opacity: 0.4;
             }
 
             .tags-label span {
@@ -406,7 +416,7 @@
 
             .tag {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.12em;
                 padding: 5px 14px;
                 border: 1px solid var(--border);
@@ -433,7 +443,7 @@
 
             .section-header {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.2em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -457,7 +467,7 @@
             .related-grid {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 10px;
+                gap: 20px;
             }
 
             .review-card {
@@ -545,7 +555,7 @@
 
             .panel-meta {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.18em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -570,14 +580,14 @@
 
             .review-author {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 color: var(--tan-dim);
                 letter-spacing: 0.14em;
                 margin-bottom: 10px;
             }
 
             .review-blurb {
-                font-size: 12px;
+                font-size: 13px;
                 line-height: 1.6;
                 color: var(--tan-dim);
                 margin-bottom: 14px;
@@ -598,7 +608,7 @@
 
             .review-type {
                 font-family: var(--mono);
-                font-size: 9px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 padding: 3px 10px;
                 border: 1px solid var(--steel);
@@ -614,19 +624,19 @@
                 justify-content: space-between;
                 padding: 32px 4px 0;
                 margin-top: 60px;
-                border-top: 1px solid var(--border);
             }
 
             .footer-copy {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 13px;
                 letter-spacing: 0.1em;
                 color: var(--tan-dim);
             }
 
             .footer-sig {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
+                text-transform: uppercase;
                 letter-spacing: 0.1em;
                 color: var(--pink-dim);
             }
@@ -637,7 +647,7 @@
             }
             .social-link {
                 color: var(--pink-dim);
-                font-size: 15px;
+                font-size: 20px;
                 text-decoration: none;
                 display: inline-block;
                 transition: color 0.2s ease;
@@ -799,27 +809,17 @@
                 </div>
             </nav>
 
-            <div class="breadcrumb">
-                <a href="#">Reviews</a>
-                <span>/</span>
-                <a href="#">Novel</a>
-                <span>/</span>
-                Neuromancer
-            </div>
+            <header class="post-header">
+                <div class="post-eyebrow">&#x25A0;&nbsp; Novel</div>
+                <h1 class="post-title">Neuromancer</h1>
+                <div class="post-byline">
+                    <span>By William Gibson</span>
+                    <span>Published 04 / 2026</span>
+                    <span>2,100 words</span>
+                </div>
+            </header>
 
             <div class="post-wrap">
-                <header class="post-header">
-                    <div class="post-eyebrow">
-                        &#x25A0;&nbsp; Novel &mdash; 1984
-                    </div>
-                    <h1 class="post-title">Neuromancer<em>Gibson</em></h1>
-                    <div class="post-byline">
-                        <span>By William Gibson</span>
-                        <span>Published 04 / 2026</span>
-                        <span>2,100 words</span>
-                    </div>
-                </header>
-
                 <div class="score-block">
                     <div class="score-big">9.4</div>
                     <div class="score-meta">
@@ -950,6 +950,14 @@
                     </p>
                 </div>
 
+                <div class="breadcrumb">
+                    <a href="#">Reviews</a>
+                    <span>/</span>
+                    <a href="#">Novel</a>
+                    <span>/</span>
+                    Neuromancer
+                </div>
+
                 <div class="tags-section">
                     <p class="tags-label"><span>&#x25A0;</span> tagged</p>
                     <div class="tags-list">
@@ -1049,7 +1057,7 @@
                         <i class="fa-brands fa-bluesky"></i>
                     </a>
                 </div>
-                <span class="footer-sig">&#x25A0; signal found</span>
+                <span class="footer-sig">&#x25A0; end transmission</span>
             </div>
         </div>
     </body>

@@ -61,6 +61,7 @@
                 min-height: 100vh;
                 overflow-x: hidden;
             }
+
             body::before {
                 background-image: url("tech-swirl.png");
                 background-size: cover;
@@ -73,6 +74,7 @@
                 opacity: 0.03;
                 content: "";
             }
+
             .td-page {
                 padding: 20px;
                 max-width: 1100px;
@@ -117,24 +119,33 @@
             }
             .page-header {
                 margin-bottom: 28px;
-                display: flex;
-                align-items: flex-end;
-                justify-content: space-between;
-                gap: 20px;
             }
+
             .page-eyebrow {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.2em;
                 color: var(--pink);
                 text-transform: uppercase;
-                margin-bottom: 10px;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
+
+            .page-eyebrow::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--pink-dim);
+                opacity: 0.4;
+            }
+
             .page-title {
                 font-family: var(--head);
                 font-size: 72px;
                 font-weight: 700;
-                line-height: 0.88;
+                line-height: 0.85;
                 letter-spacing: -0.01em;
                 color: #fff;
                 text-transform: uppercase;
@@ -173,7 +184,7 @@
             }
             .filter-label {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.16em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -186,7 +197,7 @@
             }
             .filter-pill {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.1em;
                 padding: 4px 12px;
                 border: 1px solid var(--border);
@@ -216,7 +227,7 @@
             }
             .filter-reset {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -233,7 +244,7 @@
             .reviews-grid {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 10px;
+                gap: 20px;
             }
             .review-card {
                 background: var(--surface2);
@@ -325,7 +336,7 @@
             }
             .panel-meta {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 letter-spacing: 0.18em;
                 color: var(--tan-dim);
                 text-transform: uppercase;
@@ -347,13 +358,13 @@
             }
             .review-creator {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
                 color: var(--tan-dim);
                 letter-spacing: 0.14em;
                 margin-bottom: 10px;
             }
             .review-blurb {
-                font-size: 12px;
+                font-size: 13px;
                 line-height: 1.6;
                 color: var(--tan-dim);
                 margin-bottom: 14px;
@@ -375,7 +386,7 @@
             }
             .review-type {
                 font-family: var(--mono);
-                font-size: 9px;
+                font-size: 11px;
                 letter-spacing: 0.14em;
                 padding: 3px 10px;
                 border: 1px solid var(--steel);
@@ -417,13 +428,14 @@
             }
             .footer-copy {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 13px;
                 letter-spacing: 0.1em;
                 color: var(--tan-dim);
             }
             .footer-sig {
                 font-family: var(--mono);
-                font-size: 10px;
+                font-size: 11px;
+                text-transform: uppercase;
                 letter-spacing: 0.1em;
                 color: var(--pink-dim);
             }
@@ -434,7 +446,7 @@
             }
             .social-link {
                 color: var(--pink-dim);
-                font-size: 15px;
+                font-size: 20px;
                 text-decoration: none;
                 display: inline-block;
                 transition: color 0.2s ease;
@@ -511,16 +523,10 @@
                 </div>
             </nav>
 
-            <div class="page-header">
-                <div>
-                    <div class="page-eyebrow">&#x25A0;&nbsp; All reviews</div>
-                    <h1 class="page-title">The <em>Archive</em></h1>
-                </div>
-                <div class="result-count">
-                    Showing <span id="visibleCount">14</span> of
-                    <span id="totalCount">14</span>
-                </div>
-            </div>
+            <header class="page-header">
+                <div class="page-eyebrow">&#x25A0;&nbsp; All reviews</div>
+                <h1 class="page-title">Data <em>Archive</em></h1>
+            </header>
 
             <div class="filters-bar">
                 <div class="filter-group">
@@ -618,7 +624,7 @@
 
             <div class="reviews-grid" id="reviewsGrid">
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-tl"
                     data-medium="novel"
                     data-era="80s"
@@ -640,7 +646,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-all"
                     data-medium="film"
                     data-era="80s"
@@ -661,7 +667,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-br"
                     data-medium="anime"
                     data-era="80s"
@@ -682,7 +688,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-bl"
                     data-medium="film"
                     data-era="90s"
@@ -703,7 +709,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-all"
                     data-medium="novel"
                     data-era="90s"
@@ -725,7 +731,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-tr"
                     data-medium="tv"
                     data-era="80s"
@@ -746,7 +752,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-tl"
                     data-medium="anime"
                     data-era="90s"
@@ -768,7 +774,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-all"
                     data-medium="novel"
                     data-era="80s"
@@ -789,7 +795,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-br"
                     data-medium="film"
                     data-era="90s"
@@ -811,7 +817,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-bl"
                     data-medium="comic"
                     data-era="80s"
@@ -833,7 +839,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-all"
                     data-medium="anime"
                     data-era="90s"
@@ -855,7 +861,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-tr"
                     data-medium="novel"
                     data-era="90s"
@@ -878,7 +884,7 @@
 
                 <!-- ── Music cards ── -->
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-tl"
                     data-medium="music"
                     data-era="00s"
@@ -902,7 +908,7 @@
                 </a>
 
                 <a
-                    href="#"
+                    href="terribledevice_post.html"
                     class="review-card rc-all"
                     data-medium="music"
                     data-era="90s"
@@ -955,7 +961,7 @@
                         ><i class="fa-brands fa-bluesky"></i
                     ></a>
                 </div>
-                <span class="footer-sig">&#x25A0; signal found</span>
+                <span class="footer-sig">&#x25A0; end transmission</span>
             </div>
         </div>
 
