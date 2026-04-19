@@ -271,7 +271,9 @@ Four collections and two globals cover everything on the site that needs to be e
 
 One document per review. Two templates within the collection handle the different score-bar and byline fields for music vs everything else.
 
-**Template: `review` (non-music)**
+**Template: `review` (all non-music media)**
+
+One template covers novel, film, anime, TV, and comic. The data shape is identical across these media — only the `medium` field value and the score bar labels differ. No separate per-medium templates are needed.
 
 | Field | Type | Notes |
 | --- | --- | --- |
@@ -286,7 +288,7 @@ One document per review. Two templates within the collection handle the differen
 | `blurb` | string | Card-level description (1–2 sentences, shown in archive and related grids) |
 | `body` | rich-text | Long-form review prose |
 | `pull_quote` | string | Blockquote pulled into the body |
-| `score_bars` | list of objects | `{ label: string, value: number (0–100) }` — typically 4 bars, labels shift per medium (e.g. Atmosphere, Worldbuilding, Prose, Pacing for novels) |
+| `score_bars` | list of objects | `{ label: string, value: number (0–100) }` — typically 4 bars; labels are flexible and should suit the medium. Conventions: Novel → Prose / Worldbuilding / Pacing / Atmosphere; Film & Anime → Cinematography / Score / Pacing / Atmosphere; TV → Writing / Performance / Pacing / Atmosphere; Comic → Art / Writing / Pacing / Atmosphere. Set via Tina field description so the convention lives in the CMS UI. |
 | `tags` | list of strings | Tag chips on the post page |
 | `published_date` | datetime | |
 | `featured` | boolean | If true, this review populates the homepage hero panel |
@@ -295,16 +297,30 @@ One document per review. Two templates within the collection handle the differen
 
 **Template: `review_music`**
 
-All fields from `review` except `creator`, plus:
+Music is structurally distinct: fixed 5-category scoring rubric, separate artist/label fields, genre tags in the byline, and a listen link. All other fields match `review`.
 
 | Field | Type | Notes |
 | --- | --- | --- |
+| `title` | string | Album title |
 | `artist` | string | |
 | `label` | string | Record label |
-| `genre_tags` | list of strings | Genre tags shown in the post byline |
-| `listen_platform` | enum | `bandcamp \| ampwall \| soundcloud \| youtube` |
-| `listen_url` | string | Link to best available version |
-| `score_bars` | list of objects | Same structure; labels are the five scoring criteria (Signal, Architecture, Current, Atmosphere, Signal-to-Noise) |
+| `year` | number | Release year |
+| `era` | enum | `80s \| 90s \| 00s \| 10s` |
+| `score` | number | 0–10, half-point increments; set editorially, not an average of the category bars |
+| `verdict` | string | e.g. "Recommended Listen" |
+| `summary` | string | One- or two-sentence score block blurb |
+| `blurb` | string | Card-level description |
+| `body` | rich-text | Long-form review prose |
+| `pull_quote` | string | |
+| `genre_tags` | list of strings | Genre tags shown in the post byline (e.g. power noise, harsh EBM, industrial) |
+| `score_bars` | list of objects | Fixed 5-bar rubric: Signal (Production & sound design) / Architecture (Composition & structure) / Current (Energy & drive) / Atmosphere (World & mood) / Signal-to-Noise (Originality & distinction). Each `{ label: string, value: number (0–100) }`. |
+| `listen_platform` | enum | `bandcamp \| ampwall \| soundcloud \| youtube` — whichever has the best available version |
+| `listen_url` | string | |
+| `tags` | list of strings | |
+| `published_date` | datetime | |
+| `featured` | boolean | |
+| `related` | list of references | Up to 3 related reviews; music-only related entries preferred |
+| `cover_image` | image | |
 
 ---
 
