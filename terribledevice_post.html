@@ -380,7 +380,6 @@
             /* ── Tags ── */
             .tags-section {
                 padding-top: 24px;
-                border-top: 1px solid var(--border);
                 margin-bottom: 64px;
             }
 
@@ -391,6 +390,17 @@
                 color: var(--tan-dim);
                 text-transform: uppercase;
                 margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .tags-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--tan-dim);
+                opacity: 0.4;
             }
 
             .tags-label span {
@@ -614,7 +624,6 @@
                 justify-content: space-between;
                 padding: 32px 4px 0;
                 margin-top: 60px;
-                border-top: 1px solid var(--border);
             }
 
             .footer-copy {
@@ -799,27 +808,17 @@
                 </div>
             </nav>
 
-            <div class="breadcrumb">
-                <a href="#">Reviews</a>
-                <span>/</span>
-                <a href="#">Novel</a>
-                <span>/</span>
-                Neuromancer
-            </div>
+            <header class="post-header">
+                <div class="post-eyebrow">&#x25A0;&nbsp; Novel</div>
+                <h1 class="post-title">Neuromancer</h1>
+                <div class="post-byline">
+                    <span>By William Gibson</span>
+                    <span>Published 04 / 2026</span>
+                    <span>2,100 words</span>
+                </div>
+            </header>
 
             <div class="post-wrap">
-                <header class="post-header">
-                    <div class="post-eyebrow">
-                        &#x25A0;&nbsp; Novel &mdash; 1984
-                    </div>
-                    <h1 class="post-title">Neuromancer<em>Gibson</em></h1>
-                    <div class="post-byline">
-                        <span>By William Gibson</span>
-                        <span>Published 04 / 2026</span>
-                        <span>2,100 words</span>
-                    </div>
-                </header>
-
                 <div class="score-block">
                     <div class="score-big">9.4</div>
                     <div class="score-meta">
@@ -948,6 +947,14 @@
                         >, often without knowing it. To read Neuromancer in 2026
                         is to read the source code.
                     </p>
+                </div>
+
+                <div class="breadcrumb">
+                    <a href="#">Reviews</a>
+                    <span>/</span>
+                    <a href="#">Novel</a>
+                    <span>/</span>
+                    Neuromancer
                 </div>
 
                 <div class="tags-section">
