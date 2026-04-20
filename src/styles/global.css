@@ -208,6 +208,10 @@ body::before {
   color: var(--pink);
 }
 
+a.tag:hover {
+  animation: badge-pulse 1.8s ease-in-out infinite;
+}
+
 /* ── Review type badge ── */
 .review-type {
   font-family: var(--mono);
@@ -225,6 +229,12 @@ body::before {
 a.review-type:hover {
   border-color: var(--pink-dim);
   color: var(--pink);
+  animation: badge-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 4px rgba(255, 92, 141, 0.2); }
+  50%       { box-shadow: 0 0 10px rgba(255, 92, 141, 0.6), 0 0 2px rgba(255, 92, 141, 0.3) inset; }
 }
 
 /* ── Glitch animation ── */
