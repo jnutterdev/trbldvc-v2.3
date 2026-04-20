@@ -94,7 +94,7 @@ const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
             <div class="top-row">
               <span class="top-score">{r.data.score}</span>
               <span class="top-title">{r.data.title}</span>
-              <span class="review-type">{r.data.medium}</span>
+              <a href={`/archive?medium=${r.data.medium}`} class="review-type">{r.data.medium}</a>
             </div>
           ))}
         </div>

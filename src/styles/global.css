@@ -218,6 +218,13 @@ body::before {
   border-radius: 999px;
   color: var(--steel-lt);
   text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+a.review-type:hover {
+  border-color: var(--pink-dim);
+  color: var(--pink);
 }
 
 /* ── Glitch animation ── */
