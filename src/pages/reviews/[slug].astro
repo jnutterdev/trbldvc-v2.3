@@ -111,6 +111,11 @@ const listenIcons: Record<string, string> = {
 
     <!-- Review body -->
     <div class="post-body">
+      {data.cover_image && (
+        <div class="cover-float">
+          <img src={data.cover_image} alt={data.title} class="cover-img" />
+        </div>
+      )}
       <Content />
     </div>
 
@@ -374,6 +379,33 @@ const listenIcons: Record<string, string> = {
     margin-bottom: 40px;
   }
 
+  .cover-float {
+    float: right;
+    margin: 0 0 20px 28px;
+    max-width: 220px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-float::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.15) 4px
+    );
+    pointer-events: none;
+  }
+
+  .cover-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   .post-body :global(p) {
     font-size: 16px;
     line-height: 1.8;
@@ -381,7 +413,7 @@ const listenIcons: Record<string, string> = {
     margin-bottom: 1.2em;
   }
 
-  .post-body :global(p:first-child::first-letter) {
+  .post-body :global(p:first-of-type::first-letter) {
     font-family: var(--head);
     font-size: 64px;
     font-weight: 700;
@@ -604,8 +636,14 @@ const listenIcons: Record<string, string> = {
       width: 100%;
     }
 
-    .post-body :global(p:first-child::first-letter) {
+    .post-body :global(p:first-of-type::first-letter) {
       font-size: 44px;
+    }
+
+    .cover-float {
+      float: none;
+      max-width: 100%;
+      margin: 0 0 20px 0;
     }
 
     .related-grid {
