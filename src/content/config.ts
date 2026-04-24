@@ -22,7 +22,7 @@ const reviews = defineCollection({
     listen_platform: z.enum(['bandcamp', 'ampwall', 'soundcloud', 'youtube']).optional(),
     listen_url: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    published_date: z.string().optional(),
+    published_date: z.coerce.date().optional(),
     featured: z.boolean().optional(),
     related: z.array(z.string()).optional(),
     cover_image: z.string().optional(),
