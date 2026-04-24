@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allReviews = await getCollection('reviews');
+const allReviews = await getCollection('reviews', ({ data }) => !data.draft);
 
 // Sort by published date descending
 const reviews = [...allReviews].sort((a, b) => {
@@ -10,6 +10,17 @@ const reviews = [...allReviews].sort((a, b) => {
   const db = b.data.published_date ? new Date(b.data.published_date).getTime() : 0;
   return db - da;
 });
+
+const mediumCategory: Record<string, string> = {
+  novel: 'datafiles',
+  comic: 'datafiles',
+  film: 'transmission',
+  anime: 'transmission',
+  tv: 'transmission',
+  videogame: 'interface',
+  ttrpg: 'interface',
+  music: 'signal',
+};
 ---
 <BaseLayout title="TERRIBLEDevice — Archive" activeNav="archive">
   <header class="page-header">
@@ -19,15 +30,13 @@ const reviews = [...allReviews].sort((a, b) => {
 
   <div class="filters-bar">
     <div class="filter-group">
-      <span class="filter-label">Medium</span>
+      <span class="filter-label">Type</span>
       <div class="filter-pills">
         <button class="filter-pill active" data-filter="medium" data-value="all">All</button>
-        <button class="filter-pill" data-filter="medium" data-value="novel">Novel</button>
-        <button class="filter-pill" data-filter="medium" data-value="film">Film</button>
-        <button class="filter-pill" data-filter="medium" data-value="anime">Anime</button>
-        <button class="filter-pill" data-filter="medium" data-value="tv">TV</button>
-        <button class="filter-pill" data-filter="medium" data-value="comic">Comic</button>
-        <button class="filter-pill" data-filter="medium" data-value="music">Music</button>
+        <button class="filter-pill" data-filter="medium" data-value="datafiles">Datafiles</button>
+        <button class="filter-pill" data-filter="medium" data-value="transmission">Transmission</button>
+        <button class="filter-pill" data-filter="medium" data-value="interface">Interface</button>
+        <button class="filter-pill" data-filter="medium" data-value="signal">Signal</button>
       </div>
     </div>
     <div class="filter-divider"></div>
@@ -38,6 +47,8 @@ const reviews = [...allReviews].sort((a, b) => {
         <button class="filter-pill" data-filter="era" data-value="80s">80s</button>
         <button class="filter-pill" data-filter="era" data-value="90s">90s</button>
         <button class="filter-pill" data-filter="era" data-value="00s">00s</button>
+        <button class="filter-pill" data-filter="era" data-value="10s">10s</button>
+        <button class="filter-pill" data-filter="era" data-value="20s">20s</button>
       </div>
     </div>
     <button class="filter-reset" id="resetBtn">&#x25A0; Reset</button>
@@ -59,7 +70,7 @@ const reviews = [...allReviews].sort((a, b) => {
         <a
           href={`/reviews/${r.slug}`}
           class="review-card rc-all"
-          data-medium={r.data.medium}
+          data-medium={mediumCategory[r.data.medium] ?? r.data.medium}
           data-era={r.data.era}
           data-tags={r.data.tags?.join(',') ?? ''}
         >

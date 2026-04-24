@@ -7,9 +7,9 @@ const reviews = defineCollection({
     creator: z.string().optional(),
     artist: z.string().optional(),
     label: z.string().optional(),
-    medium: z.enum(['novel', 'film', 'anime', 'tv', 'comic', 'music']),
+    medium: z.enum(['novel', 'film', 'anime', 'tv', 'comic', 'music', 'videogame', 'ttrpg']),
     year: z.number(),
-    era: z.enum(['80s', '90s', '00s', '10s']),
+    era: z.enum(['80s', '90s', '00s', '10s', '20s']),
     score: z.number(),
     verdict: z.string().optional(),
     summary: z.string().optional(),
@@ -26,6 +26,7 @@ const reviews = defineCollection({
     featured: z.boolean().optional(),
     related: z.array(z.string()).optional(),
     cover_image: z.string().optional(),
+    draft: z.boolean().optional(),
   }),
 });
 
