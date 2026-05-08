@@ -1,29 +1,41 @@
 ---
-title: "void();"
-artist: "Access to Arasaka"
-medium: "music"
+title: void();
+artist: Access to Arasaka
+medium: music
 year: 2012
-era: "10s"
+era: 10s
 score: 8.5
-verdict: "Essential Atmosphere"
-summary: "Access to Arasaka builds the sound of a cyberpunk city from pure electronics — glitch, drone, and precisely cut signal. void(); is the record that defines what cyberpunk sounds like when guitars stay out of it."
-blurb: "Not the wailing guitars of NIN. The precise, atmospheric electronics of a world that runs on signal."
+verdict: Essential Atmosphere
+summary: 'Access to Arasaka builds the sound of a cyberpunk city from pure electronics — glitch, drone, and precisely cut signal. void(); is the record that defines what cyberpunk sounds like when guitars stay out of it.'
+blurb: 'Not the wailing guitars of NIN. The precise, atmospheric electronics of a world that runs on signal.'
 score_bars:
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 95
-  - label: "Architecture"
+  - label: Architecture
     value: 90
-  - label: "Signal"
+  - label: Signal
     value: 92
-  - label: "Texture"
+  - label: Texture
     value: 94
-genre_tags: ["glitch", "IDM", "dark ambient", "electronic"]
-listen_platform: "bandcamp"
-listen_url: "https://accesstoarasaka.bandcamp.com/album/void"
-tags: ["music", "2012", "access to arasaka", "glitch", "idm", "dark ambient", "cyberpunk", "electronic"]
-published_date: "2024-10-11T04:49:00.000Z"
-featured: false
-cover_image: "/images/posts/ata_void.jpg"
+genre_tags:
+  - glitch
+  - IDM
+  - dark ambient
+  - electronic
+listen_platform: bandcamp
+listen_url: 'https://accesstoarasaka.bandcamp.com/album/void'
+tags:
+  - music
+  - '2012'
+  - access to arasaka
+  - glitch
+  - idm
+  - dark ambient
+  - cyberpunk
+  - electronic
+published_date: 2024-10-11T04:49:00.000Z
+featured: true
+cover_image: /images/posts/ata_void.jpg
 ---
 
 When I think of cyberpunk soundtracks, my mind doesn't immediately jump to the wailing and distorted guitars often associated with bands like Nine Inch Nails. Instead, I envision the intricately crafted and precisely cut-up electronic sounds produced by artists such as Access to Arasaka. These artists create atmospheric and immersive soundscapes that truly capture the essence of the cyberpunk genre. Interestingly, the name Access to Arasaka is derived from the well-known RPG Cyberpunk, which further emphasizes the deep connection between the auditory experience and the thematic elements of this unique and captivating genre.

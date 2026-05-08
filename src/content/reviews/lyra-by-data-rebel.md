@@ -22,8 +22,8 @@ tags:
   - idm
   - data rebel
   - electronic
-published_date: "2024-06-10T04:58:00.000Z"
-featured: true
+published_date: 2024-06-10T04:58:00.000Z
+featured: false
 cover_image: /images/posts/datarebel_lyra.jpg
 ---
 
