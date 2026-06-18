@@ -35,6 +35,12 @@ export default defineConfig({
         },
         fields: [
           {
+            name: "draft",
+            type: "boolean",
+            label: "Draft",
+            description: "If checked, post is hidden from the live site.",
+          },
+          {
             name: "title",
             type: "string",
             label: "Title",

@@ -1,21 +1,30 @@
 ---
-title: "Submersion"
-artist: "MediaData"
-medium: "music"
-year: 2015
-era: "10s"
-score: 0
-verdict: ""
-summary: ""
-blurb: ""
-genre_tags: ["ambient", "glitch", "IDM", "electronic"]
-listen_platform: "bandcamp"
-listen_url: "https://mediadata.bandcamp.com/album/submersion"
-tags: ["music", "ambient", "glitch", "idm", "mediadata", "electronic"]
-published_date: "2024-06-10T05:05:00.000Z"
-featured: false
 draft: true
-cover_image: "/images/posts/mediadata_submersion.jpg"
+title: Submersion, by MediaData
+artist: MediaData
+label: Self-released
+medium: music
+year: 2010
+era: 10s
+score: 10
+verdict: Recommended Listen
+summary: to be reviewed
+blurb: to be reviewed
+genre_tags:
+  - idm
+  - glitch
+  - ambient
+listen_platform: bandcamp
+listen_url: 'https://abstraktreflections.bandcamp.com/album/submersion'
+tags:
+  - music
+  - idm
+  - glitch
+  - ambient
+  - music
+published_date: '2017-07-30T03:57:19.000Z'
+featured: false
+cover_image: /images/posts/submersion-by-mediadata.jpg
 ---
 
-*Review in progress.*
+For fans of Access To Arasaka and Huron, MediaData’s latest album out on Abstract Reflections combines shimmering ambient sweeps with glitchy drums and rhythms.
