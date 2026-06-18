@@ -6,24 +6,18 @@ import siteSettings from '../content/siteSettings/index.json';
     &copy; {siteSettings.copyright_start_year}–{new Date().getFullYear()} terribledevice.com &mdash; {siteSettings.tagline}
   </span>
   <div class="footer-social">
-    <a
-      href={siteSettings.social.instagram}
-      class="social-link"
-      target="_blank"
-      rel="noopener"
-      aria-label="Instagram"
-    >
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a
-      href={siteSettings.social.bluesky}
-      class="social-link"
-      target="_blank"
-      rel="noopener"
-      aria-label="Bluesky"
-    >
-      <i class="fa-brands fa-bluesky"></i>
-    </a>
+    {siteSettings.social?.map(link => (
+      <a
+        rel="me"
+        href={link.url}
+        class="social-link"
+        target={link.url?.startsWith('mailto:') ? undefined : '_blank'}
+        rel={link.url?.startsWith('mailto:') ? undefined : 'noopener'}
+        aria-label={link.platform}
+      >
+        <i class={link.icon}></i>
+      </a>
+    ))}
   </div>
   <span class="footer-sig">&#x25A0; end transmission</span>
 </div>

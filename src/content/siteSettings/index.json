@@ -1,11 +1,28 @@
 {
   "tagline": "cyberpunk in pop culture",
   "about_blurb": "Terribledevice is one person's obsession with cyberpunk across film, fiction, anime, and music.",
+  "about_intro": "Terribledevice is one person's obsession with **cyberpunk in pop culture** — the films, books, anime, music, and everything adjacent that shaped what it meant to be afraid of the future in a specific, neon-lit way.\n\nThe name comes from a William Gibson short story. It felt right. The site is run by one person with too many opinions about **Neuromancer, Akira, and Tactical Neural Implant**, and not enough hours in the day to write about all of them.\n\nReviews are short-form and opinionated. Scores exist but they are not the point. The writing is.",
   "copyright_start_year": 2014,
-  "social": {
-    "instagram": "https://www.instagram.com/terribledevice_/",
-    "bluesky": "https://bsky.app/profile/terribledevice.com",
-    "rss": "/rss.xml",
-    "email": "signal@terribledevice.com"
-  }
+  "social": [
+    {
+      "platform": "Bluesky",
+      "url": "https://bsky.app/profile/terribledevice.com",
+      "icon": "fa-brands fa-bluesky"
+    },
+    {
+      "platform": "Mastodon",
+      "url": "https://mastodon.social/@terribledevice",
+      "icon": "fa-brands fa-mastodon"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/terribledevice_/",
+      "icon": "fa-brands fa-instagram"
+    },
+    {
+      "platform": "RSS",
+      "url": "/rss.xml",
+      "icon": "fa-solid fa-rss"
+    }
+  ]
 }

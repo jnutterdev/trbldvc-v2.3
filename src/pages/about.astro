@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import siteSettings from '../content/siteSettings/index.json';
+import AboutIntro from '../components/AboutIntro';
+import AboutContact from '../components/AboutContact';
+import { client } from '../../tina/__generated__/client';
+
+const siteSettingsProps = await client.queries.siteSettings({ relativePath: 'index.json' });
 ---
 <BaseLayout title="TERRIBLEDevice — About" activeNav="about">
   <header class="page-header">
@@ -8,26 +12,8 @@ import siteSettings from '../content/siteSettings/index.json';
     <h1 class="page-title">The <em>Lowdown</em></h1>
   </header>
 
-  <div class="intro-grid">
-    <div class="panel p-sharp-tl">
-      <p class="panel-meta"><span>&#x25A0;</span> Signal origin</p>
-      <h2 class="panel-heading">What this is</h2>
-      <div class="panel-body">
-        <p>
-          Terribledevice is one person's obsession with <strong>cyberpunk in pop culture</strong> — the
-          films, books, anime, music, and everything adjacent that shaped what it meant to be afraid
-          of the future in a specific, neon-lit way.
-        </p>
-        <p>
-          The name comes from a William Gibson short story. It felt right. The site is run by one
-          person with too many opinions about <strong>Neuromancer, Akira, and Tactical Neural Implant</strong>,
-          and not enough hours in the day to write about all of them.
-        </p>
-        <p>
-          Reviews are short-form and opinionated. Scores exist but they are not the point. The writing is.
-        </p>
-      </div>
-    </div>
+  <div class="about-grid">
+    <AboutIntro {...siteSettingsProps} client:tina />
 
     <div class="panel p-sharp-tr">
       <p class="panel-meta"><span>&#x25A0;</span> Editorial scope</p>
@@ -48,23 +34,7 @@ import siteSettings from '../content/siteSettings/index.json';
         ))}
       </div>
     </div>
-  </div>
 
-  <div class="stats-row">
-    {[
-      { num: '10+', desc: 'Years\nreviewing' },
-      { num: '80+', desc: 'Reviews\npublished' },
-      { num: '6',   desc: 'Media\ncategories' },
-      { num: '1',   desc: 'Person\nwriting all of it' },
-    ].map(({ num, desc }) => (
-      <div class="stat-card">
-        <div class="stat-num">{num}</div>
-        <div class="stat-desc" set:html={desc.replace('\n', '<br />')}></div>
-      </div>
-    ))}
-  </div>
-
-  <div class="lower-grid">
     <div class="panel p-sharp-bl">
       <p class="panel-meta"><span>&#x25A0;</span> Scoring system</p>
       <h2 class="panel-heading">How scores work</h2>
@@ -88,56 +58,16 @@ import siteSettings from '../content/siteSettings/index.json';
       </div>
     </div>
 
-    <div class="panel p-sharp-br">
-      <p class="panel-meta"><span>&#x25A0;</span> Reach out</p>
-      <div class="contact-panel">
-        <div class="contact-text">
-          <h2 class="panel-heading">Contact</h2>
-          <p>
-            Corrections, recommendations, disagreements about whether
-            <strong>Snow Crash counts as cyberpunk</strong> — all welcome.
-            Response times vary. Signal quality not guaranteed.
-          </p>
-        </div>
-        <div class="contact-links">
-          <a href={`mailto:${siteSettings.social.email}`} class="contact-link">
-            <span class="contact-link-icon">@</span>
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-val">signal ↗</span>
-          </a>
-          <a href={siteSettings.social.bluesky} target="_blank" rel="noopener" class="contact-link">
-            <span class="contact-link-icon">#</span>
-            <span class="contact-link-label">Bluesky</span>
-            <span class="contact-link-val">@td ↗</span>
-          </a>
-          <a href={siteSettings.social.rss} class="contact-link">
-            <span class="contact-link-icon">/</span>
-            <span class="contact-link-label">RSS feed</span>
-            <span class="contact-link-val">subscribe ↗</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <AboutContact {...siteSettingsProps} client:tina />
   </div>
 </BaseLayout>
 
 <style>
-  .intro-grid {
+  .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 20px;
     margin-bottom: 20px;
-  }
-
-  .panel-heading {
-    font-family: var(--head);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    line-height: 1;
   }
 
   .panel-body {
@@ -197,53 +127,6 @@ import siteSettings from '../content/siteSettings/index.json';
     line-height: 1.5;
   }
 
-  /* Stats row */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-
-  .stat-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 1.2rem 1.4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stat-card:nth-child(1) { border-radius: 0 var(--r) var(--r) var(--r); }
-  .stat-card:nth-child(2) { border-radius: var(--r); }
-  .stat-card:nth-child(3) { border-radius: var(--r); }
-  .stat-card:nth-child(4) { border-radius: var(--r) var(--r) 0 var(--r); }
-
-  .stat-num {
-    font-family: var(--head);
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--pink);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-desc {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--tan-dim);
-    text-transform: uppercase;
-    line-height: 1.4;
-  }
-
-  /* Lower grid */
-  .lower-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-
   .score-criteria {
     display: flex;
     flex-direction: column;
@@ -281,139 +164,12 @@ import siteSettings from '../content/siteSettings/index.json';
     margin-bottom: 6px;
   }
 
-  /* Contact panel */
-  .contact-panel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .contact-text .panel-heading {
-    margin-bottom: 8px;
-  }
-
-  .contact-text p {
-    font-size: 14px;
-    color: var(--tan-dim);
-    line-height: 1.7;
-    max-width: 380px;
-  }
-
-  .contact-text strong {
-    color: var(--tan);
-    font-weight: 500;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 16px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    min-width: 200px;
-  }
-
-  .contact-link:hover {
-    border-color: var(--pink);
-    box-shadow: 0 0 0 1px var(--pink-dim), inset 0 0 24px rgba(255, 92, 141, 0.05);
-    animation: glitch 0.35s linear;
-  }
-
-  .contact-link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0px, transparent 3px,
-      rgba(0, 0, 0, 0.18) 3px, rgba(0, 0, 0, 0.18) 4px
-    );
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-
-  .contact-link:hover::before {
-    opacity: 1;
-  }
-
-  .contact-link-icon {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--pink);
-    width: 16px;
-    text-align: center;
-  }
-
-  .contact-link-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--tan-dim);
-    text-transform: uppercase;
-  }
-
-  .contact-link-val {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--tan);
-    margin-left: auto;
-  }
-
-  @media (max-width: 900px) {
-    .stats-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stat-card:nth-child(3) { border-radius: 0 var(--r) var(--r) var(--r); }
-    .stat-card:nth-child(4) { border-radius: var(--r); }
-  }
-
   @media (max-width: 640px) {
-    .intro-grid,
-    .lower-grid {
+    .about-grid {
       grid-template-columns: 1fr;
     }
 
-    .stats-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-panel {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .contact-text p {
-      max-width: 100%;
-    }
-
-    .contact-links {
-      width: 100%;
-    }
-
-    .contact-link {
-      min-width: unset;
-    }
-
-    .panel,
-    .stat-card {
+    .panel {
       border-radius: var(--r) !important;
     }
   }

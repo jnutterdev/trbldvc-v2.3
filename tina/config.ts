@@ -22,6 +22,7 @@ export default defineConfig({
         path: "src/content/reviews",
         format: "md",
         ui: {
+          router: ({ document }) => `/reviews/${document._sys.filename}`,
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -241,7 +242,7 @@ export default defineConfig({
             create: false,
             delete: false,
           },
-          global: true,
+          router: () => `/about`,
         },
         fields: [
           {
@@ -259,6 +260,12 @@ export default defineConfig({
             },
           },
           {
+            name: "about_intro",
+            type: "rich-text",
+            label: "About Page Intro",
+            description: "The 'What this is' body text on the About page.",
+          },
+          {
             name: "copyright_start_year",
             type: "number",
             label: "Copyright Start Year",
@@ -267,11 +274,26 @@ export default defineConfig({
             name: "social",
             type: "object",
             label: "Social Links",
+            list: true,
             fields: [
-              { name: "instagram", type: "string", label: "Instagram URL" },
-              { name: "bluesky", type: "string", label: "Bluesky URL" },
-              { name: "rss", type: "string", label: "RSS Feed Path" },
-              { name: "email", type: "string", label: "Email" },
+              {
+                name: "platform",
+                type: "string",
+                label: "Platform",
+                description: "Display name, e.g. Email, Bluesky, Mastodon",
+              },
+              {
+                name: "url",
+                type: "string",
+                label: "URL",
+                description: "Use mailto: prefix for email addresses",
+              },
+              {
+                name: "icon",
+                type: "string",
+                label: "Font Awesome icon class",
+                description: "e.g. fa-brands fa-mastodon or fa-solid fa-envelope",
+              },
             ],
           },
         ],
@@ -287,6 +309,7 @@ export default defineConfig({
             delete: false,
           },
           global: true,
+          router: () => `/`,
         },
         fields: [
           {

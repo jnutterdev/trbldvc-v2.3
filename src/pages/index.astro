@@ -2,8 +2,11 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReviewCard from '../components/ReviewCard.astro';
-import currently from '../content/currently/index.json';
-import siteSettings from '../content/siteSettings/index.json';
+import HomepagePanels from '../components/HomepagePanels';
+import { client } from '../../tina/__generated__/client';
+
+const siteSettingsProps = await client.queries.siteSettings({ relativePath: 'index.json' });
+const currentlyProps = await client.queries.currently({ relativePath: 'index.json' });
 
 const allReviews = await getCollection('reviews');
 const allQuotes = await getCollection('quotes');
@@ -73,12 +76,12 @@ const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
 
     <!-- ── Right column ── -->
     <div class="right-col">
-      <!-- About panel -->
-      <div class="panel stat-panel p-sharp-tr" style="justify-content: center">
-        <p class="panel-meta"><span>&#x25A0;</span> about</p>
-        <p class="about-title">Terrible<span>Device</span></p>
-        <p class="about-body">{siteSettings.about_blurb}</p>
-      </div>
+      <!-- About + Currently panels (live-editable in Tina) -->
+      <HomepagePanels
+        siteSettingsProps={siteSettingsProps}
+        currentlyProps={currentlyProps}
+        client:tina
+      />
 
       <!-- By the numbers panel -->
       <div class="panel excerpt-panel p-all" style="display: flex; flex-direction: column; gap: 14px">
@@ -96,27 +99,6 @@ const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
               <span class="top-title">{r.data.title}</span>
               <a href={`/archive?medium=${r.data.medium}`} class="review-type">{r.data.medium}</a>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Currently panel -->
-      <div class="panel currently-panel p-sharp-br" style="display: flex; flex-direction: column; gap: 16px">
-        <p class="panel-meta"><span>&#x25A0;</span> currently</p>
-        <div style="display: flex; flex-direction: column; gap: 14px">
-          {[
-            { label: 'Watching', item: currently.watching },
-            { label: 'Reading', item: currently.reading },
-            { label: 'Listening', item: currently.listening },
-          ].map(({ label, item }, i) => (
-            <>
-              {i > 0 && <div class="stat-divider"></div>}
-              <div>
-                <p class="stat-key" style="margin-bottom: 6px">{label}</p>
-                <p class="currently-title">{item.title}</p>
-                <p class="currently-meta">{item.creator} &mdash; {item.year}</p>
-              </div>
-            </>
           ))}
         </div>
       </div>
@@ -282,54 +264,10 @@ const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
   }
 
   /* ── Right column panels ── */
-  .stat-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-
-  .about-title {
-    font-family: var(--head);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: #fff;
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-
-  .about-title span {
-    color: var(--pink);
-  }
-
-  .about-body {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--tan-dim);
-  }
-
   .stat-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-  }
-
-  .stat-key {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--tan-dim);
-    text-transform: uppercase;
-  }
-
-  .stat-val {
-    font-family: var(--head);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--tan);
-    letter-spacing: 0.04em;
   }
 
   .top-row {
@@ -357,28 +295,6 @@ const recentCorners = ['p-sharp-tl', 'p-all', 'p-all', 'p-sharp-br'];
     letter-spacing: 0.04em;
     flex: 1;
     padding: 0 8px;
-  }
-
-  .currently-panel {
-    flex: 1;
-  }
-
-  .currently-title {
-    font-family: var(--head);
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-    margin-bottom: 2px;
-  }
-
-  .currently-meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--tan-dim);
-    letter-spacing: 0.12em;
   }
 
   /* ── Hero image panel ── */
