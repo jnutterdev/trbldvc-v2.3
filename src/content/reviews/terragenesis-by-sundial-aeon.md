@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Terragenesis, by SUNDIAL AEON
+title: Terragenesis
 artist: SUNDIAL AEON
-label: Self-released
+label: Impact Studio Records
 medium: music
-year: 2010
+year: 2019
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -21,7 +21,8 @@ tags:
   - ambient
   - chillout
   - music
-published_date: '2020-08-22T01:01:32.000Z'
+published_date: 2020-08-22T01:01:32.000Z
 featured: false
 cover_image: /images/posts/terragenesis-by-sundial-aeon.jpg
 ---
+

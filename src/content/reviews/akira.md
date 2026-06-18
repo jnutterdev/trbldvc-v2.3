@@ -1,30 +1,37 @@
 ---
-title: "Akira"
-creator: "Katsuhiro Otomo"
-medium: "anime"
+title: Akira
+creator: Katsuhiro Otomo
+medium: anime
 year: 1988
-era: "80s"
-score: 9.1
-verdict: "Essential Viewing"
-summary: "Neo-Tokyo tears itself apart. The benchmark for animated urban collapse, and the film that introduced Western audiences to what anime could be."
-blurb: "Neo-Tokyo tears itself apart in a ballet of telekinetic fury. Still the benchmark for animated urban collapse."
+era: 80s
+score: 9.5
+verdict: Essential Viewing
+summary: 'Neo-Tokyo tears itself apart. The benchmark for animated urban collapse, and the film that introduced Western audiences to what anime could be.'
+blurb: Neo-Tokyo tears itself apart in a ballet of telekinetic fury. Still the benchmark for animated urban collapse.
 score_bars:
-  - label: "Cinematography"
+  - label: Cinematography
     value: 96
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 98
-  - label: "Score"
+  - label: Score
     value: 90
-  - label: "Pacing"
+  - label: Pacing
     value: 80
-tags: ["anime", "1988", "neo-tokyo", "telekinesis", "motorcycles", "dystopia", "katsuhiro otomo"]
-published_date: "2026-01-25T00:00:00.000Z"
+tags:
+  - anime
+  - '1988'
+  - neo-tokyo
+  - telekinesis
+  - motorcycles
+  - dystopia
+  - katsuhiro otomo
+published_date: 2026-01-25T00:00:00.000Z
 featured: false
 related:
-  - "akira-manga"
-  - "ghost-in-the-shell"
-  - "serial-experiments-lain"
-cover_image: "/cyberpunk_girl.jpg"
+  - akira-manga
+  - ghost-in-the-shell
+  - serial-experiments-lain
+cover_image: /akira-1988-anime-poster-3792398683.jpg
 ---
 
 The opening sequence of Akira — a single blue pulse expanding outward from the center of Tokyo, flattening the city in silence — announces in about thirty seconds what kind of film this is going to be. **Otomo is not interested in restraint.** The scale is absolute, the consequences are permanent, and the city is both the setting and the victim.

@@ -1,12 +1,12 @@
 ---
 draft: true
-title: Jettison Mind Hatch, by Tipper
+title: Jettison Mind Hatch
 artist: Tipper
-label: Self-released
+label: Tippermusic
 medium: music
-year: 2010
+year: 2019
 era: 10s
-score: 10
+score: 12
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
@@ -21,7 +21,7 @@ tags:
   - bass
   - idm
   - music
-published_date: '2019-06-16T02:02:16.000Z'
+published_date: 2019-06-16T02:02:16.000Z
 featured: false
 cover_image: /images/posts/jettison-mind-hatch-by-tipper.jpg
 ---

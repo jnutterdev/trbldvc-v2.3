@@ -1,10 +1,10 @@
 ---
 draft: true
-title: The Grid, by Mega Drive
+title: The Grid
 artist: Mega Drive
 label: Self-released
 medium: music
-year: 2010
+year: 2017
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -19,7 +19,7 @@ tags:
   - synthwave
   - 80s
   - music
-published_date: '2018-02-17T17:03:38.000Z'
+published_date: 2018-02-17T17:03:38.000Z
 featured: false
 cover_image: /images/posts/the-grid-by-mega-drive.jpg
 ---

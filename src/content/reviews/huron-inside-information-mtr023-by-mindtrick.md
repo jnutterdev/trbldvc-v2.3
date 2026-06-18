@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Huron - Inside Information (MTR023), by Mindtrick Records
-artist: Mindtrick Records
-label: Self-released
+title: Inside Information
+artist: Huron
+label: Mindtrick Records
 medium: music
-year: 2010
+year: 2017
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -21,7 +21,7 @@ tags:
   - glitch
   - ambient
   - music
-published_date: '2017-07-30T06:41:42.000Z'
+published_date: 2017-07-30T06:41:42.000Z
 featured: false
 cover_image: /images/posts/huron-inside-information-mtr023-by-mindtrick.jpg
 ---

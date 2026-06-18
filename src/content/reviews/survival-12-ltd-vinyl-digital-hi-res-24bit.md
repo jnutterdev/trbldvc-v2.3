@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Survival  12" Ltd vinyl + Digital (Hi-Res 24bit), by Snowbeasts
+title: Survival  12"
 artist: Snowbeasts
-label: Self-released
+label: m-tronic
 medium: music
-year: 2010
+year: 2016
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -20,7 +20,7 @@ tags:
   - analog
   - m-tronic
   - music
-published_date: '2018-02-24T04:28:56.000Z'
+published_date: 2018-02-24T04:28:56.000Z
 featured: false
 cover_image: /images/posts/survival-12-ltd-vinyl-digital-hi-res-24bit.jpg
 ---

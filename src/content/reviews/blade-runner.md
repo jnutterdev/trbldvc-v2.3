@@ -1,30 +1,38 @@
 ---
-title: "Blade Runner"
-creator: "Ridley Scott"
-medium: "film"
+title: Blade Runner
+creator: Ridley Scott
+medium: film
 year: 1982
-era: "80s"
+era: 80s
 score: 9.6
-verdict: "Essential Viewing"
-summary: "The visual language of cyberpunk, fixed in amber. Everything that came after is in conversation with this film."
-blurb: "Replicants and rain. Scott's Los Angeles 2019 is the visual language every cyberpunk work since borrows from."
+verdict: Essential Viewing
+summary: 'The visual language of cyberpunk, fixed in amber. Everything that came after is in conversation with this film.'
+blurb: Replicants and rain. Scott's Los Angeles 2019 is the visual language every cyberpunk work since borrows from.
 score_bars:
-  - label: "Cinematography"
+  - label: Cinematography
     value: 98
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 99
-  - label: "Score"
+  - label: Score
     value: 94
-  - label: "Pacing"
+  - label: Pacing
     value: 82
-tags: ["film", "1982", "replicants", "AI", "noir", "ridley scott", "los angeles", "essential"]
-published_date: "2026-01-10T00:00:00.000Z"
+tags:
+  - film
+  - '1982'
+  - replicants
+  - AI
+  - noir
+  - ridley scott
+  - los angeles
+  - essential
+published_date: 2026-01-10T00:00:00.000Z
 featured: false
 related:
-  - "neuromancer"
-  - "ghost-in-the-shell"
-  - "strange-days"
-cover_image: "/cyberpunk_girl.jpg"
+  - neuromancer
+  - ghost-in-the-shell
+  - strange-days
+cover_image: /Blade_Runner-421258957-large-1163312763.jpg
 ---
 
 There is a version of Blade Runner criticism that focuses on its narrative shortcomings — the clumsy voiceover in the theatrical cut, the underdeveloped female characters, the ending that was altered several times across as many releases. That criticism is not wrong. It is also almost entirely beside the point.

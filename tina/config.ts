@@ -22,7 +22,6 @@ export default defineConfig({
         path: "src/content/reviews",
         format: "md",
         ui: {
-          router: ({ document }) => `/reviews/${document._sys.filename}`,
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -93,6 +92,7 @@ export default defineConfig({
               { value: "90s", label: "90s" },
               { value: "00s", label: "00s" },
               { value: "10s", label: "10s" },
+              { value: "20s", label: "20s" },
             ],
           },
           {
@@ -240,7 +240,7 @@ export default defineConfig({
       },
       {
         name: "siteSettings",
-        label: "Site Settings",
+        label: "About Page",
         path: "src/content/siteSettings",
         format: "json",
         ui: {
@@ -248,7 +248,6 @@ export default defineConfig({
             create: false,
             delete: false,
           },
-          router: () => `/about`,
         },
         fields: [
           {
@@ -306,7 +305,7 @@ export default defineConfig({
       },
       {
         name: "currently",
-        label: "Currently",
+        label: "Homepage",
         path: "src/content/currently",
         format: "json",
         ui: {
@@ -314,8 +313,6 @@ export default defineConfig({
             create: false,
             delete: false,
           },
-          global: true,
-          router: () => `/`,
         },
         fields: [
           {

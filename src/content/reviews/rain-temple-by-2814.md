@@ -1,10 +1,10 @@
 ---
 draft: true
 title: Rain Temple
-artist: "2814"
-label: Self-released
+artist: '2814'
+label: Dream Catalogue
 medium: music
-year: 2015
+year: 2016
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -15,15 +15,15 @@ genre_tags:
   - IDM
   - electronic
 listen_platform: bandcamp
-listen_url: "https://datarebel.bandcamp.com/album/lyra"
+listen_url: ''
 tags:
   - music
   - ambient
   - idm
   - electronic
-published_date: "2024-06-10T04:58:00.000Z"
+published_date: 2024-06-10T04:58:00.000Z
 featured: false
-cover_image: /images/posts/datarebel_lyra.jpg
+cover_image: /a0901283591_10.jpg
 ---
 
 2814 are one of the most innovative musical acts in recent memory.

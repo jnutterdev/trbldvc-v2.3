@@ -1,34 +1,45 @@
 ---
-title: "Tactical Neural Implant"
-artist: "Front Line Assembly"
-label: "Wax Trax!"
-medium: "music"
+title: Tactical Neural Implant
+artist: Front Line Assembly
+label: Wax Trax!
+medium: music
 year: 1992
-era: "90s"
-score: 9.0
-verdict: "Essential Listen"
-summary: "Leeb and Fulber at peak density. Industrial EBM stripped to signal and intent, before the guitars arrived. One of the defining records of the form."
-blurb: "Leeb and Fulber at peak density. Industrial EBM stripped to signal and intent, before the guitars arrived."
+era: 90s
+score: 9
+verdict: Essential Listen
+summary: 'Leeb and Fulber at peak density. Industrial EBM stripped to signal and intent, before the guitars arrived. One of the defining records of the form.'
+blurb: 'Leeb and Fulber at peak density. Industrial EBM stripped to signal and intent, before the guitars arrived.'
 score_bars:
-  - label: "Signal"
+  - label: Signal
     value: 92
-  - label: "Architecture"
+  - label: Architecture
     value: 94
-  - label: "Current"
+  - label: Current
     value: 96
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 90
-  - label: "Signal-to-Noise"
+  - label: Signal-to-Noise
     value: 88
-genre_tags: ["industrial", "EBM", "electronic body music", "dark electro"]
-listen_platform: "bandcamp"
-listen_url: ""
-tags: ["music", "1992", "industrial", "EBM", "front line assembly", "wax trax", "essential"]
-published_date: "2026-04-12T00:00:00.000Z"
+genre_tags:
+  - industrial
+  - EBM
+  - electronic body music
+  - dark electro
+listen_platform: bandcamp
+listen_url: ''
+tags:
+  - music
+  - '1992'
+  - industrial
+  - EBM
+  - front line assembly
+  - wax trax
+  - essential
+published_date: 2026-04-12T00:00:00.000Z
 featured: false
 related:
-  - "substanz-t6"
-cover_image: "/cyberpunk_girl.jpg"
+  - substanz-t6
+cover_image: /R-16771-1463420659-6208.jpg
 ---
 
 Front Line Assembly in 1992 was a different band than the one that would later add guitars, industrial metal influences, and cinematic production values. **Tactical Neural Implant is Bill Leeb and Rhys Fulber working in an entirely electronic mode**, and the discipline required by that constraint is what makes the record exceptional.

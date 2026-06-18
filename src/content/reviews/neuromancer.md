@@ -1,30 +1,39 @@
 ---
-title: "Neuromancer"
-creator: "William Gibson"
-medium: "novel"
+title: Neuromancer
+creator: William Gibson
+medium: novel
 year: 1984
-era: "80s"
+era: 80s
 score: 9.4
-verdict: "Essential Reading"
-summary: "The novel that coined cyberspace and defined an entire genre. Required reading for anyone serious about cyberpunk."
-blurb: "The novel that named cyberspace. Case is a burned-out console cowboy hired for one last run through the matrix."
+verdict: Essential Reading
+summary: The novel that coined cyberspace and defined an entire genre. Required reading for anyone serious about cyberpunk.
+blurb: The novel that named cyberspace. Case is a burned-out console cowboy hired for one last run through the matrix.
 score_bars:
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 96
-  - label: "Worldbuilding"
+  - label: Worldbuilding
     value: 91
-  - label: "Prose"
+  - label: Prose
     value: 88
-  - label: "Pacing"
+  - label: Pacing
     value: 82
-tags: ["novel", "1984", "cyberpunk", "AI", "hacking", "matrix", "sprawl", "william gibson", "essential"]
-published_date: "2026-03-15T00:00:00.000Z"
+tags:
+  - novel
+  - '1984'
+  - cyberpunk
+  - AI
+  - hacking
+  - matrix
+  - sprawl
+  - william gibson
+  - essential
+published_date: 2026-03-15T00:00:00.000Z
 featured: false
 related:
-  - "count-zero"
-  - "blade-runner"
-  - "ghost-in-the-shell"
-cover_image: "/cyberpunk_girl.jpg"
+  - count-zero
+  - blade-runner
+  - ghost-in-the-shell
+cover_image: /latest-2107050915.webp
 ---
 
 Gibson's debut novel arrived in 1984 like a signal from a frequency nobody had tuned to yet. **Case is a burned-out data thief** — a console cowboy barred from the matrix after his nervous system was deliberately damaged by a former employer. He exists in the Sprawl, a vast urban agglomeration running from Boston to Atlanta, waiting to die in the slow way that people like him die.

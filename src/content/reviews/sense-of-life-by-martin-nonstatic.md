@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Sense of Life, by Martin Nonstatic
+title: Sense of Life
 artist: Martin Nonstatic
-label: Self-released
+label: Dewtone Recordings
 medium: music
-year: 2010
+year: 2015
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -19,7 +19,8 @@ tags:
   - ambient
   - idm
   - music
-published_date: '2020-08-19T23:37:14.000Z'
+published_date: 2020-08-19T23:37:14.000Z
 featured: false
 cover_image: /images/posts/sense-of-life-by-martin-nonstatic.jpg
 ---
+

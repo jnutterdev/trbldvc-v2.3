@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Submersion, by MediaData
+title: Submersion
 artist: MediaData
-label: Self-released
+label: Abstrakt Reflections
 medium: music
-year: 2010
+year: 2017
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -22,7 +22,7 @@ tags:
   - glitch
   - ambient
   - music
-published_date: '2017-07-30T03:57:19.000Z'
+published_date: 2017-07-30T03:57:19.000Z
 featured: false
 cover_image: /images/posts/submersion-by-mediadata.jpg
 ---

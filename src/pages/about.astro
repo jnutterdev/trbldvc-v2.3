@@ -13,7 +13,7 @@ const siteSettingsProps = await client.queries.siteSettings({ relativePath: 'ind
   </header>
 
   <div class="about-grid">
-    <AboutIntro {...siteSettingsProps} client:tina />
+    <AboutIntro {...siteSettingsProps} client:load />
 
     <div class="panel p-sharp-tr">
       <p class="panel-meta"><span>&#x25A0;</span> Editorial scope</p>
@@ -58,7 +58,7 @@ const siteSettingsProps = await client.queries.siteSettings({ relativePath: 'ind
       </div>
     </div>
 
-    <AboutContact {...siteSettingsProps} client:tina />
+    <AboutContact {...siteSettingsProps} client:load />
   </div>
 </BaseLayout>
 

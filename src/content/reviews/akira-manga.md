@@ -1,30 +1,37 @@
 ---
-title: "Akira (Manga)"
-creator: "Katsuhiro Otomo"
-medium: "comic"
+title: Akira (Manga)
+creator: Katsuhiro Otomo
+medium: comic
 year: 1982
-era: "80s"
+era: 80s
 score: 9.5
-verdict: "Essential Reading"
-summary: "Two thousand pages of meticulously rendered urban ruin. The film is extraordinary; the source text is staggering."
-blurb: "2000 pages of meticulously rendered urban ruin. The source text that proves the film kept the spectacle but lost the scope."
+verdict: Essential Reading
+summary: Two thousand pages of meticulously rendered urban ruin. The film is extraordinary; the source text is staggering.
+blurb: 2000 pages of meticulously rendered urban ruin. The source text that proves the film kept the spectacle but lost the scope.
 score_bars:
-  - label: "Art"
+  - label: Art
     value: 99
-  - label: "Writing"
+  - label: Writing
     value: 92
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 98
-  - label: "Pacing"
+  - label: Pacing
     value: 86
-tags: ["comic", "manga", "1982", "neo-tokyo", "katsuhiro otomo", "telekinesis", "dystopia"]
-published_date: "2026-01-18T00:00:00.000Z"
+tags:
+  - comic
+  - manga
+  - '1982'
+  - neo-tokyo
+  - katsuhiro otomo
+  - telekinesis
+  - dystopia
+published_date: 2026-01-18T00:00:00.000Z
 featured: false
 related:
-  - "akira"
-  - "ghost-in-the-shell"
-  - "bubblegum-crisis"
-cover_image: "/cyberpunk_girl.jpg"
+  - akira
+  - ghost-in-the-shell
+  - bubblegum-crisis
+cover_image: /9781935429005-666078809.jpg
 ---
 
 The 1988 film adaptation of Akira is one of the great achievements in animated cinema. **The manga that preceded it by six years is something else entirely.** Otomo spent from 1982 to 1990 drawing the full extent of Neo-Tokyo's destruction across roughly two thousand pages, and the scope of what he produced makes the film look like a highlight reel.

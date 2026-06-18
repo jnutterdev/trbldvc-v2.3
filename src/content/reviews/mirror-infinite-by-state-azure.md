@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Mirror Infinite, by State Azure
+title: Mirror Infinite
 artist: State Azure
 label: Self-released
 medium: music
-year: 2010
+year: 2019
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -23,7 +23,7 @@ tags:
   - uplifting
   - chillout
   - music
-published_date: '2019-05-12T23:45:00.000Z'
+published_date: 2019-05-12T23:45:00.000Z
 featured: false
 cover_image: /images/posts/mirror-infinite-by-state-azure.jpg
 ---

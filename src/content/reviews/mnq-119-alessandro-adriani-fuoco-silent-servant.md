@@ -1,10 +1,10 @@
 ---
 draft: true
-title: MNQ 119 Alessandro Adriani - Fuoco (Silent Servant Remix), by Alessandro Adriani
+title: Fuoco
 artist: Alessandro Adriani
-label: Self-released
+label: Mannequin records
 medium: music
-year: 2010
+year: 2019
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -19,7 +19,7 @@ tags:
   - electro
   - ebm
   - music
-published_date: '2019-06-28T03:50:26.000Z'
+published_date: 2019-06-28T03:50:26.000Z
 featured: false
 cover_image: /images/posts/mnq-119-alessandro-adriani-fuoco-silent-servant.jpg
 ---

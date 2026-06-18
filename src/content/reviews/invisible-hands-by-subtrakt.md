@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Invisible hands, by Subtrakt
-artist: Subtrakt
-label: Self-released
+title: Invisible hands
+artist: Huron
+label: Subtrakt
 medium: music
-year: 2010
+year: 2018
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -21,7 +21,7 @@ tags:
   - ambient
   - glitch
   - music
-published_date: '2018-02-03T02:29:42.000Z'
+published_date: 2018-02-03T02:29:42.000Z
 featured: false
 cover_image: /images/posts/invisible-hands-by-subtrakt.jpg
 ---

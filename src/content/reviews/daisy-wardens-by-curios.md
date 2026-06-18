@@ -1,11 +1,11 @@
 ---
 draft: true
-title: Daisy Wardens, by curios
+title: Daisy Wardens
 artist: curios
 label: Self-released
 medium: music
-year: 2010
-era: 10s
+year: 2021
+era: 20s
 score: 10
 verdict: Recommended Listen
 summary: to be reviewed
@@ -19,11 +19,11 @@ tags:
   - braindance
   - acid
   - music
-published_date: '2022-06-24T03:14:34.000Z'
+published_date: 2022-06-24T03:14:34.000Z
 featured: false
 cover_image: /images/posts/daisy-wardens-by-curios.jpg
 ---
 
 Tunes made for you to escape into somewhere pleasant and unexpected. The
- daisy wardens keep diligent watch over the flowers. They will keep an 
+daisy wardens keep diligent watch over the flowers. They will keep an
 eye on you while you visit.

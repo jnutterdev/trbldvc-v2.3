@@ -1,30 +1,38 @@
 ---
-title: "Ghost in the Shell"
-creator: "Mamoru Oshii"
-medium: "film"
+title: Ghost in the Shell
+creator: Mamoru Oshii
+medium: film
 year: 1995
-era: "90s"
+era: 90s
 score: 9.3
-verdict: "Essential Viewing"
-summary: "The most philosophically rigorous cyberpunk film ever made. Oshii asks what makes a self, and refuses the comfortable answer."
-blurb: "The Major questions her own humanity across a Tokyo that feels borrowed from a decade that hasn't happened yet."
+verdict: Essential Viewing
+summary: 'The most philosophically rigorous cyberpunk film ever made. Oshii asks what makes a self, and refuses the comfortable answer.'
+blurb: The Major questions her own humanity across a Tokyo that feels borrowed from a decade that hasn't happened yet.
 score_bars:
-  - label: "Cinematography"
+  - label: Cinematography
     value: 94
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 96
-  - label: "Score"
+  - label: Score
     value: 92
-  - label: "Pacing"
+  - label: Pacing
     value: 88
-tags: ["anime", "film", "1995", "cyborg", "identity", "AI", "mamoru oshii", "section 9"]
-published_date: "2026-02-08T00:00:00.000Z"
+tags:
+  - anime
+  - film
+  - '1995'
+  - cyborg
+  - identity
+  - AI
+  - mamoru oshii
+  - section 9
+published_date: 2026-02-08T00:00:00.000Z
 featured: false
 related:
-  - "akira"
-  - "serial-experiments-lain"
-  - "neuromancer"
-cover_image: "/cyberpunk_girl.jpg"
+  - akira
+  - serial-experiments-lain
+  - neuromancer
+cover_image: /e43wovhiMa6gSqUQjLUjeq8bJXi.webp
 ---
 
 Where Akira destroys Tokyo, Ghost in the Shell contemplates it. Oshii's 1995 adaptation of Masamune Shirow's manga is less interested in spectacle than in stillness — in the long moments between action when Major Motoko Kusanagi stares at her reflection and wonders what, exactly, is looking back.

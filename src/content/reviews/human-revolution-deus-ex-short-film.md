@@ -1,26 +1,27 @@
 ---
 draft: true
 title: HUMAN REVOLUTION - DEUS EX - SHORT FILM
+creator: Moe Charif
 artist: to be reviewed
 label: Self-released
 medium: film
 year: 2010
 era: 10s
 score: 10
-verdict: Recommended Listen
+verdict: Recommended Watch
 summary: to be reviewed
 blurb: to be reviewed
 genre_tags:
   - to be reviewed
 listen_platform: youtube
-listen_url: 'https://www.youtube.com/watch?v=LO2Rx8YlSWY'
+listen_url: 'https://www.youtube.com/watch?v=3CKQlU1wSxk'
 tags:
   - Deus Ex
   - Film
   - sci-fi
   - cyberpunk
   - music
-published_date: '2017-07-30T21:36:21.000Z'
+published_date: 2017-07-30T21:36:21.000Z
 featured: false
 cover_image: /images/posts/human-revolution-deus-ex-short-film.jpg
 ---

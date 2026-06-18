@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Miles to Midnight, by Atrium Carceri, Cities Last Broadcast, God Body Disconnect
-artist: Atrium Carceri, Cities Last Broadcast, God Body Disconnect
-label: Self-released
+title: Miles to Midnight
+artist: 'Atrium Carceri, Cities Last Broadcast, God Body Disconnect'
+label: Cryo Chamber
 medium: music
-year: 2010
+year: 2018
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -21,7 +21,7 @@ tags:
   - noir
   - soundtrack
   - music
-published_date: '2018-02-03T02:12:40.000Z'
+published_date: 2018-02-03T02:12:40.000Z
 featured: false
 cover_image: /images/posts/miles-to-midnight-by-atrium-carceri-cities-last.jpg
 ---

@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Fifth Element, by Media Data
-artist: Media Data
+title: Fifth Element
+artist: MediaData
 label: Self-released
 medium: music
-year: 2010
+year: 2018
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -22,7 +22,7 @@ tags:
   - electronic
   - raumklang
   - music
-published_date: '2018-02-24T05:36:30.000Z'
+published_date: 2018-02-24T05:36:30.000Z
 featured: false
 cover_image: /images/posts/fifth-element-by-media-data.jpg
 ---

@@ -1,30 +1,37 @@
 ---
-title: "Bubblegum Crisis"
-creator: "Hiroaki Gohda"
-medium: "anime"
+title: Bubblegum Crisis
+creator: Hiroaki Gohda
+medium: anime
 year: 1987
-era: "90s"
+era: 90s
 score: 7.6
-verdict: "Worth Your Time"
-summary: "Four women in powered armor fighting rogue androids across a neon MegaTokyo. Style-forward and fun, with ambitions it only occasionally reaches."
-blurb: "Four women in powered armor fight rogue androids across a neon-drenched MegaTokyo. Style-forward and genuinely fun."
+verdict: Worth Your Time
+summary: 'Four women in powered armor fighting rogue androids across a neon MegaTokyo. Style-forward and fun, with ambitions it only occasionally reaches.'
+blurb: Four women in powered armor fight rogue androids across a neon-drenched MegaTokyo. Style-forward and genuinely fun.
 score_bars:
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 85
-  - label: "Cinematography"
+  - label: Cinematography
     value: 78
-  - label: "Score"
+  - label: Score
     value: 88
-  - label: "Pacing"
+  - label: Pacing
     value: 72
-tags: ["anime", "1987", "powered armor", "androids", "megatokyo", "bubblegum crisis", "action"]
-published_date: "2026-03-29T00:00:00.000Z"
+tags:
+  - anime
+  - '1987'
+  - powered armor
+  - androids
+  - megatokyo
+  - bubblegum crisis
+  - action
+published_date: 2026-03-29T00:00:00.000Z
 featured: false
 related:
-  - "akira"
-  - "ghost-in-the-shell"
-  - "akira-manga"
-cover_image: "/cyberpunk_girl.jpg"
+  - akira
+  - ghost-in-the-shell
+  - akira-manga
+cover_image: /737187006791-2842368888.jpg
 ---
 
 Bubblegum Crisis arrived in 1987 — the same year as the Max Headroom TV series, the year before Akira — and it wears its influences with cheerful transparency. **The Knight Sabers are directly descended from Blade Runner's visual vocabulary**, their powered suits a practical response to the rogue Boomers (androids turned violent) that GENOM Corporation periodically releases on MegaTokyo.

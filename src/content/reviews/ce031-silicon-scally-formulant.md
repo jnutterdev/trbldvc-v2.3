@@ -1,10 +1,10 @@
 ---
 draft: true
-title: CE031 - Silicon Scally - Formulant
-artist: to be reviewed
-label: Self-released
+title: Formulant
+artist: Silicon Scally
+label: Skoda Banger
 medium: music
-year: 2010
+year: 2018
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -21,7 +21,7 @@ tags:
   - techno
   - industrial
   - music
-published_date: '2019-06-22T05:30:45.000Z'
+published_date: 2019-06-22T05:30:45.000Z
 featured: false
 cover_image: /images/posts/ce031-silicon-scally-formulant.jpg
 ---

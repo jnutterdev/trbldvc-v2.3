@@ -1,10 +1,10 @@
 ---
 draft: true
-title: Grauraum, by Grauraum
+title: Grauraum
 artist: Grauraum
-label: Self-released
+label: Raumklang Music
 medium: music
-year: 2010
+year: 2018
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -22,7 +22,7 @@ tags:
   - powernoise
   - raumklang
   - music
-published_date: '2018-03-07T23:09:38.000Z'
+published_date: 2018-03-07T23:09:38.000Z
 featured: false
 cover_image: /images/posts/grauraum-by-grauraum.jpg
 ---
