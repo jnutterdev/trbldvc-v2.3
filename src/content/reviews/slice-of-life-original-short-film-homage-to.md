@@ -12,14 +12,14 @@ summary: to be reviewed
 blurb: to be reviewed
 genre_tags:
   - to be reviewed
-listen_platform: kickstarter
-listen_url: 'https://www.kickstarter.com/projects/sliceoflifefilm/slice-of-life-original-short-film-homage-to-blade'
+listen_platform: youtube
+listen_url: "https://www.kickstarter.com/projects/sliceoflifefilm/slice-of-life-original-short-film-homage-to-blade"
 tags:
   - cyberpunk
   - blade runner
   - movies
   - music
-published_date: '2017-09-06T00:41:59.000Z'
+published_date: "2017-09-06T00:41:59.000Z"
 featured: false
 cover_image: /images/posts/slice-of-life-original-short-film-homage-to.jpg
 ---

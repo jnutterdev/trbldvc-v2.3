@@ -12,8 +12,8 @@ summary: to be reviewed
 blurb: to be reviewed
 genre_tags:
   - to be reviewed
-listen_platform: goodreads
-listen_url: 'https://www.goodreads.com/book/show/27753938-tokyo-ghost-vol-1'
+listen_platform: bandcamp
+listen_url: "https://www.goodreads.com/book/show/27753938-tokyo-ghost-vol-1"
 tags:
   - comic books
   - sci-fi
@@ -21,7 +21,7 @@ tags:
   - dystopia
   - tokyo ghost
   - music
-published_date: '2017-07-30T23:56:25.000Z'
+published_date: "2017-07-30T23:56:25.000Z"
 featured: false
 cover_image: /images/posts/tokyo-ghost-vol-1.jpg
 ---

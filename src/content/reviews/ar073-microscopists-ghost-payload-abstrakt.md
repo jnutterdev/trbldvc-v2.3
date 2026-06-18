@@ -1,7 +1,7 @@
 ---
 draft: true
-title: '[AR_073] Microscopists - Ghost Payload / Abstrakt Reflections'
-artist: to be reviewed
+title: "Ghost Payload"
+artist: Microscopists
 label: Self-released
 medium: music
 year: 2010
@@ -14,15 +14,15 @@ genre_tags:
   - idm
   - glitch
   - post-rock
-listen_platform: abstrakt reflections
-listen_url: 'https://www.abstraktreflections.net/releases/microscopists-ghost-payload/'
+listen_platform: bandcamp
+listen_url: "https://www.abstraktreflections.net/releases/microscopists-ghost-payload/"
 tags:
   - idm
   - glitch
   - post-rock
   - abstrakt reflections
   - music
-published_date: '2017-09-10T13:51:30.000Z'
+published_date: "2017-09-10T13:51:30.000Z"
 featured: false
 cover_image: /images/posts/ar073-microscopists-ghost-payload-abstrakt.jpg
 ---

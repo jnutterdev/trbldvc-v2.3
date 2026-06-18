@@ -33,7 +33,7 @@ tags:
   - dark ambient
   - cyberpunk
   - electronic
-published_date: 2024-10-11T04:49:00.000Z
+published_date: '2024-10-11T04:49:00.000Z'
 featured: true
 cover_image: /images/posts/ata_void.jpg
 ---

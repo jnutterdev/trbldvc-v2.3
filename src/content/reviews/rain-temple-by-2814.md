@@ -1,10 +1,10 @@
 ---
 draft: true
 title: Rain Temple
-artist: 2814
+artist: "2814"
 label: Self-released
 medium: music
-year: 2010
+year: 2015
 era: 10s
 score: 10
 verdict: Recommended Listen
@@ -12,19 +12,18 @@ summary: to be reviewed
 blurb: to be reviewed
 genre_tags:
   - ambient
-  - downtempo
+  - IDM
   - electronic
 listen_platform: bandcamp
-listen_url: "https://dreamcatalogue.bandcamp.com/album/rain-temple"
+listen_url: "https://datarebel.bandcamp.com/album/lyra"
 tags:
   - music
   - ambient
-  - downtempo
+  - idm
   - electronic
-  - music
-published_date: 2020-12-28T13:19:37.000Z
+published_date: "2024-06-10T04:58:00.000Z"
 featured: false
-cover_image: /images/posts/rain-temple-by-2814.jpg
+cover_image: /images/posts/datarebel_lyra.jpg
 ---
 
 2814 are one of the most innovative musical acts in recent memory.
@@ -42,4 +41,4 @@ artistic statement that exceeds expectation and goes far beyond most
 modern ambient music, reminding us that beyond our late night somber and
 eternal wonder, we all remain.
 
-words by Marcel Foley of  [www.marcelsmusicjournal.com](http://www.marcelsmusicjournal.com)
+words by Marcel Foley of [www.marcelsmusicjournal.com](http://www.marcelsmusicjournal.com)
