@@ -1,15 +1,24 @@
 ---
-draft: true
+draft: false
 title: Ghost Payload
 artist: Microscopists
 label: Abstrakt Reflections
 medium: music
 year: 2017
 era: 10s
-score: 10
+score: 6
 verdict: Recommended Listen
-summary: to be reviewed
-blurb: to be reviewed
+summary: '“Ghost Payload” is Microscopists first record, and explores the relationship between humans and their technology.'
+blurb: 'London-based two piece formed by Robin Fencott and Ben Edwards, exploring post-industrial glitch, post-rock guitars, and post-apocalyptic lyrics.'
+score_bars:
+  - label: Atmosphere
+    value: 90
+  - label: Architecture
+    value: 65
+  - label: Signal
+    value: 70
+  - label: Texture
+    value: 80
 genre_tags:
   - idm
   - glitch

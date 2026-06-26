@@ -1,30 +1,37 @@
 ---
-title: "Serial Experiments Lain"
-creator: "Yoshitoshi ABe"
-medium: "anime"
+title: Serial Experiments Lain
+creator: Yoshitoshi ABe
+medium: anime
 year: 1998
-era: "90s"
-score: 9.0
-verdict: "Essential Viewing"
-summary: "A thirteen-episode meditation on identity, connectivity, and the dissolution of self into network. Dense, quiet, and genuinely unsettling in ways that compound on rewatch."
-blurb: "A teenage girl dissolves into the Wired. Dense, quiet, and genuinely unsettling in ways that compound on rewatch."
+era: 90s
+score: 9
+verdict: Essential Viewing
+summary: 'A thirteen-episode meditation on identity, connectivity, and the dissolution of self into network. Dense, quiet, and genuinely unsettling in ways that compound on rewatch.'
+blurb: 'A teenage girl dissolves into the Wired. Dense, quiet, and genuinely unsettling in ways that compound on rewatch.'
 score_bars:
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 98
-  - label: "Cinematography"
+  - label: Cinematography
     value: 90
-  - label: "Score"
+  - label: Score
     value: 92
-  - label: "Pacing"
+  - label: Pacing
     value: 84
-tags: ["anime", "1998", "identity", "internet", "consciousness", "isolation", "serial experiments lain"]
-published_date: "2026-03-08T00:00:00.000Z"
+tags:
+  - anime
+  - '1998'
+  - identity
+  - internet
+  - consciousness
+  - isolation
+  - serial experiments lain
+published_date: 2026-03-08T00:00:00.000Z
 featured: false
 related:
-  - "ghost-in-the-shell"
-  - "akira"
-  - "neuromancer"
-cover_image: "/cyberpunk_girl.jpg"
+  - ghost-in-the-shell
+  - akira
+  - neuromancer
+cover_image: /ej3tcxv2YYVWy6WoOeWZTcrkiI8-51589128.jpg
 ---
 
 Serial Experiments Lain is not about the internet. It is about what happens to a self when the boundary between internal experience and networked reality becomes permeable. **Lain Iwakura is thirteen years old and dissolving.** The dissolution is not dramatic. It accumulates quietly, episode by episode, until you are watching something that resembles the teenager from episode one the way a photograph resembles a person.

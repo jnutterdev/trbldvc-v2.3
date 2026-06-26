@@ -1,30 +1,38 @@
 ---
-title: "Strange Days"
-creator: "Kathryn Bigelow"
-medium: "film"
+title: Strange Days
+creator: Kathryn Bigelow
+medium: film
 year: 1995
-era: "90s"
+era: 90s
 score: 8.2
-verdict: "Highly Recommended"
-summary: "One of the most underrated films of the nineties. Bigelow builds a complete world around a single technology and never loses sight of what that technology does to people."
-blurb: "Black market recordings of lived experience sold on street corners. New Year's Eve 1999. Underrated and urgent."
+verdict: Highly Recommended
+summary: One of the most underrated films of the nineties. Bigelow builds a complete world around a single technology and never loses sight of what that technology does to people.
+blurb: Black market recordings of lived experience sold on street corners. New Year's Eve 1999. Underrated and urgent.
 score_bars:
-  - label: "Cinematography"
+  - label: Cinematography
     value: 88
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 90
-  - label: "Score"
+  - label: Score
     value: 82
-  - label: "Pacing"
+  - label: Pacing
     value: 80
-tags: ["film", "1995", "SQUID", "memory", "surveillance", "los angeles", "kathryn bigelow", "new year"]
-published_date: "2026-03-22T00:00:00.000Z"
+tags:
+  - film
+  - '1995'
+  - SQUID
+  - memory
+  - surveillance
+  - los angeles
+  - kathryn bigelow
+  - new year
+published_date: 2026-03-22T00:00:00.000Z
 featured: false
 related:
-  - "blade-runner"
-  - "ghost-in-the-shell"
-  - "neuromancer"
-cover_image: "/cyberpunk_girl.jpg"
+  - blade-runner
+  - ghost-in-the-shell
+  - neuromancer
+cover_image: /strange_days_1995_lg-665368480.jpg
 ---
 
 Strange Days is set on New Year's Eve 1999, in a Los Angeles that is one bad night away from complete dissolution. **The technology at its center — SQUID recordings, black market clips of lived experience sold in parking structures and back rooms** — is one of the most elegant cyberpunk conceits in film. It requires no explanation. Everyone understands immediately what it means to be able to replay someone else's sensory experience, and everyone understands immediately what the market for that would look like.

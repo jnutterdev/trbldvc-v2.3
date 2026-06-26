@@ -1,27 +1,38 @@
 ---
-title: "Nemesis"
-creator: "Albert Pyun"
-medium: "film"
+title: Nemesis
+creator: Albert Pyun
+medium: film
 year: 1992
-era: "90s"
+era: 90s
 score: 6.5
-verdict: "Decent Entry Point"
-summary: "Albert Pyun's low-budget cyberpunk actioner draws heavily from Robocop and Terminator but has enough original energy to stand on its own. A solid introduction to the genre's grittier, cheaper end."
-blurb: "Draws from Robocop and Terminator but stands on its own as a hard-boiled cyberpunk actioner."
+verdict: Decent Entry Point
+summary: 'Albert Pyun''s low-budget cyberpunk actioner draws heavily from Robocop and Terminator but has enough original energy to stand on its own. A solid introduction to the genre''s grittier, cheaper end.'
+blurb: Draws from Robocop and Terminator but stands on its own as a hard-boiled cyberpunk actioner.
 score_bars:
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 72
-  - label: "Action"
+  - label: Action
     value: 75
-  - label: "Pacing"
+  - label: Pacing
     value: 65
-  - label: "Worldbuilding"
+  - label: Worldbuilding
     value: 68
-genre_tags: ["cyberpunk", "action", "sci-fi", "cyborgs"]
-tags: ["film", "1992", "cyborgs", "androids", "albert pyun", "olivier gruner", "90s"]
-published_date: "2024-06-10T04:05:00.000Z"
+genre_tags:
+  - cyberpunk
+  - action
+  - sci-fi
+  - cyborgs
+tags:
+  - film
+  - '1992'
+  - cyborgs
+  - androids
+  - albert pyun
+  - olivier gruner
+  - 90s
+published_date: 2024-06-10T04:05:00.000Z
 featured: false
-cover_image: "/images/posts/nemesis_title_2.png"
+cover_image: /nemesis-621168074-large-3942928956.jpg
 ---
 
 Nemesis, also released in 1992, is the first movie in a series of sequels. This film is a cyberpunk action film set in the near future, where criminals enhance themselves with cybernetic components, making them "more than human", while illegal androids have also become commonplace. Olivier Gruner (Lionheart) stars in the film as a cybernetically enhanced bounty hunter who is on the run from a militant group, led by Tim Thomerson (Trancers), where he must survive.

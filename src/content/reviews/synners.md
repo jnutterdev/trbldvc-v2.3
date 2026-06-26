@@ -1,30 +1,37 @@
 ---
-title: "Synners"
-creator: "Pat Cadigan"
-medium: "novel"
+title: Synners
+creator: Pat Cadigan
+medium: novel
 year: 1991
-era: "90s"
+era: 90s
 score: 8.6
-verdict: "Highly Recommended"
-summary: "Cadigan writes the body in crisis better than anyone else in the genre. Synners is the cyberpunk novel about what direct neural interface does to the people doing it."
-blurb: "Direct neural interfaces and music industry collapse. Cadigan writes the body in crisis better than almost anyone in the genre."
+verdict: Highly Recommended
+summary: Cadigan writes the body in crisis better than anyone else in the genre. Synners is the cyberpunk novel about what direct neural interface does to the people doing it.
+blurb: Direct neural interfaces and music industry collapse. Cadigan writes the body in crisis better than almost anyone in the genre.
 score_bars:
-  - label: "Prose"
+  - label: Prose
     value: 88
-  - label: "Worldbuilding"
+  - label: Worldbuilding
     value: 86
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 84
-  - label: "Pacing"
+  - label: Pacing
     value: 80
-tags: ["novel", "1991", "neural interface", "music", "body horror", "pat cadigan", "virus"]
-published_date: "2026-04-05T00:00:00.000Z"
+tags:
+  - novel
+  - '1991'
+  - neural interface
+  - music
+  - body horror
+  - pat cadigan
+  - virus
+published_date: 2026-04-05T00:00:00.000Z
 featured: false
 related:
-  - "neuromancer"
-  - "snow-crash"
-  - "serial-experiments-lain"
-cover_image: "/cyberpunk_girl.jpg"
+  - neuromancer
+  - snow-crash
+  - serial-experiments-lain
+cover_image: /lg_002de2b97ab4-pat-cadigan_1991_synners-3678511517.jpg
 ---
 
 Pat Cadigan is systematically under-discussed in cyberpunk retrospectives dominated by Gibson and Stephenson, and Synners is the clearest argument for correcting that. **The novel is about direct neural interface — sockets that allow video artists to jack in and create content from inside their nervous systems** — and it is more interested in what that technology does to human bodies than in what it allows those bodies to accomplish.

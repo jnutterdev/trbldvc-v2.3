@@ -1,30 +1,37 @@
 ---
-title: "Snow Crash"
-creator: "Neal Stephenson"
-medium: "novel"
+title: Snow Crash
+creator: Neal Stephenson
+medium: novel
 year: 1992
-era: "90s"
+era: 90s
 score: 8.8
-verdict: "Essential Reading"
-summary: "Dense, propulsive, and occasionally absurd — Stephenson builds the most elaborate fictional economy in the genre and then drops a pizza delivery man into the middle of it."
-blurb: "Pizza delivery and sword fights in the Metaverse. Stephenson builds the densest fictional economy in the genre."
+verdict: Essential Reading
+summary: 'Dense, propulsive, and occasionally absurd — Stephenson builds the most elaborate fictional economy in the genre and then drops a pizza delivery man into the middle of it.'
+blurb: Pizza delivery and sword fights in the Metaverse. Stephenson builds the densest fictional economy in the genre.
 score_bars:
-  - label: "Worldbuilding"
+  - label: Worldbuilding
     value: 96
-  - label: "Prose"
+  - label: Prose
     value: 84
-  - label: "Pacing"
+  - label: Pacing
     value: 88
-  - label: "Atmosphere"
+  - label: Atmosphere
     value: 85
-tags: ["novel", "1992", "metaverse", "virtual reality", "hiro protagonist", "neal stephenson", "sprawl"]
-published_date: "2026-02-20T00:00:00.000Z"
+tags:
+  - novel
+  - '1992'
+  - metaverse
+  - virtual reality
+  - hiro protagonist
+  - neal stephenson
+  - sprawl
+published_date: 2026-02-20T00:00:00.000Z
 featured: false
 related:
-  - "neuromancer"
-  - "synners"
-  - "count-zero"
-cover_image: "/cyberpunk_girl.jpg"
+  - neuromancer
+  - synners
+  - count-zero
+cover_image: /snow-crash-1913003644.jpg
 ---
 
 Snow Crash opens with a three-page sequence detailing the logistics of pizza delivery in near-future Los Angeles with the intensity of a technical manual. **Hiro Protagonist — the name is not a joke, or rather, the joke is the point** — is the best pizza deliveryman in the world and also one of the best sword fighters and also the cowriter of the Black Sun, the coolest club in the Metaverse. Stephenson piles these credentials on without irony, and somehow it works.
