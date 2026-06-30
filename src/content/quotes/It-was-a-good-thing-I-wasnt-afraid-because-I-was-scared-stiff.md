@@ -1,7 +1,12 @@
 ---
-text: "It was a good thing I wasn’t afraid,\nbecause I was scared stiff."
+text: |-
+  It was a good thing I wasn’t afraid,
+  because I was scared stiff.
 attribution: George Alec Effinger - When Gravity Fails
+medium: novel
 tags:
-  - books
+  - mystery
+  - hard-boiled
+  - gritty
 ---
 

@@ -14,11 +14,24 @@ const allQuotes = await getCollection('quotes');
 // Featured review
 const featured = allReviews.find(r => r.data.featured);
 
-// Hero quote: match by tags/medium
+// Hero quote: filter by medium field, then pick the quote with the most overlapping tags
+const featuredTagSet = new Set([
+  ...(featured?.data.tags ?? []),
+  ...(featured?.data.genre_tags ?? []),
+].map(t => t.toLowerCase()));
+
 const heroQuote = featured
-  ? (allQuotes.find(q =>
-      q.data.tags?.some(t => featured.data.tags?.includes(t) || t === featured.data.medium)
-    ) ?? allQuotes[0])
+  ? (() => {
+      const byMedium = allQuotes.filter(q => q.data.medium === featured.data.medium);
+      const pool = byMedium.length > 0 ? byMedium : allQuotes;
+      const scored = pool
+        .map(q => ({
+          q,
+          score: q.data.tags?.filter(t => featuredTagSet.has(t.toLowerCase())).length ?? 0,
+        }))
+        .sort((a, b) => b.score - a.score);
+      return scored[0]?.q ?? allQuotes[0];
+    })()
   : allQuotes[0];
 
 // Recent reviews: 4 most recent (excluding featured if desired)

@@ -6,7 +6,8 @@ year: 2002
 era: 00s
 score: 9
 verdict: Essential Reading
-genre_tags:
+tags:
+  - altered carbon
   - hard-boiled
   - mystery
 featured: true

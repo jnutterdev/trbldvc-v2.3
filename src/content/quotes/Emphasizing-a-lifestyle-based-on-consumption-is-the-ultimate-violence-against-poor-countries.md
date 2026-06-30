@@ -1,8 +1,11 @@
 ---
-text: "Emphasizing a lifestyle based on consumption\nis the ultimate violence against poor countries."
+text: |-
+  Emphasizing a lifestyle based on consumption
+  is the ultimate violence against poor countries.
 attribution: Ghost in the Shell by Shirow Masamune
+medium: anime
 tags:
-  - Manga
-  - Anime
+  - cyberpunk
+  - ghost in the shell
 ---
 

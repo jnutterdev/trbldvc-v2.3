@@ -221,7 +221,6 @@ export default defineConfig({
             name: "text",
             type: "string",
             label: "Quote Text",
-            isTitle: true,
             required: true,
             ui: {
               component: "textarea",
@@ -231,7 +230,23 @@ export default defineConfig({
             name: "attribution",
             type: "string",
             label: "Attribution",
+            isTitle: true,
             required: true,
+          },
+          {
+            name: "medium",
+            type: "string",
+            label: "Medium",
+            options: [
+              { value: "novel", label: "Novel" },
+              { value: "film", label: "Film" },
+              { value: "anime", label: "Anime" },
+              { value: "tv", label: "TV" },
+              { value: "comic", label: "Comic" },
+              { value: "music", label: "Music" },
+              { value: "videogame", label: "Video Game" },
+              { value: "ttrpg", label: "TTRPG" },
+            ],
           },
           {
             name: "tags",

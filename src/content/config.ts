@@ -35,6 +35,7 @@ const quotes = defineCollection({
   schema: z.object({
     text: z.string(),
     attribution: z.string(),
+    medium: z.enum(['novel', 'film', 'anime', 'tv', 'comic', 'music', 'videogame', 'ttrpg']).optional(),
     tags: z.array(z.string()).optional(),
   }),
 });
