@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Count Zero
 creator: William Gibson
 medium: novel

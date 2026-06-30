@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Synners
 creator: Pat Cadigan
 medium: novel

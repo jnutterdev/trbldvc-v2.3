@@ -8,7 +8,7 @@ import { client } from '../../tina/__generated__/client';
 const siteSettingsProps = await client.queries.siteSettings({ relativePath: 'index.json' });
 const currentlyProps = await client.queries.currently({ relativePath: 'index.json' });
 
-const allReviews = await getCollection('reviews');
+const allReviews = await getCollection('reviews', ({ data }) => !data.draft);
 const allQuotes = await getCollection('quotes');
 
 // Featured review

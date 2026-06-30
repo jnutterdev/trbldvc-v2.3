@@ -28,7 +28,7 @@ const pubDate = data.published_date
   : '';
 
 // Resolve related reviews
-const allReviews = await getCollection('reviews');
+const allReviews = await getCollection('reviews', ({ data }) => !data.draft);
 const relatedReviews = data.related
   ? data.related
       .map(slug => allReviews.find(r => r.slug === slug))

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Neuromancer
 creator: William Gibson
 medium: novel

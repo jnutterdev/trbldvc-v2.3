@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Snow Crash
 creator: Neal Stephenson
 medium: novel

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Serial Experiments Lain
 creator: Yoshitoshi ABe
 medium: anime

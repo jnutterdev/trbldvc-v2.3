@@ -31,6 +31,10 @@ export default defineConfig({
                 .replace(/(^-|-$)/g, "");
             },
           },
+          // @ts-ignore — list.fields is supported at runtime but missing from Tina's type definitions
+          list: {
+            fields: ["title", "draft", "medium"],
+          },
         },
         fields: [
           {
@@ -120,7 +124,8 @@ export default defineConfig({
             name: "blurb",
             type: "string",
             label: "Blurb",
-            description: "Card-level description shown in archive and related grids.",
+            description:
+              "Card-level description shown in archive and related grids.",
             ui: {
               component: "textarea",
             },
@@ -297,7 +302,8 @@ export default defineConfig({
                 name: "icon",
                 type: "string",
                 label: "Font Awesome icon class",
-                description: "e.g. fa-brands fa-mastodon or fa-solid fa-envelope",
+                description:
+                  "e.g. fa-brands fa-mastodon or fa-solid fa-envelope",
               },
             ],
           },
