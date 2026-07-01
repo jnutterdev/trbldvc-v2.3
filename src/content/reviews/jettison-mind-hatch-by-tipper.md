@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Jettison Mind Hatch
+creator: ''
 artist: Tipper
 label: Tippermusic
 medium: music
@@ -10,6 +11,7 @@ score: 12
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - glitch
   - bass

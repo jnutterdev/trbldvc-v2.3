@@ -8,6 +8,7 @@ score: 0
 verdict: ""
 summary: ""
 blurb: ""
+score_bars: []
 genre_tags: ["cyberpunk", "D&D 5e", "sci-fi"]
 tags: ["ttrpg", "2019", "carbon 2185", "cyberpunk", "dnd5e", "d&d"]
 published_date: "2024-06-10T05:07:00.000Z"

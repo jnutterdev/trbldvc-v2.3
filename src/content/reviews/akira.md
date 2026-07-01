@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Akira
 creator: Katsuhiro Otomo
 medium: anime

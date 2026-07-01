@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Strange Days
 creator: Kathryn Bigelow
 medium: film

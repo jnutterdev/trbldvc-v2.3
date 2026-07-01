@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Formulant
+creator: ''
 artist: Silicon Scally
 label: Skoda Banger
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - electro
   - techno

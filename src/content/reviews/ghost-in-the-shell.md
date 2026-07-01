@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Ghost in the Shell
 creator: Mamoru Oshii
 medium: film

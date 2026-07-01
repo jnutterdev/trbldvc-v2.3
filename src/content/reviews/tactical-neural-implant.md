@@ -1,5 +1,7 @@
 ---
+draft: false
 title: Tactical Neural Implant
+creator: ''
 artist: Front Line Assembly
 label: Wax Trax!
 medium: music

@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Miles to Midnight
+creator: ''
 artist: 'Atrium Carceri, Cities Last Broadcast, God Body Disconnect'
 label: Cryo Chamber
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - dark ambient
   - noir

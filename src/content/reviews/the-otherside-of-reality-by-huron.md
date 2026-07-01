@@ -1,6 +1,8 @@
 ---
 title: "The Other Side of Reality"
+creator: ''
 artist: "h][uron"
+label: ''
 medium: "music"
 year: 2010
 era: "10s"
@@ -8,6 +10,7 @@ score: 0
 verdict: ""
 summary: ""
 blurb: ""
+score_bars: []
 genre_tags: ["glitch", "IDM", "electronic"]
 listen_platform: "bandcamp"
 listen_url: "https://huronidm.bandcamp.com/album/the-other-side-of-reality"

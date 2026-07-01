@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Akira (Manga)
 creator: Katsuhiro Otomo
 medium: comic

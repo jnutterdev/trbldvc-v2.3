@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Grauraum
+creator: ''
 artist: Grauraum
 label: Raumklang Music
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - idm
   - post-industrial

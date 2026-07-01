@@ -1,4 +1,5 @@
 ---
+draft: false
 title: "Flashback"
 creator: "Delphine Software"
 medium: "videogame"

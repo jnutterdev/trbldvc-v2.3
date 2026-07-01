@@ -1,4 +1,5 @@
 ---
+draft: false
 title: "Deus Ex: Human Revolution"
 creator: "Eidos Montréal"
 medium: "videogame"

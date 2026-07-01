@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Hardwired
+creator: ''
 artist: Mitch Murder
 label: Playmaker Media
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: ''
 blurb: ''
+score_bars: []
 genre_tags:
   - retrowave
   - synthwave

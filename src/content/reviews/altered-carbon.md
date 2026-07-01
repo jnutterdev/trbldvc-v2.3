@@ -9,6 +9,7 @@ score: 0
 verdict: ''
 summary: ''
 blurb: ''
+score_bars: []
 genre_tags:
   - cyberpunk
   - sci-fi

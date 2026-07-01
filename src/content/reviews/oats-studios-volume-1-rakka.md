@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Oats Studios - Volume 1 - Rakka
+creator: ''
 artist: to be reviewed
 label: Self-released
 medium: film
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - to be reviewed
 listen_platform: youtube

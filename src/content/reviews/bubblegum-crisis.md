@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Bubblegum Crisis
 creator: Hiroaki Gohda
 medium: anime

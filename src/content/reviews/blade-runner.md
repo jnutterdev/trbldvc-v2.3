@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Blade Runner
 creator: Ridley Scott
 medium: film

@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Inside Information
+creator: ''
 artist: Huron
 label: Mindtrick Records
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - idm
   - glitch

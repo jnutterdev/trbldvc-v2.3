@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Altered Carbon
 creator: Richard K. Morgan
 medium: novel
@@ -6,6 +7,9 @@ year: 2002
 era: 00s
 score: 9
 verdict: Essential Reading
+summary: ''
+blurb: ''
+score_bars: []
 tags:
   - altered carbon
   - hard-boiled

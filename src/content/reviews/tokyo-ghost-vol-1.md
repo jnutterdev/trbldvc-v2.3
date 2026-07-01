@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Tokyo Ghost, Vol. 1
+creator: ''
 artist: to be reviewed
 label: Self-released
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - to be reviewed
 listen_platform: bandcamp

@@ -1,6 +1,9 @@
 ---
+draft: false
 title: void();
+creator: ''
 artist: Access to Arasaka
+label: ''
 medium: music
 year: 2012
 era: 10s

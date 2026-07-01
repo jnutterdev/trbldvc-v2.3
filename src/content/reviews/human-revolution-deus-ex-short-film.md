@@ -11,6 +11,7 @@ score: 10
 verdict: Recommended Watch
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - to be reviewed
 listen_platform: youtube

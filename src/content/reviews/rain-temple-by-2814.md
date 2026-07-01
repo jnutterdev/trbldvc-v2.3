@@ -1,6 +1,7 @@
 ---
 draft: true
 title: Rain Temple
+creator: ''
 artist: '2814'
 label: Dream Catalogue
 medium: music
@@ -10,6 +11,7 @@ score: 10
 verdict: Recommended Listen
 summary: to be reviewed
 blurb: to be reviewed
+score_bars: []
 genre_tags:
   - ambient
   - IDM

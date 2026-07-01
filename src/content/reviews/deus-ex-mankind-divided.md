@@ -1,4 +1,5 @@
 ---
+draft: false
 title: "Deus Ex: Mankind Divided"
 creator: "Eidos Montréal"
 medium: "videogame"

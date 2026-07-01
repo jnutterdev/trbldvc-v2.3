@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Nemesis
 creator: Albert Pyun
 medium: film
