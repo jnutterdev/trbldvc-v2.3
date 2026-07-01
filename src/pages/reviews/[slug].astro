@@ -27,13 +27,28 @@ const pubDate = data.published_date
     })
   : '';
 
-// Resolve related reviews
+// Resolve related reviews — manual overrides first, auto-fill the rest
 const allReviews = await getCollection('reviews', ({ data }) => !data.draft);
-const relatedReviews = data.related
-  ? data.related
-      .map(slug => allReviews.find(r => r.slug === slug))
-      .filter(Boolean)
-  : [];
+const currentTags = new Set((data.tags ?? []).map(t => t.toLowerCase()));
+
+const manualRelated = (data.related ?? [])
+  .map(slug => allReviews.find(r => r.slug === slug))
+  .filter(Boolean);
+
+const manualSlugs = new Set(manualRelated.map(r => r!.slug));
+
+const autoRelated = allReviews
+  .filter(r => r.slug !== entry.slug && !manualSlugs.has(r.slug))
+  .map(r => {
+    const tagOverlap = (r.data.tags ?? []).filter(t => currentTags.has(t.toLowerCase())).length;
+    const sameMedium = r.data.medium === data.medium ? 3 : 0;
+    return { review: r, score: tagOverlap + sameMedium };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score)
+  .map(({ review }) => review);
+
+const relatedReviews = [...manualRelated, ...autoRelated].slice(0, 3);
 
 const isMusic = data.medium === 'music';
 const relatedCorners = ['rc-tl', 'rc-all', 'rc-br'];

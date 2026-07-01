@@ -178,6 +178,7 @@ export default defineConfig({
             type: "string",
             label: "Tags",
             list: true,
+            description: "Thematic tags for archive filtering and quote matching. Use the same vocabulary across reviews and quotes.",
           },
           {
             name: "published_date",
